@@ -4,11 +4,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import formidable from 'express-formidable';
-import fs from 'fs';
 
 // import local modules
 import { handleUpload } from './api/handleUploads.mjs';
 import { handleRequest } from './api/handleRequest.mjs';
+import { handleMail } from './api/handleMail.mjs';
 
 // dot env config;
 dotenv.config();
@@ -26,6 +26,8 @@ app.use(formidable({ uploadDir: '/uploads' }));
 app.post('/upload', handleUpload);
 // handle file request route
 app.post('/api', handleRequest);
+// handle mail route
+app.post('/mail', handleMail);
 
 // serve static files from the public folder
 app.use(express.static('./public'));
