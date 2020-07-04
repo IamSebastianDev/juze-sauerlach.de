@@ -4,8 +4,8 @@
 	"description": "Website for JuZe Sauerlach",
 	"main": "server.mjs",
 	"scripts": {
-		"start": "node server.mjs",
-		"dev": "nodemon server.mjs"
+		"start": "node --experimental-json-modules server.mjs",
+		"dev": "nodemon --experimental-json-modules server.mjs"
 	},
 	"author": "Sebastian Heinz",
 	"license": "ISC",
@@ -14,7 +14,7 @@
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-formidable": "^1.2.0",
-		"mongoose": "^5.9.21",
+		"mongodb": "^3.5.9",
 		"nodemailer": "^6.4.10",
 		"tinify": "^1.6.0-beta.2"
 	},

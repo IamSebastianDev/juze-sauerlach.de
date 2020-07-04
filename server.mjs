@@ -25,7 +25,7 @@ app.use(formidable({ uploadDir: '/uploads' }));
 // handle file upload route
 app.post('/upload', handleUpload);
 // handle file request route
-app.post('/api', handleRequest);
+app.get('/api', handleRequest);
 // handle mail route
 app.post('/mail', handleMail);
 
