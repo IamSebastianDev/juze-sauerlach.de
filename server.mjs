@@ -7,7 +7,7 @@ import formidable from 'express-formidable';
 
 // import local modules
 import { handleUpload } from './api/handleUploads.mjs';
-import { handleRequest } from './api/handleRequest.mjs';
+import { handleRequest, saveRequest } from './api/handleRequest.mjs';
 import { handleMail } from './api/handleMail.mjs';
 
 // dot env config;
@@ -26,6 +26,7 @@ app.use(formidable({ uploadDir: '/uploads' }));
 app.post('/upload', handleUpload);
 // handle file request route
 app.get('/api', handleRequest);
+app.post('/api', saveRequest);
 // handle mail route
 app.post('/mail', handleMail);
 

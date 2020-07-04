@@ -36,4 +36,6 @@ const handleRequest = (req, res) => {
 	})();
 };
 
-export { handleRequest };
+const saveRequest = (req, res) => {};
+
+export { handleRequest, saveRequest };
