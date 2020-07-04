@@ -14,16 +14,26 @@ const client = new MongoClient(process.env.MONGO_KEY, {
 });
 
 const handleRequest = (req, res) => {
-	client.connect((err) => {
-		const collection = client.db('test').collection('test');
+	// handle db request async
 
-		let nav = collection
-			.findOne()
-			.then((data, err) => res.status(200).json(data))
-			.catch((err) => console.log(err));
+	(async () => {
+		try {
+			// connect to the db
+			await client.connect();
 
-		client.close;
-	});
+			// retrieve the collection
+			const collection = client.db('test').collection('test');
+
+			// create an array from all documents inside the array
+			const docs = await collection.find().toArray();
+
+			// send the array
+			res.status(200).json(docs);
+		} catch (err) {
+			console.log(err.stack);
+			res.send(err.stack);
+		}
+	})();
 };
 
 export { handleRequest };
