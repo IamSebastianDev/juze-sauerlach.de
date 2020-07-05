@@ -30,7 +30,7 @@ const handleRequest = (req, res) => {
 			// send the array
 			res.status(200).json(docs);
 		} catch (err) {
-			console.log(err.stack);
+			//console.log(err.stack);
 			res.send(err.stack);
 		}
 	})();
