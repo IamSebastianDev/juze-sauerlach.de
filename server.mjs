@@ -1,9 +1,10 @@
 /** @format */
 
 // import dependencies
-// META!
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+// replacement for __dirname
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
@@ -87,9 +88,10 @@ app.get('/admin', isNotAuthenticated, (req, res) => {
 });
 
 // api routes for retrieving content
+import { requestData, saveData } from './api/handleContent.mjs';
 
-// app.get("/api", requestdata);
-// app.post("/api", savedata);
+app.get('/api', requestData);
+app.post('/api', isAuthenticated, saveData);
 
 // set up public static folder for the rest of the files
 

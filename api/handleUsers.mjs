@@ -56,8 +56,8 @@ const deleteUser = async (req, res) => {
 	// store the created user in the db
 
 	try {
-		await handleRequest(
-			('users', (collection) => collection.deleteOne({ email: email }))
+		await handleRequest('users', (collection) =>
+			collection.deleteOne({ email: email })
 		);
 
 		// send the response
