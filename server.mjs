@@ -1,6 +1,12 @@
 /** @format */
 
 // import dependencies
+// META!
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
 
 // express dependencies
 import express from 'express';
@@ -14,7 +20,11 @@ const sessionStore = createStore(session);
 
 // import and initalize passport
 import passport from 'passport';
-import { initialize } from './passport_config.mjs';
+import {
+	initialize,
+	isAuthenticated,
+	isNotAuthenticated,
+} from './passport_config.mjs';
 
 import { getUserByEmail, getUserById } from './api/findUsers.mjs';
 
@@ -68,7 +78,13 @@ app.get('/logout', (req, res) => {
 });
 
 // routes for navigation
+app.get('/dashboard', isAuthenticated, (req, res) => {
+	res.status(200).sendFile(_getPath('/public/dashboard.html'));
+});
 
+app.get('/admin', isNotAuthenticated, (req, res) => {
+	res.status(200).sendFile(_getPath('/public/admin.html'));
+});
 
 // api routes for retrieving content
 

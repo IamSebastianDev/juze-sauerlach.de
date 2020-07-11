@@ -49,7 +49,7 @@ export { initialize };
 // authentification check
 
 // set up middleware for checking authentification
-const checkAuth = (req, res, next) => {
+const isAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		return next();
 	} else {
@@ -57,7 +57,7 @@ const checkAuth = (req, res, next) => {
 	}
 };
 
-const checkUnAuth = (req, res, next) => {
+const isNotAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		return res.redirect('/dashboard');
 	} else {
@@ -65,4 +65,4 @@ const checkUnAuth = (req, res, next) => {
 	}
 };
 
-export { checkAuth, checkUnAuth };
+export { isAuthenticated, isNotAuthenticated };
