@@ -93,6 +93,17 @@ import { requestData, saveData } from './api/handleContent.mjs';
 app.get('/api', requestData);
 app.post('/api', isAuthenticated, saveData);
 
+// api routes for fileuploading and retrieving
+import { uploadFile, getUploads } from './api/handleFiles.mjs';
+
+app.post('/api/upload', isAuthenticated, uploadFile);
+app.get('/api/upload', isAuthenticated, getUploads);
+
+// api route for sending mails
+import { handleMail } from './api/handleMail.mjs';
+
+app.post('/api/mail', handleMail);
+
 // set up public static folder for the rest of the files
 
 app.use(express.static('public', { extensions: ['html'] }));
