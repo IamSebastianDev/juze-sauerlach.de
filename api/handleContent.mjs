@@ -7,7 +7,7 @@
  */
 
 // import dependencies
-import { handleRequest } from '../mongo_config.mjs';
+import { handleRequest } from '../configs/mongo_config.mjs';
 
 // function to retrieve all page data documents from the db.
 const requestData = async (req, res) => {

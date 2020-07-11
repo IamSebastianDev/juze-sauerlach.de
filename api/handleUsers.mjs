@@ -7,7 +7,7 @@
  */
 
 // import dependencies
-import { handleRequest } from '../mongo_config.mjs';
+import { handleRequest } from '../configs/mongo_config.mjs';
 import bcrypt from 'bcrypt';
 
 // function to create user from a post request

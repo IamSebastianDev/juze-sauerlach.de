@@ -15,7 +15,7 @@ import session from 'express-session';
 import forceSSL from 'express-sslify';
 
 // import mongo session store
-import { createStore } from './mongo_config.mjs';
+import { createStore } from './configs/mongo_config.mjs';
 
 const sessionStore = createStore(session);
 
@@ -25,7 +25,7 @@ import {
 	initialize,
 	isAuthenticated,
 	isNotAuthenticated,
-} from './passport_config.mjs';
+} from './configs/passport_config.mjs';
 
 import { getUserByEmail, getUserById } from './api/findUsers.mjs';
 

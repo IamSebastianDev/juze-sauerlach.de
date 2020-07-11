@@ -1,7 +1,7 @@
 /** @format */
 
 // import dependencies
-import { handleRequest } from '../mongo_config.mjs';
+import { handleRequest } from '../configs/mongo_config.mjs';
 
 // function to retrieve user by email
 const getUserByEmail = async (email) => {
