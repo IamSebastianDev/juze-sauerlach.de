@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuZe Sauerlach | Login</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/iEx11.css">
 </head>
 <body>
-    <h1>login</h1>
+    <main class="main-content main-login">
+        <img class="fullscreen-bg" src="./assets/triangles-1430105.png">
+        <form class="login-form" action="/login" method="POST">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="email" required autocomplete="email" tabindex="1">
+            <label for="password">Passwort</label>
+            <input type="password" name="password" id="password" placeholder="Passwort" required autocomplete="current-password" tabindex="2">
+            <button type="submit">Einloggen</button>  
+            <a href="/index.html">Zurück zur Startseite.</a>  
+        </form>
+
+    </main>
+    <script src="scripts/app.js" type="module"></script>
 </body>
 </html>
