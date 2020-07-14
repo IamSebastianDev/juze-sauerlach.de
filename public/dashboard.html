@@ -16,7 +16,21 @@
         </div>
     </div>
     <aside class="dashboard-container">
-        <a href="/logout">Logout</a>
+        <div class="dashboard-flex">
+            <span class="dashboard-cycle dashboard-open"></span>
+            <div class="dashboard-Page">
+                <h3 class="dashboard-pageTitle">{- pageTitle -}</h3>
+                <div class="dashboard-pageDetails"></div>
+                <div class="dashboard-icons"></div>
+                <button class="dashboard-createPage">Neue Seite +</button>
+            </div>
+            <div class="dashboard-Files">
+                <button class="dashboard-uploadFile">Datei hochladen +</button>
+            </div>
+
+            <button class="dashboard-save">Änderungen speichern.</button>
+            <a href="/logout">Logout.</a>
+        </div>
     </aside>
     <nav class="nav">
         <ul class="nav-Container">
