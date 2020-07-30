@@ -5,7 +5,7 @@
 import Røut from './application/røut.mjs';
 import closeLoader from './loader.mjs';
 
-import createContent from './createContent.mjs';
+import { createContent } from './createContent.mjs';
 
 // create a new Røut-instance
 const router = new Røut(
@@ -22,6 +22,9 @@ const router = new Røut(
 
 	console.log(pageData);
 
+	// filter inactive pages
+	pageData = pageData.filter((elem) => elem.pageActive);
+
 	// order the pages from pageIndex property
 	pageData.sort((a, b) => a.pageIndex - b.pageIndex);
 
@@ -36,12 +39,11 @@ const router = new Røut(
 		navLink.className = 'nav-Link';
 		navLink.setAttribute('tooltip', data.tooltip);
 		navLink.href = `#${data.dest}`;
+		navLink.innerHTML = feather.icons[data.icon].toSvg({
+			'stroke-width': '1.5',
+			stroke: 'var(--color-text)',
+		});
 
-		let navIcon = document.createElement('img');
-		navIcon.src = `./assets/icons/${data.icon}`;
-		navIcon.alt = '';
-
-		navLink.appendChild(navIcon);
 		navItem.appendChild(navLink);
 
 		return navItem;
@@ -68,3 +70,6 @@ const router = new Røut(
 })();
 
 console.log(router);
+console.log(feather);
+
+export { router };

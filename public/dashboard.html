@@ -1,56 +1,189 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JuZe Sauerlach | Home</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/responsive.css">
-    <link rel="stylesheet" href="./styles/iEx11.css">
-</head>
-<body>
-    <div id="loader-init" class="loader loader-fullscreen">
-        <div class="loader-container">
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-    <aside class="dashboard-container">
-        <div class="dashboard-flex">
-            <span class="dashboard-cycle dashboard-open"></span>
-            <div class="dashboard-Page">
-                <h3 class="dashboard-pageTitle">{- pageTitle -}</h3>
-                <div class="dashboard-pageDetails"></div>
-                <div class="dashboard-icons"></div>
-                <button class="dashboard-createPage">Neue Seite +</button>
-            </div>
-            <div class="dashboard-Files">
-                <button class="dashboard-uploadFile">Datei hochladen +</button>
-            </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>JuZe Sauerlach | Home</title>
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/responsive.css" />
+		<link rel="stylesheet" href="./styles/iEx11.css" />
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script type="module" src="scripts/application/editør.03.mjs"></script>
+		<link rel="stylesheet" href="./styles/editør-style.css" />
+	</head>
+	<body>
+		<div id="loader-init" class="loader loader-fullscreen">
+			<div class="loader-container">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div style="display: none;" class="modal dashboard-pageCreation">
+			<div class="pageCreator-Container">
+				<form class="pageCreator-form">
+					<a class="modal-close"></a>
+					<h1>Neue Seite erstellen:</h1>
+					<div class="pageCreator-inputContainer">
+						<label for="url">URL:</label>
+						<input
+							id="pageCreator-Url"
+							name="url"
+							type="url"
+							placeholder="/#exampleUrl"
+							class="pageCreator-input"
+							required
+						/>
+						<span class="pageCreator-inputDesc"
+							>Die Url unter der die unterseite zu erreichen
+							ist.</span
+						>
+					</div>
+					<div class="pageCreator-inputContainer">
+						<label for="title">Titel:</label>
+						<input
+							id="pageCreator-Title"
+							name="title"
+							type="text"
+							placeholder="Aktuelles"
+							class="pageCreator-input"
+							required
+						/>
+						<span class="pageCreator-inputDesc"
+							>Der Titel der Seite der in der Tableiste angezeigt
+							wird. Wird auch im Menü als Seitentitel
+							angezeigt.</span
+						>
+					</div>
+					<div class="pageCreator-inputContainer">
+						<label for="tooltip">Tooltip:</label>
+						<input
+							id="pageCreator-tooltip"
+							name="tooltip"
+							type="text"
+							placeholder="Dies ist ein tooltip!"
+							class="pageCreator-input"
+							required
+						/>
+						<span class="pageCreator-inputDesc"
+							>Der tooltip für die Navigationsicons.</span
+						>
+					</div>
+					<div class="pageCreator-iconContainer">
+						<label for="icon">Icon:</label>
+						<span class="pageCreator-inputDesc"
+							>Das Icon das für die Seitennavigation benutzt
+							wird.</span
+						>
+						<div class="pageCreator-iconSelect"></div>
+					</div>
+					<button type="submit">Seite erstellen.</button>
+				</form>
+			</div>
+		</div>
+		<div style="display: none;" class="modal dashboard-pageOrganizer">
+			<div class="pageOrganizer-Container">
+				<a class="modal-close"></a>
+				<h1>Seiten anordnen und aktiv / deaktiv schalten:</h1>
+				<div class="organizer-Container"></div>
 
-            <button class="dashboard-save">Änderungen speichern.</button>
-            <a href="/logout">Logout.</a>
-        </div>
-    </aside>
-    <nav class="nav">
-        <ul class="nav-Container">
+				<button id="organizerSave" type="submit">
+					Änderungen Speichern
+				</button>
+			</div>
+		</div>
+		<aside class="dashboard-container dashboard__isOpen">
+			<div class="dashboard-flex">
+				<button class="dashboard-cycle"></button>
+				<section class="dashboard-Section dashboard-pageControl">
+					<h1>Seitendetails:</h1>
+					<div class="dashboard-input-container">
+						<label for="pageTitle">Titel:</label>
+						<input
+							type="text"
+							name="pageTitle"
+							id="pageTitle"
+							class="dashboard-input"
+							placeholder="{- Titel -}"
+						/>
+					</div>
+					<div class="dashboard-input-container">
+						<label for="pageDest">Url:</label>
+						<input
+							type="url"
+							name="pageDest"
+							id="pageDest"
+							class="dashboard-input"
+							placeholder="{- Url -}"
+						/>
+					</div>
+					<div class="dashboard-input-container">
+						<label for="pageTooltip">Tooltip:</label>
+						<input
+							type="text"
+							name="pageTooltip"
+							id="pageTooltip"
+							class="dashboard-input"
+							placeholder="{- Tooltip -}"
+						/>
+					</div>
+					<label for="organizePage">Seiten Organisieren.</label>
+					<button
+						name="organizePage"
+						id="dashboard-organizePage"
+						class="dashboard-button dashboard-deletePage"
+					>
+						Seiten Organisieren.
+					</button>
+					<label for="updatePage">Änderungen speichern.</label>
+					<button
+						name="updatePage"
+						id="dashboard-updatePage"
+						class="dashboard-button dashboard-updatePage"
+					>
+						Änderungen speichern.
+					</button>
+					<label for="createPage">Neue Seite.</label>
+					<button
+						name="createPage"
+						id="dashboard-createPage"
+						class="dashboard-button dashboard-createNewPage"
+					>
+						Neue Seite.
+					</button>
+				</section>
+			</div>
+		</aside>
+		<nav class="nav">
+			<ul class="nav-Container"></ul>
+		</nav>
 
-        </ul>
-    </nav>
+		<main class="content">
+			<div class="header-image">
+				<img class="header-image-target" src="" alt="" />
+			</div>
+			<section class="content-main">
+				<div id="editør-main" editør-enabled="true"></div>
+			</section>
+			<section class="content-secondary">
+				<div id="editør-secondary" editør-enabled="true"></div>
+			</section>
+		</main>
+		<div class="instagram-feed"></div>
+		<footer></footer>
+		<script src="./scripts/app_backend.js" type="module"></script>
+		<script src="./scripts/pageCreator.js" type="module"></script>
+		<script src="./scripts/pageOrganizer.js" type="module"></script>
+		<script>
+			// dashboard handler script
+			const ButtonCycle = document.querySelector('.dashboard-cycle');
+			const Panel = document.querySelector('.dashboard-container');
 
-    <main class="content">
-        <div class="header-image">
-            <img class="header-image-target" src="" alt="">
-        </div>
-        <section class="content-main">
-
-        </section>
-        <section class="content-secondary">
-
-        </section>
-    </main>
-    <div class="instagram-feed"></div>
-    <footer></footer>
-    <script src="./scripts/app.js" type="module"></script>
-</body>
+			ButtonCycle.addEventListener('click', (ev) => {
+				Panel.classList.toggle('dashboard__isOpen');
+				ButtonCycle.classList.toggle('dashboard-open');
+			});
+		</script>
+	</body>
 </html>

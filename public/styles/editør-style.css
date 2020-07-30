@@ -1,0 +1,313 @@
+/** @format */
+
+.editør-contentCreator svg,
+.editør-context svg,
+.editør-selection svg {
+	color: rgba(95, 97, 99, 1);
+	fill: rgba(95, 97, 99, 1);
+}
+
+.editør-contentCreator {
+	position: relative;
+
+	width: auto;
+	height: 40px;
+	margin: 50px 5px 5px 5px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: rgba(255, 255, 255, 1);
+
+	border-radius: 5px;
+
+	cursor: pointer;
+
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.editør-contentCreator[editør-state='active'] > .editør-button {
+	position: absolute;
+	left: 3px;
+	top: 2px;
+
+	background: none;
+	cursor: unset;
+
+	transform: rotate(45deg);
+}
+
+.editør-button {
+	position: relative;
+	/* button resets */
+	background: none;
+	border: none;
+	outline: none;
+	padding: 0;
+
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+	cursor: pointer;
+	border-radius: 5px;
+
+	padding: 4px;
+	margin: 2px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: 0.2s ease;
+}
+
+.editør-button:hover {
+	background: rgba(25, 27, 29, 0.1);
+}
+
+.editør-blockShell {
+	position: relative;
+
+	z-index: attr(data-zindex);
+}
+
+.editør-blockShell:focus-within {
+	z-index: 9999;
+}
+
+.editør-block:empty {
+	background: rgba(25, 25, 29, 0.05);
+}
+
+.editør-block {
+	display: block;
+
+	outline: none;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	appearance: none;
+
+	padding: 5px 5px;
+	margin: 10px auto;
+}
+
+.editør-block:hover {
+	background: rgba(123, 183, 255, 0.1);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.editør-block:focus-within {
+	background: rgba(123, 183, 255, 0.3);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.editør-context,
+.editør-selection {
+	position: absolute;
+	right: 0;
+
+	display: none;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+	padding: 5px;
+	min-height: 30px;
+	/* max-width: 96px; */
+
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
+
+	cursor: pointer;
+}
+
+.editør-selection {
+	display: none;
+
+	top: -45px;
+	right: unset;
+
+	opacity: 0;
+
+	transition: 0.3s ease;
+}
+
+@keyframes contextFade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.editør-selection-inputContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.editør-selection-input {
+	height: 100%;
+	margin: 0px 2px;
+	padding: 0px 4px;
+
+	border: none;
+	background: none;
+	outline: none;
+
+	box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.editør-blockShell:focus-within > .editør-context {
+	display: flex;
+	animation: contextFade 0.25s ease forwards;
+}
+
+.editør-selection-visible,
+.editør-selectionBar-eternal {
+	display: flex;
+	animation: contextFade 0.25s ease forwards;
+}
+
+.editør-context:hover,
+.editør-selection-visible:hover,
+.editør-selectionBar-eternal:hover {
+	z-index: 9999;
+	display: flex;
+}
+
+.editør-contextButton {
+	appearance: none;
+	outline: none;
+	background: none;
+	border: none;
+
+	border-radius: 5px;
+	padding: 3px 3px;
+	margin: 0 1px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+.editør-contextButton svg {
+	fill: rgba(95, 97, 99, 1);
+	color: rgba(95, 97, 99, 1);
+}
+
+.editør-contextButtonActive {
+	background: rgba(25, 27, 29, 0.1);
+}
+
+.editør-contextButton:hover {
+	background: rgba(25, 27, 29, 0.1);
+}
+
+.editør-contextButton_clear:hover {
+	background: rgba(255, 25, 25, 1);
+}
+
+.editør-contextButton_clear:hover svg {
+	fill: rgba(255, 255, 255, 1);
+}
+
+.editør-list {
+	margin-left: 50px;
+}
+
+.editør-listItem {
+	margin: 15px 0px;
+}
+
+.editør-listItem:first-of-type {
+	margin: 5px 0px 15px;
+}
+
+.editør-listItem:last-of-type {
+	margin: 15px 0px 5px;
+}
+
+.editør-hr {
+	margin: 20px 0px;
+}
+
+.editør-markup-marker {
+	background: rgba(245, 137, 6, 0.5);
+	color: rgb(120, 66, 0);
+	border-radius: 2px;
+	padding: 1px 0px;
+	font-size: 90%;
+}
+
+.editør-inlineInput {
+	position: relative;
+	box-shadow: none;
+	border: 1px solid rgba(95, 97, 99, 1);
+	border-radius: 2px;
+	margin-left: 10px;
+	padding: 0px 5px;
+}
+
+.editør-imageInput {
+	padding: 10px 10px;
+	width: calc(100% - 30px);
+}
+
+.editør-image {
+	max-width: -webkit-fill-available;
+	object-fit: contain;
+}
+
+.editør-image:empty {
+	background: none;
+}
+
+/*  Tooltip styles  */
+
+[data-tooltip]:hover:after {
+	content: attr(data-tooltip);
+	position: absolute;
+
+	top: calc(100% + 5px);
+	padding: 5px 8px;
+	border-radius: 7px;
+
+	background: rgba(22, 26, 30, 1);
+	color: rgba(255, 255, 255, 1);
+
+	font-size: 12px;
+
+	white-space: nowrap;
+
+	box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
+
+	opacity: 0;
+	animation: tooltipFade 0.3s ease 0.5s 1 forwards;
+}
+
+[data-tooltip]:hover::before {
+	content: '▲';
+	position: absolute;
+
+	top: calc(100%);
+	font-size: 8px;
+
+	opacity: 0;
+	animation: tooltipFade 0.3s ease 0.5s 1 forwards;
+}
+
+@keyframes tooltipFade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

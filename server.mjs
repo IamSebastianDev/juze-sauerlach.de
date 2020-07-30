@@ -88,10 +88,19 @@ app.get('/admin', isNotAuthenticated, (req, res) => {
 });
 
 // api routes for retrieving content
-import { requestData, saveData } from './api/handleContent.mjs';
+import {
+	requestData,
+	saveData,
+	createPage,
+	deletePage,
+	updatePage,
+} from './api/handleContent.mjs';
 
 app.get('/api', requestData);
 app.post('/api', isAuthenticated, saveData);
+app.post('/api/createPage', isAuthenticated, createPage);
+app.post('/api/deletePage', isAuthenticated, deletePage);
+app.post('/api/updatePage', isAuthenticated, updatePage);
 
 // api routes for fileuploading and retrieving
 import { uploadFile, getUploads } from './api/handleFiles.mjs';
