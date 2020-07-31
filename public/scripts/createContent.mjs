@@ -1,11 +1,8 @@
 /** @format */
-import { Parsør } from './application/parsør.mjs';
-import { editorMain, editorSecondary } from './app_backend.js';
+
+import { editor } from './app_backend.js';
 
 let newPageData;
-
-// function to create frontEnt content from the api and pageData
-const createContent = async (query, args) => {};
 
 // function to create the backEnd Content from a repeated api call to keep content up to date
 const createSyncContent = async (query, args) => {
@@ -38,8 +35,7 @@ const createSyncContent = async (query, args) => {
 		newPageData.headerImage;
 
 	// set the editor content
-	editorMain.importData(args[0].primary);
-	editorSecondary.importData(args[0].secondary);
+	editor.importData(args[0]);
 };
 
-export { createContent, createSyncContent, newPageData };
+export { createSyncContent, newPageData };

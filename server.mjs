@@ -12,6 +12,7 @@ const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
 // express dependencies
 import express from 'express';
 import session from 'express-session';
+import fileUpload from 'express-fileupload';
 import forceSSL from 'express-sslify';
 
 // import mongo session store
@@ -41,6 +42,7 @@ const app = express();
 // app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(express.json());
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: true }));
 
 // set up express for use with sessions

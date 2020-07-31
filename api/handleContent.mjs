@@ -61,10 +61,6 @@ const createPage = async (req, res) => {
 		title: req.body.pageTitle,
 		headerImage: '',
 		pageActive: true,
-		content: {
-			primary: { blocks: [] },
-			secondary: { blocks: [] },
-		},
 	};
 
 	try {

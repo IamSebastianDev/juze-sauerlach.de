@@ -87,27 +87,15 @@ import { øImage } from './application/plugins/editør.image.mjs';
 
 // create a new Editor instance
 
-const pluginStack = {
+const editor = new Editør(document.querySelector('#editør-main'), {
 	title: øTitle,
 	paragraph: øParagraph,
 	list: øList,
 	image: øImage,
 	delimitor: øDelimitor,
-};
+});
 
-const editorMain = new Editør(
-	document.querySelector('#editør-main'),
-	pluginStack
-);
-
-console.log(editorMain);
-
-const editorSecondary = new Editør(
-	document.querySelector('#editør-secondary'),
-	pluginStack
-);
-
-export { editorMain, editorSecondary };
+export { editor };
 
 const handleUpdate = async () => {};
 
@@ -119,10 +107,7 @@ document
 		const dest = document.querySelector('#pageDest').value;
 		const tooltip = document.querySelector('#pageTooltip').value;
 
-		const content = {
-			primary: editorMain.exportData(),
-			secondary: editorSecondary.exportData(),
-		};
+		const content = editor.exportData();
 
 		newPageData.title = title;
 		newPageData.dest = dest;
@@ -137,7 +122,11 @@ document
 			body: JSON.stringify(newPageData),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data))
+			.then((data) => {
+				if (data.success) {
+					firstPaint();
+				}
+			})
 			.catch((err) => console.log(err));
 	});
 

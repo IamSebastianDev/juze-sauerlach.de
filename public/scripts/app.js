@@ -5,7 +5,7 @@
 import Røut from './application/røut.mjs';
 import closeLoader from './loader.mjs';
 
-import { createContent } from './createContent.mjs';
+import { createContent } from './parseFrontend.mjs';
 
 // create a new Røut-instance
 const router = new Røut(
