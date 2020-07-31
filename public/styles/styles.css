@@ -583,6 +583,8 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	margin: 0;
 }
 
 .fileControl-button:first-of-type {
