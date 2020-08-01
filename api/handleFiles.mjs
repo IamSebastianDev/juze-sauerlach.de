@@ -28,7 +28,7 @@ const uploadFile = async (req, res) => {
 
 		let type = file.mimetype.includes('image') ? 'images/' : 'files/';
 
-		let uploadPath = process.cwd() + '/public/uploads/' + type + file.name;
+		let uploadPath = __dirname + '/public/uploads/' + type + file.name;
 
 		await file.mv(uploadPath);
 
@@ -50,13 +50,13 @@ const getUploads = async (req, res) => {
 		images: [],
 	};
 
-	let directories = await fs.readdir(process.cwd() + '/public/uploads/');
+	let directories = await fs.readdir(__dirname + '/public/uploads/');
 	const createData = async () => {
 		try {
 			for (const dir of directories) {
 				// get current dir
 				let directory = await fs.readdir(
-					process.cwd() + '/public/uploads/' + dir
+					__dirname + '/public/uploads/' + dir
 				);
 
 				for (const file of directory) {
@@ -78,7 +78,7 @@ const getUploads = async (req, res) => {
 
 const deleteFile = async (req, res) => {
 	// construct the file path
-	let path = process.cwd() + '/public' + req.body.path.slice(1);
+	let path = __dirname + '/public' + req.body.path.slice(1);
 
 	try {
 		await fs.unlink(path);
