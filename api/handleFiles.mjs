@@ -15,8 +15,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-console.log(__dirname);
-console.log(process.cwd());
 
 // import filesystem
 import fsp from 'fs';
@@ -34,6 +32,8 @@ const uploadFile = async (req, res) => {
 
 		await file.mv(uploadPath);
 
+		console.log('finished uploading');
+
 		res.status(200).json({
 			success: true,
 			path: `./uploads/${type}${file.name}`,
@@ -46,6 +46,7 @@ const uploadFile = async (req, res) => {
 
 // handles getting all the files in the uploads directory
 const getUploads = async (req, res) => {
+	console.log('starting file fetch');
 	// instantie the container obj
 	let conObj = {
 		files: [],
