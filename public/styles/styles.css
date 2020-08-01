@@ -419,10 +419,9 @@ footer {
 	z-index: 1001;
 
 	transition: 0.3s ease-out;
-}
 
-.dashboard-button:last-of-type {
-	margin-top: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .dashboard__isOpen {
@@ -595,6 +594,10 @@ footer {
 	background: var(--color-accent);
 }
 
+.fileControl-active:hover {
+	background: var(--color-accent);
+}
+
 .fileControl-enlarge {
 	flex-grow: 0;
 	border-right: unset;
@@ -606,6 +609,10 @@ footer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: flex-start;
+
+	max-height: 200px;
+	overflow: auto;
 }
 
 .dashboard-fileControl form {
@@ -652,6 +659,15 @@ footer {
 	display: none;
 }
 
+.fileControl-submit {
+	margin-top: 0;
+}
+
+.fileControl-submit:disabled {
+	opacity: 0.1;
+	text-decoration: line-through;
+}
+
 .fileControl-loader {
 	position: absolute;
 	top: 0;
@@ -682,6 +698,146 @@ footer {
 	animation: loaderSpin 2s ease infinite;
 }
 
+.content-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100px;
+
+	margin: 2.5px;
+	border: 1px solid var(--color-shade);
+	border-radius: 5px;
+}
+
+.content-card:hover:after {
+	content: attr(card-hover);
+	display: block;
+	background: rgba(0, 0, 0, 0.65);
+	color: var(--color-main);
+	padding: 2px;
+	position: absolute;
+	height: 46px;
+	width: 96px;
+	border-radius: 5px 5px 0px 0px;
+	overflow: hidden;
+	font-size: 1.1em;
+	top: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.content-card img {
+	height: 50px;
+	border-radius: 5px 5px 0px 0px;
+	object-fit: contain;
+}
+
+.content-card span {
+	flex-shrink: 1;
+	padding: 2px;
+	margin: 1px 0px;
+	height: 15px;
+	overflow: hidden;
+	font-size: 1.1em;
+}
+
+.content-card-showLink {
+	appearance: none;
+	background: var(--color-main);
+	border-radius: 0px 0px 5px 5px;
+	outline: none;
+	border: none;
+	border-top: 1px solid var(--color-shade);
+	margin: 0;
+	padding: 4px;
+	box-shadow: none;
+}
+
+.content-card-showLink:hover {
+	background: var(--color-accent);
+}
+
+.fileModal-content {
+	max-width: 786px;
+	width: 90vw;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	background: var(--color-main);
+
+	padding: 20px 40px;
+
+	border-radius: 15px;
+}
+
+.fileModal-imageContainer {
+	height: 50vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	object-fit: contain;
+
+	border-bottom: 1px soliv var(--color-shade);
+}
+
+.fileModal-imageContainer img {
+	max-width: 786px;
+	max-height: 50vh;
+	object-fit: contain;
+}
+
+.fileModal-content > span {
+	font-size: 1.6em;
+	padding: 5px;
+	margin: 10px 0;
+	font-weight: 500;
+
+	text-align: center;
+}
+
+.fileModal-pathContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+	background: var(--color-shade);
+	border-radius: 5px;
+
+	font-size: 1.4em;
+}
+
+.fileModal-pathContainer span:before {
+	content: 'Pfad: ';
+}
+
+.fileModal-pathContainer button {
+	appearance: none;
+	-webkit-appearance: none;
+
+	background: none;
+	border: none;
+	outline: none;
+
+	margin: 0;
+	padding: 4px;
+
+	border-radius: 5px;
+}
+
+.fileModal-pathContainer button:hover {
+	background: var(--color-accent);
+}
 /* styles cat: @pageOrganizer */
 
 .pageOrganizer-Container {
@@ -989,6 +1145,38 @@ button:hover {
 
 .modal-close:hover {
 	background-color: var(--color-accent);
+}
+
+.browser-enlarged {
+	background: var(--color-main);
+	border-radius: unset;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: unset;
+	font-size: 1.4em;
+}
+
+.browser-enlarged .fileControl-contents {
+	max-height: unset;
+}
+
+.browser-enlarged .content-card {
+	width: 150px;
+}
+
+.browser-enlarged .content-card img {
+	height: 100px;
+}
+
+.browser-enlarged .content-card:hover:after {
+	width: 146px;
+	height: 100px;
+}
+
+.browser-enlarged .content-card span {
+	height: 40px;
 }
 
 /* styles cat: @loader */

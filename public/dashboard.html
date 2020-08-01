@@ -94,7 +94,13 @@
 				</button>
 			</div>
 		</div>
-		<aside class="dashboard-container dashboard__isOpen">
+		<div style="display: none;" class="modal dashboard-fileModal">
+			<div class="fileModal">
+				<a class="modal-close"></a>
+				<div class="fileModal-content"></div>
+			</div>
+		</div>
+		<aside class="dashboard-container dashboard__isOpen" style="">
 			<div class="dashboard-flex">
 				<button class="dashboard-cycle"></button>
 				<section class="dashboard-Section dashboard-pageControl">
@@ -159,11 +165,15 @@
 					<div class="fileControl-Browser">
 						<div class="fileControl-controls">
 							<button
+								id="switch-images"
 								class="fileControl-button fileControl-active"
 							>
 								Bilder
 							</button>
-							<button class="fileControl-button">
+							<button
+								id="switch-files"
+								class="fileControl-button"
+							>
 								Dateien
 							</button>
 							<button class="fileControl-enlarge">
@@ -173,7 +183,15 @@
 								/>
 							</button>
 						</div>
-						<div class="fileControl-contents"></div>
+						<div
+							class="fileControl-contents"
+							id="content-files"
+							style="display: none;"
+						></div>
+						<div
+							class="fileControl-contents"
+							id="content-images"
+						></div>
 					</div>
 					<form>
 						<label
@@ -210,9 +228,10 @@
 							type="file"
 							name="file"
 							id="fileControl-inputFile"
-							accept=".png,.jpg,.jpeg,.gif,.bmp,.pfd"
+							accept=".png,.jpg,.jpeg,.gif,.bmp,.pdf"
 						/>
 						<button
+							disabled
 							class="fileControl-submit dashboard-button"
 							type="submit"
 						>

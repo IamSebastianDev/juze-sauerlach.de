@@ -105,10 +105,11 @@ app.post('/api/deletePage', isAuthenticated, deletePage);
 app.post('/api/updatePage', isAuthenticated, updatePage);
 
 // api routes for fileuploading and retrieving
-import { uploadFile, getUploads } from './api/handleFiles.mjs';
+import { uploadFile, getUploads, deleteFile } from './api/handleFiles.mjs';
 
 app.post('/api/upload', isAuthenticated, uploadFile);
 app.get('/api/upload', isAuthenticated, getUploads);
+app.post('/api/deleteFile', isAuthenticated, deleteFile);
 
 // api route for sending mails
 import { handleMail } from './api/handleMail.mjs';
