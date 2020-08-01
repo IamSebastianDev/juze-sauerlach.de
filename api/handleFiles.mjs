@@ -17,8 +17,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // import filesystem
-import fs from 'fs/promises';
-import { fork } from 'child_process';
+import fs from 'fs';
 
 // handles storing the files
 const uploadFile = async (req, res) => {

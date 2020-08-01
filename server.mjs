@@ -39,7 +39,7 @@ import { registerUser, deleteUser } from './api/handleUsers.mjs';
 const app = express();
 
 // enforce ssl encryption
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(express.json());
 app.use(fileUpload());
