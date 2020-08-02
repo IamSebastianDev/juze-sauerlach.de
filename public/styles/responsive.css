@@ -1,0 +1,198 @@
+/** @format */
+
+/* styles for pointer and stylus devices */
+
+@media (hover: hover) {
+	/* tooltip on hover */
+
+	[tooltip]:hover:after {
+		content: attr(tooltip);
+
+		position: absolute;
+		top: 100%;
+		margin-top: 12px;
+
+		white-space: nowrap;
+
+		background: var(--color-text);
+		color: var(--color-main);
+
+		font-size: 1.2em;
+
+		padding: 2px 4px;
+		border-radius: 5px;
+
+		box-shadow: var(--shadow-light);
+	}
+
+	[tooltip]:hover:before {
+		content: '▲';
+
+		position: absolute;
+		top: 100%;
+		margin-top: 4px;
+
+		font-size: 1.4em;
+
+		text-shadow: var(--shadow-light);
+	}
+
+	/* button and link hovers */
+
+	.login-form button:hover {
+		background: var(--color-accent);
+	}
+
+	.login-form a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
+	}
+
+	.footer-link-social:hover {
+		transform: scale(1.1);
+	}
+
+	.content-card-showLink:hover {
+		background: var(--color-accent);
+	}
+
+	.fileModal-pathContainer button:hover {
+		background: var(--color-accent);
+	}
+
+	button:hover {
+		background: var(--color-shade);
+		transition: 0.25s ease;
+		cursor: pointer;
+	}
+
+	.fileControl-button:hover {
+		background: var(--color-accent);
+	}
+
+	a.dashboard-button:hover {
+		background: var(--color-accent);
+		transition: 0.25s ease;
+		cursor: pointer;
+	}
+
+	.feather-IconContainer:hover svg {
+		transition: 0.25s ease;
+		stroke: var(--color-accent);
+		border-color: var(--color-accent);
+	}
+	.modal-close:hover {
+		background-color: var(--color-accent);
+	}
+
+	/* content card hover */
+
+	.content-card:hover:after {
+		content: attr(card-hover);
+		display: block;
+		background: rgba(0, 0, 0, 0.65);
+		color: var(--color-main);
+		padding: 2px;
+		position: absolute;
+		height: 46px;
+		width: 96px;
+		border-radius: 5px 5px 0px 0px;
+		overflow: hidden;
+		font-size: 1.1em;
+		top: 0;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		word-break: break-all;
+		word-wrap: break-word;
+	}
+
+	.browser-enlarged .content-card:hover:after {
+		width: 146px;
+		height: 100px;
+	}
+}
+
+/* set to mobile and table styles and column view */
+
+@media (max-width: 786px) {
+	main.content {
+		margin-top: 90px;
+		grid-template-columns: 1fr;
+		grid-template-areas: 'image' 'primary';
+	}
+
+	.header-image {
+		position: unset;
+	}
+
+	/* construct mobile nav */
+	nav {
+		background: var(--color-main);
+		height: 60px;
+		justify-content: center;
+	}
+
+	.nav-Container {
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		width: 70vw;
+		height: 80vh;
+
+		margin: 0;
+		padding: 10vh 15vw;
+
+		z-index: 10;
+
+		background: var(--color-main);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-start;
+
+		transition: 0.4s ease-out;
+		transform: translateY(0%);
+		opacity: 1;
+	}
+
+	.nav-Container-transformed {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+
+	.nav-item {
+		margin: auto;
+	}
+
+	.nav-Link:after {
+		display: block;
+		content: attr(title);
+		position: absolute;
+		left: 100%;
+
+		margin: 0px 0px;
+		padding: 10px 20px;
+
+		font-size: 1.6em;
+		text-decoration: none;
+		font-weight: 400;
+
+		width: max-content;
+	}
+
+	.nav-burger-invisible {
+		display: flex;
+	}
+
+	.footer-link-kjr {
+		margin-right: 2%;
+	}
+
+	.dashboard-container {
+		width: 80vw;
+	}
+}

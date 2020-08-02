@@ -34,8 +34,6 @@ const uploadFile = async (req, res) => {
 
 		await file.mv(uploadPath);
 
-		console.log('finished uploading');
-
 		res.status(200).json({
 			success: true,
 			path: `./uploads/${type}${file.name}`,
@@ -48,7 +46,6 @@ const uploadFile = async (req, res) => {
 
 // handles getting all the files in the uploads directory
 const getUploads = async (req, res) => {
-	console.log('starting file fetch');
 	// instantie the container obj
 	let conObj = {
 		files: [],

@@ -759,6 +759,23 @@ class øPlugin {
 								i.href = input.value;
 								i.appendChild(docFrag);
 
+								console.log(input.value.match(/\.pdf/gim));
+
+								if (input.value.match(/\.pdf/gim) != null) {
+									i.download = input.value.match(
+										/[^\/]*?\.pdf/gi
+									);
+								}
+
+								if (
+									!input.value.includes(
+										window.location.origin
+									)
+								) {
+									i.target = '_blank';
+									i.rel = 'noopener noreffer';
+								}
+
 								container.remove();
 								this.selectionBar.classList.remove(
 									'editør-selectionBar-eternal'

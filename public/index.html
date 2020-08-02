@@ -17,9 +17,10 @@
         </div>
     </div>
     <nav class="nav">
-        <ul class="nav-Container">
+        <ul class="nav-Container nav-Container-transformed">
 
         </ul>
+        <button class="nav-burger nav-burger-invisible"><span></span></button>
     </nav>
 
     <main class="content">
@@ -59,5 +60,24 @@
         </div>
     </footer>
     <script src="./scripts/app.js" type="module"></script>
+    <script>
+
+        // navigation controls for mobile
+        const burger = document.querySelector(".nav-burger");
+        const navMenu = document.querySelector(".nav-Container")
+        burger.addEventListener("click", (ev) => {
+            burger.classList.toggle("nav-burger-open")
+            navMenu.classList.toggle("nav-Container-transformed")
+        })
+
+        window.addEventListener("click", ev => {
+            if(ev.target.closest(".nav-Link")){
+                console.log("hit"); 
+                navMenu.classList.add("nav-Container-transformed"); 
+            burger.classList.remove("nav-burger-open"); 
+            }
+        })
+
+    </script>
 </body>
 </html>

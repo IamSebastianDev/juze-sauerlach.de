@@ -15,6 +15,12 @@
 		<script type="module" src="scripts/application/editør.03.mjs"></script>
 	</head>
 	<body>
+		<nav class="nav">
+			<ul class="nav-Container nav-Container-transformed"></ul>
+			<button class="nav-burger nav-burger-invisible">
+				<span></span>
+			</button>
+		</nav>
 		<div id="loader-init" class="loader loader-fullscreen">
 			<div class="loader-container">
 				<span></span>
@@ -100,9 +106,9 @@
 				<div class="fileModal-content"></div>
 			</div>
 		</div>
-		<aside class="dashboard-container dashboard__isOpen" style="">
+		<aside class="dashboard-container dashboard__isOpen">
+			<button class="dashboard-cycle"></button>
 			<div class="dashboard-flex">
-				<button class="dashboard-cycle"></button>
 				<section class="dashboard-Section dashboard-pageControl">
 					<h1>Seitendetails:</h1>
 					<div class="dashboard-input-container">
@@ -242,9 +248,6 @@
 				<a href="/logout" class="dashboard-button">Logout</a>
 			</div>
 		</aside>
-		<nav class="nav">
-			<ul class="nav-Container"></ul>
-		</nav>
 
 		<main class="content">
 			<div class="header-image">
@@ -360,6 +363,22 @@
 			ButtonCycle.addEventListener('click', (ev) => {
 				Panel.classList.toggle('dashboard__isOpen');
 				ButtonCycle.classList.toggle('dashboard-open');
+			});
+
+			// navigation controls for mobile
+			const burger = document.querySelector('.nav-burger');
+			const navMenu = document.querySelector('.nav-Container');
+			burger.addEventListener('click', (ev) => {
+				burger.classList.toggle('nav-burger-open');
+				navMenu.classList.toggle('nav-Container-transformed');
+			});
+
+			window.addEventListener('click', (ev) => {
+				if (ev.target.closest('.nav-Link')) {
+					console.log('hit');
+					navMenu.classList.add('nav-Container-transformed');
+					burger.classList.remove('nav-burger-open');
+				}
 			});
 		</script>
 	</body>
