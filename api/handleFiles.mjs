@@ -10,8 +10,6 @@ import tinify from 'tinify';
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log(process.cwd());
-
 // META!
 import path from 'path';
 import { fileURLToPath } from 'url';

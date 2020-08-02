@@ -10,7 +10,7 @@ import { createContent } from './parseFrontend.mjs';
 // create a new Røut-instance
 const router = new Røut(
 	{},
-	{ method: 'hash', useRender: false, entryPoint: 'home', redirect404: true }
+	{ method: 'hash', useRender: false, entryPoint: 'home', redirect404: true,  }
 );
 
 // fetch the data from the server and populate the router

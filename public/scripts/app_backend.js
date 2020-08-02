@@ -40,6 +40,7 @@ const firstPaint = async () => {
 		let navLink = document.createElement('a');
 		navLink.alt = data.title;
 		navLink.className = 'nav-Link';
+		navLink.setAttribute('title', data.title);
 		navLink.setAttribute('tooltip', data.tooltip);
 		navLink.href = `#${data.dest}`;
 		navLink.innerHTML = feather.icons[data.icon].toSvg({

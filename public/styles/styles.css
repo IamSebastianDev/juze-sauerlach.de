@@ -533,6 +533,7 @@ footer {
 }
 
 .dashboard-input-container {
+	flex-shrink: 0;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	align-items: center;
@@ -570,7 +571,7 @@ footer {
 
 .fileControl-Browser {
 	position: relative;
-
+	flex-shrink: 0;
 	border: 1px solid var(--color-shade);
 	border-radius: 5px;
 	margin: 0px 0px 10px;
@@ -632,6 +633,7 @@ footer {
 
 .dashboard-fileControl form {
 	display: flex;
+	flex-shrink: 0;
 	flex-direction: column;
 }
 
