@@ -124,6 +124,10 @@
 		grid-template-areas: 'image' 'primary';
 	}
 
+	.content-Container {
+		padding: 20px 20px 40px;
+	}
+
 	.header-image {
 		position: unset;
 	}
