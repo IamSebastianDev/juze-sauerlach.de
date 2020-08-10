@@ -1,6 +1,8 @@
 /** @format */
 
 /** this file handles the pageOrganization modal and all associated functions */
+import { router, firstPaint } from './app_backend.js';
+import { createSyncContent } from './createContent.mjs';
 
 const organizer = {
 	buttonOpen: document.querySelector('#dashboard-organizePage'),
@@ -196,11 +198,15 @@ const organizer = {
 				(elem) => item.getAttribute('pageid') == elem.pageId
 			);
 
-			update.pageActive = item.querySelector("[target='active']").checked;
+			if (update) {
+				update.pageActive = item.querySelector(
+					"[target='active']"
+				).checked;
 
-			update.pageIndex = Array.from(
-				document.querySelectorAll('.organizer-item')
-			).indexOf(item);
+				update.pageIndex = Array.from(
+					document.querySelectorAll('.organizer-item')
+				).indexOf(item);
+			}
 		});
 
 		pagesToSubmit.forEach(async (page) => {
@@ -212,7 +218,21 @@ const organizer = {
 				body: JSON.stringify(page),
 			})
 				.then((res) => res.json())
-				.then((data) => console.log(data))
+				.then(async (data) => {
+					let page = data.data;
+					router.create(page.dest, {
+						title: `JuZe Sauerlach | ${page.title}`,
+						callback: createSyncContent,
+						callbackArgs: [
+							page.content,
+							page.headerImage,
+							page.title,
+						],
+					});
+					await firstPaint();
+					document.querySelector('body').style.overflowY = 'auto';
+					this.modal.style.display = 'none';
+				})
 				.catch((err) => console.log(err));
 		});
 	},

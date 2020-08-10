@@ -59,8 +59,9 @@ const createPage = async (req, res) => {
 		icon: req.body.pageIcon,
 		tooltip: req.body.pageTooltip,
 		title: req.body.pageTitle,
-		headerImage: '',
+		headerImage: './assets/img/JuZe Logo-8.png',
 		pageActive: true,
+		content: '{"blocks": []}',
 	};
 
 	try {
@@ -97,7 +98,7 @@ const updatePage = async (req, res) => {
 			collection.replaceOne({ pageId: req.body.pageId }, req.body)
 		);
 
-		res.status(200).json({ success: true });
+		res.status(200).json({ success: true, data: req.body });
 	} catch (e) {
 		res.status(400).json({ msg: e });
 	}

@@ -216,7 +216,7 @@ main.content {
 
 .header-image {
 	position: sticky;
-	top: 25%;
+	top: 15%;
 
 	grid-area: image;
 
@@ -226,7 +226,7 @@ main.content {
 }
 
 .header-image-target {
-	height: 50vw;
+	height: 40vw;
 	object-fit: contain;
 	margin: auto;
 }
@@ -252,6 +252,7 @@ main.content {
 
 .content-Container {
 	color: var(--color-text);
+	margin-bottom: 30vh;
 }
 
 .content-Container p {
@@ -353,7 +354,11 @@ main.content {
 /* cat: @footer */
 
 footer {
-	position: relative;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+
+	z-index: 200;
 
 	width: 100vw;
 	min-height: 120px;

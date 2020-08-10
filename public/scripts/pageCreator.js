@@ -122,11 +122,16 @@ const pageCreator = {
 					}
 				};
 
-				if (validateInputs().validated) {
+				let validation = validateInputs();
+
+				if (validation.validated) {
+					// parse dest string so that a valid uri is produced
+					let pageDest = document
+						.querySelector(".pageCreator-form input[name='url']")
+						.value.replace(/[^a-z]/gim, '');
+
 					let pageData = {
-						pageDest: document.querySelector(
-							".pageCreator-form input[name='url']"
-						).value,
+						pageDest: pageDest,
 						pageIcon: getIcon(),
 						pageTooltip: document.querySelector(
 							".pageCreator-form input[name='tooltip']"
@@ -167,7 +172,7 @@ const pageCreator = {
 						})
 						.catch((err) => console.log(err));
 				} else {
-					let errors = validateInputs().errors;
+					let errors = validation.errors;
 
 					errors.forEach((err) => {
 						// create a new text element
