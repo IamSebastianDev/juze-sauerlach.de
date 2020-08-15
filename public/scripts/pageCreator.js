@@ -4,7 +4,7 @@
 
 // function to populate the icons for the pageIcon
 import populateIcons from './application/feather-icons.mjs';
-import { router, firstPaint } from './app_backend.js';
+import { router, firstPaint, Progress } from './app_backend.js';
 import { createSyncContent } from './createContent.mjs';
 
 populateIcons(document.querySelector('.pageCreator-iconSelect'));
@@ -141,6 +141,8 @@ const pageCreator = {
 						).value,
 					};
 
+					Progress.set();
+
 					fetch('/api/createPage', {
 						method: 'POST', // *GET, POST, PUT, DELETE, etc
 						mode: 'cors', // no-cors, *cors, same-origin
@@ -169,6 +171,7 @@ const pageCreator = {
 							await firstPaint();
 							router.goTo(`#${page.dest}`);
 							this.close();
+							Progress.close();
 						})
 						.catch((err) => console.log(err));
 				} else {

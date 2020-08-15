@@ -115,6 +115,8 @@ document
 		newPageData.tooltip = tooltip;
 		newPageData.content = content;
 
+		Progress.set();
+
 		await fetch('/api/updatePage', {
 			method: 'POST',
 			headers: {
@@ -126,6 +128,7 @@ document
 			.then((data) => {
 				if (data.success) {
 					firstPaint();
+					Progress.close();
 				}
 			})
 			.catch((err) => console.log(err));
@@ -136,3 +139,15 @@ export { pageData };
 console.log(router);
 
 export { router };
+
+const Progress = {
+	set() {
+		this.element.style.display = 'flex';
+	},
+	close() {
+		this.element.style.display = 'none';
+	},
+	element: document.querySelector('.loader-progress'),
+};
+
+export { Progress };

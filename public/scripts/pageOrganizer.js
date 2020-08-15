@@ -1,7 +1,7 @@
 /** @format */
 
 /** this file handles the pageOrganization modal and all associated functions */
-import { router, firstPaint } from './app_backend.js';
+import { router, firstPaint, Progress } from './app_backend.js';
 import { createSyncContent } from './createContent.mjs';
 
 const organizer = {
@@ -210,6 +210,7 @@ const organizer = {
 		});
 
 		pagesToSubmit.forEach(async (page) => {
+			Progress.set();
 			await fetch('/api/updatePage', {
 				method: 'POST',
 				headers: {
@@ -232,6 +233,7 @@ const organizer = {
 					await firstPaint();
 					document.querySelector('body').style.overflowY = 'auto';
 					this.modal.style.display = 'none';
+					Progress.close();
 				})
 				.catch((err) => console.log(err));
 		});

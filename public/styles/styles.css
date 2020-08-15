@@ -1246,3 +1246,11 @@ footer {
 		transform: rotate(360deg);
 	}
 }
+
+.loader-progress {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.loader-progress span {
+	border-color: var(--color-accent);
+}
