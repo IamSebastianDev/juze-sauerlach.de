@@ -118,7 +118,7 @@ app.post('/api/mail', handleMail);
 
 // set up public static folder for the rest of the files
 
-app.use(express.static('/opt/juzesauerlach/public', { extensions: ['html'] }));
+app.use(express.static(_getPath("/public"), { extensions: ['html'] }));
 
 // set up port and the server listen
 
