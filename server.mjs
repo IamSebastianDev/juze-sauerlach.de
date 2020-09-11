@@ -9,6 +9,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
 
+global.root = path.resolve(__dirname)
+
 // express dependencies
 import express from 'express';
 import session from 'express-session';

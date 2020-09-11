@@ -15,7 +15,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
+const _getPath = (pathFrag) => path.join(root + pathFrag);
 
 // import filesystem
 import fsp from 'fs';
