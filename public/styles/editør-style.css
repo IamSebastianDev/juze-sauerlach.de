@@ -269,6 +269,34 @@
 	background: none;
 }
 
+.editør-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.editør-field {
+	flex-grow: 1;
+	display: flex;
+	padding: 2px 0px;
+}
+
+.editør-field:first-child {
+	flex-grow: 1;
+}
+
+.editør-form input,
+.editør-form select {
+	appearance: none;
+	-webkit-appearance: none;
+
+	background: rgba(255, 255, 255, 1);
+	border: none;
+	padding: 5px 10px;
+	margin: 0px 5px;
+
+	flex-grow: 1;
+}
+
 /*  Tooltip styles  */
 
 [data-tooltip]:hover:after {

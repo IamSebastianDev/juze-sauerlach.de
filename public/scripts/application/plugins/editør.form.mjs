@@ -8,22 +8,13 @@ class øContact extends øPlugin {
 		super();
 
 		// give the plugin a Name
-		this.name = 'contact';
+		this.name = 'Kontaktformular';
 
 		// the data of the plugin
 		this.data = {
 			htmlTag: 'form',
 			styles: this._styles,
-			fields: [
-				{
-					name: 'EmailAdresse',
-					type: 'Email',
-				},
-				{
-					name: 'Nachricht',
-					type: 'Textfeld',
-				},
-			],
+			fields: [],
 		};
 	}
 
@@ -41,11 +32,6 @@ class øContact extends øPlugin {
 	render(ctx) {
 		// creates a paragraph HTML Element
 		let form = document.createElement(`form`);
-		form.className = 'editør-form';
-
-		let text = document.createElement('p');
-		text.textContent = 'Schreib uns eine Nachricht!';
-		form.appendChild(text);
 
 		// set inline styles
 		for (const cssProp in this.data.styles) {
@@ -67,8 +53,9 @@ class øContact extends øPlugin {
 			fieldName.value = fieldData.name;
 
 			let fieldType = document.createElement('select');
+			fieldType.value = fieldData.type;
 
-			let options = ['Email', 'Name', 'Textfeld'];
+			let options = ['email', 'name', 'text'];
 			options.forEach((opt) => {
 				let sel = document.createElement('option');
 				sel.textContent = opt;
@@ -77,10 +64,19 @@ class øContact extends øPlugin {
 				fieldType.appendChild(sel);
 			});
 
-			fieldType.value = fieldData.type;
+			let remove = document.createElement('button');
+			remove.innerHTML = icons.get('clear');
+
+			remove.addEventListener('click', (ev) => {
+				this.data.fields = this.data.fields.filter(
+					(elem) => elem._id != fieldData._id
+				);
+				this.update();
+			});
 
 			field.appendChild(fieldName);
 			field.appendChild(fieldType);
+			field.appendChild(remove);
 
 			return field;
 		};
@@ -89,25 +85,14 @@ class øContact extends øPlugin {
 			form.appendChild(createFormField(field))
 		);
 
-		console.log(form);
+		let newField = document.createElement('div');
+		newField.className = 'editør-field';
 
+		let chooseName = document.createElement('input');
+		chooseName.placeholder = 'Feld Name';
+		
 		// return the HTMLelement to the editor
 		return form;
-	}
-
-	_update(event) {
-		// for each child of the event target, push the content to the items
-
-		this.data.fields = [];
-
-		event.target.childNodes.forEach((item) => {
-			if (item.classList.contains('editør-field')) {
-				this.data.fields.push({
-					name: item.childNodes(1).value,
-					type: item.childNodes(2).value,
-				});
-			}
-		});
 	}
 }
 

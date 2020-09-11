@@ -85,6 +85,7 @@ import { øDelimitor } from './application/plugins/editør.delimitor.mjs';
 import { øTitle } from './application/plugins/editør.title.mjs';
 import { øList } from './application/plugins/editør.list.mjs';
 import { øImage } from './application/plugins/editør.image.mjs';
+import { øContact } from './application/plugins/editør.contact.mjs';
 
 // create a new Editor instance
 
@@ -94,6 +95,7 @@ const editor = new Editør(document.querySelector('#editør-main'), {
 	list: øList,
 	image: øImage,
 	delimitor: øDelimitor,
+	contact: øContact,
 });
 
 export { editor };

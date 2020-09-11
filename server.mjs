@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const _getPath = (pathFrag) => path.join(__dirname + pathFrag);
 
-global.root = path.resolve(__dirname)
+global.root = path.resolve(__dirname);
 
 // express dependencies
 import express from 'express';
@@ -120,7 +120,7 @@ app.post('/api/mail', handleMail);
 
 // set up public static folder for the rest of the files
 
-app.use(express.static(_getPath("/public"), { extensions: ['html'] }));
+app.use(express.static(_getPath('/public'), { extensions: ['html'] }));
 
 // set up port and the server listen
 

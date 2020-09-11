@@ -89,6 +89,80 @@ const Dict = {
 	delimitor(block) {
 		return document.createElement('hr');
 	},
+	contact(block) {
+		// create the contact form
+		let form = document.createElement('form');
+
+		let text = document.createElement('p');
+		text.textContent = 'Schreib uns eine Nachricht!';
+
+		form.appendChild(text);
+
+		const createField = (fieldData) => {
+			let container = document.createElement('div');
+			container.className = 'editør-formField';
+
+			let label = document.createElement('label');
+			label.for = fieldData.name;
+			label.textContent = fieldData.name;
+
+			let field = document.createElement(
+				fieldData.type == 'Textfeld' ? 'textarea' : 'input'
+			);
+			field.name = fieldData.name;
+			field.placeholder =
+				fieldData.type == 'Textfeld'
+					? 'Deine Nachricht'
+					: 'Deine Emailadresse';
+
+			container.appendChild(label);
+			container.appendChild(field);
+
+			return container;
+		};
+
+		block.fields.forEach((field) => form.appendChild(createField(field)));
+
+		let submit = document.createElement('Button');
+		submit.id = 'contact-submit';
+		submit.textContent = 'Abschicken!';
+
+		submit.addEventListener('click', async (ev) => {
+			ev.preventDefault();
+
+			// get the data
+			let mail = document.querySelector("input[name='EmailAdresse']")
+				.value;
+			let message = document.querySelector("textarea[name='Nachricht']")
+				.value;
+
+			if (message === '' || mail === '') {
+				window.alert('Bitte fülle beide Felder aus.');
+			} else {
+				submit.textContent = 'Nachricht wird gesendet!';
+				await fetch('/api/mail', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify({
+						email: mail,
+						message: message,
+					}),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						submit.style.background = 'rgba(178, 222, 81, 1)';
+						submit.textContent = 'Nachricht gesendet!';
+					});
+			}
+		});
+
+		form.appendChild(submit);
+
+		return form;
+	},
 };
 
 // function to create frontEnt content from the api and pageData

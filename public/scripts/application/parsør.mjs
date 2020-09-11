@@ -28,6 +28,8 @@ class Parsør {
 
 				// and append the element to the anchor
 				this.anchor.appendChild(element);
+			} else {
+				console.log('Dict type not found');
 			}
 		});
 	}
