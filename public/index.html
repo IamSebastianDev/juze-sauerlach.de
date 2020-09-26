@@ -43,6 +43,18 @@
 				<span></span>
 			</div>
 		</div>
+		<div id="cookie" class="cookie-set">
+			<p>
+				Hey! Diese Seite verwendet für bestimme Funktionen Cookies. Du
+				kannst mehr über unseren Einsatz von Cookies und unseren Umgang
+				mit persöhnlichen Daten in unserer
+				<a href="impressum.html#Datenschutz">Datenschutzbestimmung</a>
+				lesen.
+			</p>
+			<button id="set-consent">
+				<img src="./assets/icons/x.svg" />
+			</button>
+		</div>
 		<nav class="nav">
 			<ul class="nav-Container nav-Container-transformed"></ul>
 			<button class="nav-burger nav-burger-invisible">
@@ -152,6 +164,21 @@
 		</footer>
 		<script src="./scripts/app.js" type="module"></script>
 		<script>
+			// consent for cookie
+			const consent = document.querySelector('#set-consent');
+			const banner = document.querySelector('.cookie-set');
+
+			consent.addEventListener('click', (ev) => {
+				banner.style.transform = 'translateY(-100%)';
+				localStorage.setItem('consent', true);
+			});
+
+			window.addEventListener('load', (ev) => {
+				if (!localStorage.getItem('consent')) {
+					banner.style.transform = 'translateY(0%)';
+				}
+			});
+
 			// navigation controls for mobile
 			const burger = document.querySelector('.nav-burger');
 			const navMenu = document.querySelector('.nav-Container');

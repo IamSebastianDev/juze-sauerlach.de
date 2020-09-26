@@ -52,6 +52,18 @@
 				<span></span>
 			</div>
 		</div>
+		<div id="cookie" class="cookie-set">
+			<p>
+				Hey! Diese Seite verwendet für bestimme Funktionen Cookies. Du
+				kannst mehr über unseren Einsatz von Cookies und unseren Umgang
+				mit persöhnlichen Daten in unserer
+				<a href="impressum.html#Datenschutz">Datenschutzbestimmung</a>
+				lesen.
+			</p>
+			<button id="set-consent">
+				<img src="./assets/icons/x.svg" />
+			</button>
+		</div>
 		<div
 			style="display: none"
 			class="loader-progress loader loader-fullscreen"
@@ -139,6 +151,24 @@
 				<div class="fileModal-content"></div>
 			</div>
 		</div>
+		<div style="display: none" class="modal dashboard-iconModal">
+			<div class="iconModal">
+				<a class="modal-close"></a>
+				<div class="iconModal-Container">
+					<h1>Icon wählen / ändern</h1>
+					<div class="iconModal-section">
+						<p>Aktives Icon:</p>
+						<span id="active-Icon"></span>
+					</div>
+					<hr />
+					<div class="iconModal-section">
+						<p>Icon auswählen:</p>
+						<div class="iconModal-iconSelect"></div>
+					</div>
+					<button>Auswahl bestätigen.</button>
+				</div>
+			</div>
+		</div>
 		<aside class="dashboard-container dashboard__isOpen">
 			<button class="dashboard-cycle"></button>
 			<div class="dashboard-flex">
@@ -174,11 +204,19 @@
 							placeholder="{- Tooltip -}"
 						/>
 					</div>
+					<label for="pageIcon">Icon ändern.</label>
+					<button
+						name="pageIcon"
+						id="dashboard-pageIcon"
+						class="dashboard-button dashboard-deletePage"
+					>
+						Icon ändern / auswählen.
+					</button>
 					<label for="organizePage">Seiten Organisieren.</label>
 					<button
 						name="organizePage"
 						id="dashboard-organizePage"
-						class="dashboard-button dashboard-deletePage"
+						class="dashboard-button dashboard-iconPage"
 					>
 						Seiten Organisieren.
 					</button>
@@ -394,8 +432,24 @@
 		<script src="./scripts/app_backend.js" type="module"></script>
 		<script src="./scripts/pageCreator.js" type="module"></script>
 		<script src="./scripts/pageOrganizer.js" type="module"></script>
+		<script src="./scripts/iconSelector.js" type="module"></script>
 		<script src="./scripts/files.js" type="module"></script>
 		<script>
+			// consent for cookie
+			const consent = document.querySelector('#set-consent');
+			const banner = document.querySelector('.cookie-set');
+
+			consent.addEventListener('click', (ev) => {
+				banner.style.transform = 'translateY(-100%)';
+				localStorage.setItem('consent', true);
+			});
+
+			window.addEventListener('load', (ev) => {
+				if (!localStorage.getItem('consent')) {
+					banner.style.transform = 'translateY(0%)';
+				}
+			});
+
 			// dashboard handler script
 			const ButtonCycle = document.querySelector('.dashboard-cycle');
 			const Panel = document.querySelector('.dashboard-container');

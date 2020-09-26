@@ -178,12 +178,14 @@
 		position: absolute;
 		left: 100%;
 
-		margin: 0px 0px;
+		margin: 0px 20px;
 		padding: 10px 20px;
 
 		font-size: 1.6em;
 		text-decoration: none;
 		font-weight: 400;
+
+		color: var(--color-text)
 
 		width: max-content;
 	}

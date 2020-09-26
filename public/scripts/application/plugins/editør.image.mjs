@@ -77,6 +77,74 @@ class øImage extends øPlugin {
 					);
 				},
 			},
+			putLeft: {
+				position: 6,
+				// the icon the button uses
+				icon: icons.get('alignLeft'),
+				// display and active properies used for context
+				display: true,
+				active: false,
+				// tooltip
+				tooltip: 'Align image to the left',
+				action(ctx) {
+					if (this._styles['margin-left'] != '0') {
+						this._styles['margin-left'] = '0';
+						this.contextMenu.putLeft.active = true;
+						if (this.contextMenu.putRight.active) {
+							this._styles['margin-right'] = '';
+							this.contextMenu.putRight.active = false;
+						}
+					} else {
+						this._styles['margin-left'] = '';
+						this.contextMenu.putLeft.active = false;
+					}
+
+					// call for a complete rerender
+
+					window.dispatchEvent(
+						new CustomEvent('editør-Render', {
+							detail: {
+								blockRender: false,
+								blockID: this._ID,
+							},
+						})
+					);
+				},
+			},
+			putRight: {
+				position: 7,
+				// the icon the button uses
+				icon: icons.get('alignRight'),
+				// display and active properies used for context
+				display: true,
+				active: false,
+				// tooltip
+				tooltip: 'Align image to the right',
+				action(ctx) {
+					if (this._styles['margin-right'] != '0') {
+						this._styles['margin-right'] = '0';
+						this.contextMenu.putRight.active = true;
+						if (this.contextMenu.putLeft.active) {
+							this._styles['margin-left'] = '';
+							this.contextMenu.putLeft.active = false;
+						}
+					} else {
+						this._styles['margin-right'] = '';
+						this.contextMenu.putRight.active = false;
+					}
+
+					// call for a complete rerender
+
+					window.dispatchEvent(
+						new CustomEvent('editør-Render', {
+							detail: {
+								blockRender: false,
+								blockID: this._ID,
+							},
+						})
+					);
+				},
+			},
 		};
 
 		console.log(this);

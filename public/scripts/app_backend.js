@@ -109,6 +109,7 @@ document
 		const title = document.querySelector('#pageTitle').value;
 		const dest = document.querySelector('#pageDest').value;
 		const tooltip = document.querySelector('#pageTooltip').value;
+		const icon = document.querySelector('#active-Icon');
 
 		const content = editor.exportData();
 
@@ -116,6 +117,7 @@ document
 		newPageData.dest = dest;
 		newPageData.tooltip = tooltip;
 		newPageData.content = content;
+		newPageData.icon = icon.getAttribute('iconname');
 
 		Progress.set();
 

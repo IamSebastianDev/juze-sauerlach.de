@@ -4,13 +4,14 @@
 
 import Røut from './application/røut.mjs';
 import closeLoader from './loader.mjs';
+import test from './application/feather-icons.mjs';
 
 import { createContent } from './parseFrontend.mjs';
 
 // create a new Røut-instance
 const router = new Røut(
 	{},
-	{ method: 'hash', useRender: false, entryPoint: 'home', redirect404: true,  }
+	{ method: 'hash', useRender: false, entryPoint: 'home', redirect404: true }
 );
 
 // fetch the data from the server and populate the router
