@@ -141,6 +141,8 @@ const uploader = {
 	async getFiles() {
 		let files = await fetch('/api/upload').then((res) => res.json());
 
+		console.log(files);
+
 		const createCard = (item, type) => {
 			let card = document.createElement('div');
 			card.className = 'content-card';

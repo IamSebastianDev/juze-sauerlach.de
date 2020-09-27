@@ -6,15 +6,15 @@
 /* set up custom properties */
 
 :root {
-	--color-accent: rgba(255, 211, 59, 1);
-	--color-main: rgba(255, 255, 255, 1);
-	--color-shade: rgba(240, 240, 240, 1);
-	--color-text: rgba(38, 38, 38, 1);
+	--color-accent: rgba(255, 211, 59, 1); /* */
+	--color-main: rgba(255, 255, 255, 1); /* */
+	--color-shade: rgba(240, 240, 240, 1); /* */
+	--color-text: rgba(38, 38, 38, 1); /* */
 
 	--gradient: linear-gradient(
 		135deg,
 		rgba(178, 222, 81, 1) 0%,
-		rgba(216, 238, 168, 1) 100%
+		rgba(216, 238, 168, 1) 100% /* */
 	);
 
 	--shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.25);
