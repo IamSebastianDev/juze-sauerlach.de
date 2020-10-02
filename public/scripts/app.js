@@ -21,8 +21,6 @@ const router = new Røut(
 		method: 'GET',
 	}).then((res) => res.json());
 
-	console.log(pageData);
-
 	// filter inactive pages
 	pageData = pageData.filter((elem) => elem.pageActive);
 
@@ -70,8 +68,5 @@ const router = new Røut(
 	const loader = document.querySelector('#loader-init');
 	closeLoader(loader);
 })();
-
-console.log(router);
-console.log(feather);
 
 export { router };
