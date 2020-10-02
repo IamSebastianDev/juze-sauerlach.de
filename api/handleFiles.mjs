@@ -51,8 +51,7 @@ const getUploads = async (req, res) => {
 		images: [],
 	};
 
-	//let directories = await fs.readdir(_getPath('/public/uploads/'));
-	let directories = ['files', 'images'];
+	let directories = await fs.readdir(_getPath('/public/uploads/'));
 
 	const createData = async () => {
 		try {
