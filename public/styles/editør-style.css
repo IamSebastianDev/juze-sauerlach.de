@@ -166,6 +166,11 @@
 	animation: contextFade 0.25s ease forwards;
 }
 
+.editør-image:hover ~ .editør-context {
+	display: flex;
+	animation: contextFade 0.25s ease forwards;
+}
+
 .editør-selection-visible,
 .editør-selectionBar-eternal {
 	display: flex;
