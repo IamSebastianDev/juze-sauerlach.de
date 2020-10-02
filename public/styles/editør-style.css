@@ -166,7 +166,7 @@
 	animation: contextFade 0.25s ease forwards;
 }
 
-.editør-image:hover ~ .editør-context {
+.editør-blockShell:hover > .editør-context {
 	display: flex;
 	animation: contextFade 0.25s ease forwards;
 }
