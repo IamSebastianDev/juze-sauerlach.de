@@ -31,7 +31,7 @@ const uploader = {
 
 			dashboard.style.overflow =
 				dashboard.style.overflow == '' ? 'visible' : '';
-			body.style.overflow = body.style.overflow == '' ? 'hidden' : '';
+			body.style.overflow = body.style.overflow == '' ? '' : 'hidden';
 		});
 		this.switchFiles.addEventListener('click', (ev) => {
 			this.containerImages.style.display = 'none';
