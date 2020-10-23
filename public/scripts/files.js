@@ -122,7 +122,9 @@ const uploader = {
 		let response = await fetch('/api/upload', {
 			method: 'POST',
 			body: this.file,
-		}).then((res) => res.json());
+		})
+			.then((res) => res.json())
+			.catch((e) => console.log(e));
 
 		if (response.success) {
 			this.loader.style.display = 'none';

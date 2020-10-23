@@ -23,8 +23,6 @@ let transporter = nodemailer.createTransport({
 const handleMail = async (req, res) => {
 	const { email, message } = req.body;
 
-	console.log({ email, message });
-
 	const messageBody = {
 		from: process.env.EMAIL_USER,
 		replyTo: email,
