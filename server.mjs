@@ -122,7 +122,7 @@ app.post('/api/mail', handleMail);
 
 app.use(express.static(_getPath('/public'), { extensions: ['html'] }));
 
-app.get('*', (req, res) => res.redirect('/'));
+app.get('*', (req, res) => res.redirect('https://juze-sauerlach.de'));
 
 // set up port and the server listen
 
