@@ -122,8 +122,6 @@ app.post('/api/mail', handleMail);
 
 app.use(express.static(_getPath('/public'), { extensions: ['html'] }));
 
-app.get('*', (req, res) => res.redirect('/'));
-
 // set up port and the server listen
 
 const PORT = process.env.PORT || 5000;
