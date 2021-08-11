@@ -65,8 +65,8 @@ app.use(passport.session());
 // set up routes
 
 // routes for registering and deleting user
-app.post('/registeruser', registerUser);
-app.post('/deleteuser', deleteUser);
+// app.post('/registeruser', registerUser);
+// app.post('/deleteuser', deleteUser);
 
 // routes for login, logout
 app.post(
