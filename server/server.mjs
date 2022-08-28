@@ -23,7 +23,7 @@ const app = express();
     authService.initialize(),
     authService.session(),
     router,
-    express.static(fromRoot('./site/public/')),
+    express.static(fromRoot('./site/public/'), { extensions: 'html' }),
 ].forEach((w) => app.use(w));
 
 const PORT = process.env.PORT || 3000;
