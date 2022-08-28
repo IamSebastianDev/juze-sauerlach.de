@@ -6,7 +6,7 @@
 	"scripts": {
 		"preci": "rm -rf node_modules",
 		"ci": "yarn install --frozen-lockfile",
-		"postinstall": "husky install",
+		"postinstall": "npx husky install",
 		"db:up": "docker-compose up -d",
 		"db:down": "docker-compose down -d",
 		"dev": "rollup --config .config/rollup.config.js --watch",
@@ -49,6 +49,7 @@
 		"nodemailer": "^6.7.8",
 		"pangolicons": "^3.2.1",
 		"passport": "^0.6.0",
-		"passport-local": "^1.0.0"
+		"passport-local": "^1.0.0",
+		"ts-node": "^10.9.1"
 	}
 }
