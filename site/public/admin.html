@@ -1,0 +1,65 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JuZe Sauerlach</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="./assets/styles/reset.css" />
+        <link rel="stylesheet" href="./assets/styles/fonts.css" />
+        <link rel="stylesheet" href="./assets/styles/style.css" />
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicons/site.webmanifest" />
+        <meta name="apple-mobile-web-app-title" content="JuZe Sauerlach" />
+        <meta name="application-name" content="JuZe Sauerlach" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-TileImage" content="./assets/favicons/mstile-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- scripts -->
+        <script type="module" src="./scripts/dist/frontend.bundle.mjs" defer></script>
+    </head>
+    <body>
+        <main>
+            <img class="fullscreen-bg" src="./assets/images/backdrop_1920.jpg" />
+            <form id="login" action="/login" method="POST">
+                <web-spinner state="false"></web-spinner>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Email"
+                        required
+                        autocomplete="email"
+                        tabindex="1"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Passwort"
+                        required
+                        autocomplete="current-password"
+                        tabindex="2"
+                    />
+                </div>
+                <button type="submit">Einloggen</button>
+                <a href="/">Zurück zur Startseite.</a>
+            </form>
+        </main>
+        <web-footer></web-footer>
+        <privacy-banner></privacy-banner>
+    </body>
+</html>
