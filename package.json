@@ -11,6 +11,7 @@
 		"db:down": "docker-compose down -d",
 		"dev": "rollup --config .config/rollup.config.js --watch",
 		"build": "rollup --config .config/rollup.config.js",
+		"build:prod": "NODE_ENV=production yarn build",
 		"serve": "yarn db:up && nodemon server/server.mjs --config ./config/nodemon.config.json",
 		"start": "yarn db:up && node server/server.mjs"
 	},
