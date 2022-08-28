@@ -15,10 +15,10 @@ router
     .post('/login', () => authService.login())
     .get('/logout', (req, res) => authService.logout(req, res))
     .get('/dashboard', authService.isAuthenticated, (req, res) =>
-        res.sendStatus(200).sendFile(fromRoot('./public/dashboard.html'))
+        res.status(200).sendFile(fromRoot('./site/public/dashboard.html'))
     )
     .get('/admin', authService.isNotAuthenticated, (req, res) =>
-        res.sendStatus(200).sendFile(fromRoot('./public/admin.html'))
+        res.status(200).sendFile(fromRoot('./site/public/admin.html'))
     )
     // mail routes
     .post('/api/v1/mail', async (req, res) => await mailService.send(req, res))
