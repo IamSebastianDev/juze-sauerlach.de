@@ -38,7 +38,7 @@ class AuthService extends Service {
         return req.isAuthenticated() ? next() : res.redirect('/admin');
     }
     isNotAuthenticated(req, res, next) {
-        return req.isAuthenticated ? res.redirect('/dashboard') : next();
+        return req.isAuthenticated() ? res.redirect('/dashboard') : next();
     }
 
     login() {
@@ -49,8 +49,7 @@ class AuthService extends Service {
     }
 
     logout(req, res) {
-        req.logOut();
-        res.redirect('/admin');
+        req.logOut(null, () => res.redirect('/admin'));
     }
 }
 

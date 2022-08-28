@@ -12,7 +12,7 @@ export const router = express.Router();
 
 router
     // app routes
-    .post('/login', () => authService.login())
+    .post('/login', authService.login())
     .get('/logout', (req, res) => authService.logout(req, res))
     .get('/dashboard', authService.isAuthenticated, (req, res) =>
         res.status(200).sendFile(fromRoot('./site/public/dashboard.html'))
