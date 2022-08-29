@@ -45,7 +45,7 @@ class UserService extends Service {
 
         try {
             let result = await this.useCollection(async (collection) => {
-                return collection.insertOne(user);
+                return await collection.insertOne(user);
             });
             return res.status(200).json({ result });
         } catch (e) {
@@ -100,7 +100,7 @@ class UserService extends Service {
 
         try {
             let result = await this.useCollection(async (collection) => {
-                return collection.deleteOne({ email: email });
+                return await collection.deleteOne({ email: email });
             });
             return res.status(200).json({ result });
         } catch (e) {
@@ -110,11 +110,11 @@ class UserService extends Service {
 
     async getUserById({ id }) {
         if (!this.verify([id, 'string'])) return;
-        return await this.useCollection(async (collection) => collection.findOne({ _id: id }));
+        return await this.useCollection(async (collection) => await collection.findOne({ _id: id }));
     }
     async getUserByEmail({ email }) {
         if (!this.verify([email, 'string'])) return;
-        return await this.useCollection(async (collection) => collection.findOne({ email: email }));
+        return await this.useCollection(async (collection) => await collection.findOne({ email: email }));
     }
 }
 

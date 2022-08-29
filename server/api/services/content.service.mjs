@@ -25,7 +25,7 @@ class ContentService extends Service {
 
         try {
             const page = await this.useCollection(async (collection) => {
-                return collection.fndOne({ _id });
+                return await collection.fndOne({ _id });
             });
             return res.status(200).json({ content: page.content });
         } catch (e) {
@@ -51,7 +51,7 @@ class ContentService extends Service {
 
         try {
             const result = await this.useCollection(async (collection) => {
-                return collection.findOneAndUpdate({ _id }, { $set: { content } });
+                return await collection.findOneAndUpdate({ _id }, { $set: { content } });
             });
             return res.status(200).json(result);
         } catch (e) {
@@ -69,8 +69,8 @@ class ContentService extends Service {
 
     async getAllPages(req, res) {
         try {
-            const docs = await this.useCollection((collection) => {
-                return collection.find().toArray();
+            const docs = await this.useCollection(async (collection) => {
+                return await collection.find().toArray();
             });
             res.status(200).json(docs);
         } catch (e) {
@@ -95,7 +95,7 @@ class ContentService extends Service {
 
         try {
             const page = await this.useCollection(async (collection) => {
-                return collection.fndOne({ _id });
+                return await collection.fndOne({ _id });
             });
             return res.status(200).json(page);
         } catch (e) {
@@ -130,8 +130,8 @@ class ContentService extends Service {
                 content: JSON.stringify({}),
             };
 
-            const result = this.useCollection(async (collection) => {
-                return collection.insertOne(page);
+            const result = await this.useCollection(async (collection) => {
+                return await collection.insertOne(page);
             });
             return res.status(200).json({ page, result });
         } catch (e) {
@@ -152,7 +152,7 @@ class ContentService extends Service {
 
         try {
             const result = await this.useCollection(async (collection) => {
-                return collection.findOneAndUpdate({ _id: new ObjectId(_id) }, { $set: { ...page } });
+                return await collection.findOneAndUpdate({ _id: new ObjectId(_id) }, { $set: { ...page } });
             });
             return res.status(200).json({ result, page: req.body });
         } catch (e) {
@@ -177,7 +177,7 @@ class ContentService extends Service {
 
         try {
             const result = await this.useCollection(async (collection) => {
-                return collection.deleteOne({ _id: new ObjectId(_id) });
+                return await collection.deleteOne({ _id: new ObjectId(_id) });
             });
             return res.status(200).json({ result });
         } catch (e) {
@@ -193,8 +193,8 @@ class ContentService extends Service {
      */
 
     async _getPageIndex() {
-        const pages = await this.useCollection((collection) => {
-            return collection.find().toArray();
+        const pages = await this.useCollection(async (collection) => {
+            return await collection.find().toArray();
         });
 
         const index = pages
