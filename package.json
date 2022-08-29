@@ -9,6 +9,7 @@
 		"postinstall": "npx husky install",
 		"db:up": "docker-compose up -d",
 		"db:down": "docker-compose down -d",
+		"db:reset": "yarn db:up && node ./server/api/database/seedDatabase.mjs",
 		"dev": "rollup --config .config/rollup.config.js --watch",
 		"build": "rollup --config .config/rollup.config.js",
 		"build:prod": "NODE_ENV=production yarn build",
