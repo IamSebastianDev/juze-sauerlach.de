@@ -19,7 +19,7 @@ const contentCollection = collections('content');
 await contentCollection(async (collection) => await collection.drop());
 
 await userService.post(
-    request({ email: 'admin@juze-sauerlach.de', password: 'admin', key: process.env.USER_KEY }),
+    request({ email: 'admin@juzesauerlach.de', password: 'admin', key: process.env.USER_KEY }),
     response()
 );
 
