@@ -16,7 +16,8 @@ const app = express();
     express.json(),
     fileUpload(),
     express.urlencoded({ extended: true }),
-    helmet({ contentSecurityPolicy: false }), // CSP must be disabled because 'editor.js' uses eval.
+    // CSP must be disabled because 'editor.js' uses eval.
+    helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }),
     blacklist({ blacklist: ['/src/'], matchFull: false }),
     compression(),
     session(),
