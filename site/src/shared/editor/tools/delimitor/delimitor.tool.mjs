@@ -1,6 +1,7 @@
 /** @format */
 
 import { delimitor } from 'pangolicons';
+import './delimitor.css';
 
 export class Delimiter {
     static get toolbox() {
@@ -11,7 +12,9 @@ export class Delimiter {
     }
 
     render() {
-        return document.createElement('hr');
+        const delimitor = document.createElement('hr');
+        delimitor.className = 'editor-delimitor';
+        return delimitor;
     }
 
     save(blockContent) {
