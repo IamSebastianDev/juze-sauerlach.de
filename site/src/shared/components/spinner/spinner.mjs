@@ -1,8 +1,9 @@
 /** @format */
 
 import './spinner.css';
+import { Core } from '../core/core.component.mjs';
 
-class WebSpinner extends HTMLElement {
+class WebSpinner extends Core {
     static get observedAttributes() {
         return ['state'];
     }
@@ -31,6 +32,7 @@ class WebSpinner extends HTMLElement {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
+        this.injectCSS('./dist/components.css');
         this.shadowRoot.append(this.template.content);
         if (this.getAttribute('state') === 'false') {
             this.shadowRoot.querySelector('.loader').style.display = 'none';

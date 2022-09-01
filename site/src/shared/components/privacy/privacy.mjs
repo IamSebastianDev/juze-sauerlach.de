@@ -1,16 +1,14 @@
 /** @format */
 
 import { cookie, x } from 'pangolicons';
+import { Core } from '../core/core.component.mjs';
 import './privacy.css';
 
-class PrivacyBanner extends HTMLElement {
+class PrivacyBanner extends Core {
     constructor() {
         super();
         this.template = document.createElement('template');
         this.template.innerHTML = `
-            <style>
-                @import "./dist/components.css"
-            </style>
             <div id="privacy-banner" visible="false">
                 <span> ${cookie.toString({})}</span>
                 <p>
@@ -34,6 +32,7 @@ class PrivacyBanner extends HTMLElement {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
+        this.injectCSS('./dist/components.css');
         this.shadowRoot.append(this.template.content);
         this.shadowRoot.querySelector('#privacy-consent').addEventListener('click', (ev) => this.setConsent());
 
