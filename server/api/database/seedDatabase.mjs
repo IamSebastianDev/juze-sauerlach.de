@@ -14,8 +14,10 @@ if (process.env.NODE_ENV === 'production') {
 // drop all collections
 const collections = useDB(process.env.DB_NAME);
 const userCollection = collections('users');
+await userCollection(async (collection) => await collection.insertOne({}));
 await userCollection(async (collection) => await collection.drop());
 const contentCollection = collections('content');
+await contentCollection(async (collection) => await collection.insertOne({}));
 await contentCollection(async (collection) => await collection.drop());
 
 await userService.post(
