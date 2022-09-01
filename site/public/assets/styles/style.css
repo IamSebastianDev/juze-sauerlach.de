@@ -13,6 +13,9 @@
     --ui-color-dark: rgba(38, 38, 38, 1);
     --ui-color-darker: rgba(24, 24, 24, 1);
 
+    --ui-color-text: rgba(38, 38, 38, 1);
+    --ui-color-text-50: rgba(38, 38, 38, 0.5);
+
     --ui-border-radius-l: 16px;
     --ui-border-radius-m: 8px;
     --ui-border-radius-s: 4px;
@@ -20,6 +23,11 @@
     --ui-transition-slow: 500ms ease-in-out;
     --ui-transition-medium: 250ms ease-in-out;
     --ui-transition-fast: 100ms ease-out;
+}
+
+/* overwrites */
+.pangolicons {
+    fill: transparent !important;
 }
 
 /* resets and setups */
@@ -108,7 +116,7 @@ form#login button:hover {
 
 form#login a {
     text-decoration: none;
-    color: var(--ui-color-dark);
+    color: var(--ui-color-text);
     font-size: 1.2em;
     padding-top: 1.2em;
 }
