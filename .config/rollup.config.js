@@ -18,7 +18,7 @@ export default [
             nodeResolve(),
             commonjs(),
             cleanup(),
-            css({ output: 'components.css', alwaysOutput: true }),
+            css({ output: 'components.frontend.css', alwaysOutput: true }),
             process.env.NODE_ENV === 'production' && terser(),
         ],
     },
@@ -28,6 +28,12 @@ export default [
             file: './site/public/dist/dashboard.bundle.mjs',
             format: 'esm',
         },
-        plugins: [nodeResolve(), commonjs(), cleanup(), process.env.NODE_ENV === 'production' && terser()],
+        plugins: [
+            nodeResolve(),
+            commonjs(),
+            cleanup(),
+            css({ output: 'components.dashboard.css', alwaysOutput: true }),
+            process.env.NODE_ENV === 'production' && terser(),
+        ],
     },
 ];

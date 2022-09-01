@@ -4,8 +4,10 @@ export class Core extends HTMLElement {
     constructor() {
         super();
     }
-    injectCSS(path) {
+    injectCSS() {
         if (!this.template) return;
-        this.template.innerHTML = `<style>@import "${path}"</style>` + this.template.innerHTML;
+        const location = window.location.pathname !== '/dashboard' ? 'frontend' : 'dashboard';
+        this.template.innerHTML =
+            `<style>@import "./dist/components.${location}.css"</style>` + this.template.innerHTML;
     }
 }

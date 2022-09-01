@@ -25,9 +25,227 @@
 
         <!-- bundles -->
         <script type="module" src="./dist/dashboard.bundle.mjs" defer></script>
-        <link rel="stylesheet" href="./dist/components.css" />
+        <link rel="stylesheet" href="./dist/components.dashboard.css" />
 
         <!-- includes -->
     </head>
-    <body></body>
+    <body>
+        <!-- <nav class="nav">
+            <ul class="nav-Container nav-Container-transformed"></ul>
+            <button class="nav-burger nav-burger-invisible">
+                <span></span>
+            </button>
+        </nav>
+        <div style="display: none" class="modal dashboard-pageCreation">
+            <div class="pageCreator-Container">
+                <form class="pageCreator-form">
+                    <a class="modal-close"></a>
+                    <h1>Neue Seite erstellen:</h1>
+                    <div class="pageCreator-inputContainer">
+                        <label for="url">URL:</label>
+                        <input
+                            id="pageCreator-Url"
+                            name="url"
+                            type="text"
+                            placeholder="/#exampleUrl"
+                            class="pageCreator-input"
+                            required
+                        />
+                        <span class="pageCreator-inputDesc">Die Url unter der die Unterseite zu erreichen ist.</span>
+                    </div>
+                    <div class="pageCreator-inputContainer">
+                        <label for="title">Titel:</label>
+                        <input
+                            id="pageCreator-Title"
+                            name="title"
+                            type="text"
+                            placeholder="Aktuelles"
+                            class="pageCreator-input"
+                            required
+                        />
+                        <span class="pageCreator-inputDesc"
+                            >Der Titel der Seite der in der Tab leiste angezeigt wird. Wird auch im Menü als Seitentitel
+                            angezeigt.</span
+                        >
+                    </div>
+                    <div class="pageCreator-inputContainer">
+                        <label for="tooltip">Tooltip:</label>
+                        <input
+                            id="pageCreator-tooltip"
+                            name="tooltip"
+                            type="text"
+                            placeholder="Dies ist ein tooltip!"
+                            class="pageCreator-input"
+                            required
+                        />
+                        <span class="pageCreator-inputDesc">Der tooltip für die Navigationsicons.</span>
+                    </div>
+                    <div class="pageCreator-iconContainer">
+                        <label for="icon">Icon:</label>
+                        <span class="pageCreator-inputDesc">Das Icon das für die Seitennavigation benutzt wird.</span>
+                        <div class="pageCreator-iconSelect"></div>
+                    </div>
+                    <button type="submit">Seite erstellen.</button>
+                </form>
+            </div>
+        </div>
+        <div style="display: none" class="modal dashboard-pageOrganizer">
+            <div class="pageOrganizer-Container">
+                <a class="modal-close"></a>
+                <h1>Seiten anordnen und aktiv / inaktiv schalten:</h1>
+                <div class="organizer-Container"></div>
+
+                <button id="organizerSave" type="submit">Änderungen Speichern</button>
+            </div>
+        </div>
+        <div style="display: none" class="modal dashboard-fileModal">
+            <div class="fileModal">
+                <a class="modal-close"></a>
+                <div class="fileModal-content"></div>
+            </div>
+        </div>
+        <div style="display: none" class="modal dashboard-iconModal">
+            <div class="iconModal">
+                <a class="modal-close"></a>
+                <div class="iconModal-Container">
+                    <h1>Icon wählen / ändern</h1>
+                    <div class="iconModal-section">
+                        <p>Aktives Icon:</p>
+                        <span id="active-Icon"></span>
+                    </div>
+                    <hr />
+                    <div class="iconModal-section">
+                        <p>Icon auswählen:</p>
+                        <div class="iconModal-iconSelect"></div>
+                    </div>
+                    <button>Auswahl bestätigen.</button>
+                </div>
+            </div>
+        </div>
+        <aside class="dashboard-container dashboard__isOpen">
+            <button class="dashboard-cycle"></button>
+            <div class="dashboard-flex">
+                <section class="dashboard-Section dashboard-pageControl">
+                    <h1>Seitendetails:</h1>
+                    <div class="dashboard-input-container">
+                        <label for="pageTitle">Titel:</label>
+                        <input
+                            type="text"
+                            name="pageTitle"
+                            id="pageTitle"
+                            class="dashboard-input"
+                            placeholder="{- Titel -}"
+                        />
+                    </div>
+                    <div class="dashboard-input-container">
+                        <label for="pageDest">Url:</label>
+                        <input
+                            type="text"
+                            name="pageDest"
+                            id="pageDest"
+                            class="dashboard-input"
+                            placeholder="{- Url -}"
+                        />
+                    </div>
+                    <div class="dashboard-input-container">
+                        <label for="pageTooltip">Tooltip:</label>
+                        <input
+                            type="text"
+                            name="pageTooltip"
+                            id="pageTooltip"
+                            class="dashboard-input"
+                            placeholder="{- Tooltip -}"
+                        />
+                    </div>
+                    <label for="pageIcon">Icon ändern.</label>
+                    <button name="pageIcon" id="dashboard-pageIcon" class="dashboard-button dashboard-deletePage">
+                        Icon ändern / auswählen.
+                    </button>
+                    <label for="organizePage">Seiten Organisieren.</label>
+                    <button name="organizePage" id="dashboard-organizePage" class="dashboard-button dashboard-iconPage">
+                        Seiten Organisieren.
+                    </button>
+                    <label for="updatePage">Änderungen speichern.</label>
+                    <button name="updatePage" id="dashboard-updatePage" class="dashboard-button dashboard-updatePage">
+                        Änderungen speichern.
+                    </button>
+                    <label for="createPage">Neue Seite.</label>
+                    <button
+                        name="createPage"
+                        id="dashboard-createPage"
+                        class="dashboard-button dashboard-createNewPage"
+                    >
+                        Neue Seite.
+                    </button>
+                </section>
+                <section class="dashboard-Section dashboard-fileControl">
+                    <h1>Dateien & Bilder</h1>
+                    <div class="fileControl-Browser">
+                        <div class="fileControl-controls">
+                            <button id="switch-images" class="fileControl-button fileControl-active">Bilder</button>
+                            <button id="switch-files" class="fileControl-button">Dateien</button>
+                            <button class="fileControl-enlarge">
+                                <img src="./assets/icons/maximize.svg" alt="maximize file browser" />
+                            </button>
+                        </div>
+                        <div class="fileControl-contents" id="content-files" style="display: none"></div>
+                        <div class="fileControl-contents" id="content-images"></div>
+                    </div>
+                    <form>
+                        <label for="fileControl-inputFile" class="fileControl-input"
+                            ><div style="display: none" class="fileControl-loader">
+                                <span></span>
+                            </div>
+                            <span class="fileControl-status">
+                                Drag & Drop oder drücke hier um eine Datei hochzuladen.
+                            </span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="feather feather-plus-circle"
+                            >
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="16"></line>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                        </label>
+                        <input
+                            type="file"
+                            name="file"
+                            id="fileControl-inputFile"
+                            accept=".png,.jpg,.jpeg,.gif,.bmp,.pdf"
+                        />
+                        <button disabled class="fileControl-submit dashboard-button" type="submit">
+                            Datei hochladen.
+                        </button>
+                    </form>
+                </section>
+                <a href="https://privateemail.com" target="_blank" class="dashboard-button" rel="noopener noreferrer"
+                    >Webmail</a
+                >
+                <a href="/logout" class="dashboard-button">Logout</a>
+            </div>
+        </aside> -->
+
+        <main class="content">
+            <div class="header-image">
+                <img class="header-image-target" src="" alt="" />
+            </div>
+            <section class="content-Container">
+                <div id="editor"></div>
+            </section>
+        </main>
+        <button id="save">Save</button>
+
+        <web-spinner fullscreen state="false"></web-spinner>
+        <web-footer></web-footer>
+        <privacy-banner></privacy-banner>
+    </body>
 </html>

@@ -32,7 +32,7 @@ class PrivacyBanner extends Core {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
-        this.injectCSS('./dist/components.css');
+        this.injectCSS();
         this.shadowRoot.append(this.template.content);
         this.shadowRoot.querySelector('#privacy-consent').addEventListener('click', (ev) => this.setConsent());
 

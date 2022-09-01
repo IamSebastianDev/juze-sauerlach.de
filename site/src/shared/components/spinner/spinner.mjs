@@ -13,9 +13,6 @@ class WebSpinner extends Core {
 
         this.template = document.createElement('template');
         this.template.innerHTML = `
-            <style>
-                @import "./dist/components.css"
-            </style>
             <div class="loader">
                 <div class="loader-container">
                     <span></span>
@@ -32,7 +29,7 @@ class WebSpinner extends Core {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
-        this.injectCSS('./dist/components.css');
+        this.injectCSS();
         this.shadowRoot.append(this.template.content);
         if (this.getAttribute('state') === 'false') {
             this.shadowRoot.querySelector('.loader').style.display = 'none';

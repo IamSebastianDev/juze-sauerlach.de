@@ -46,7 +46,7 @@ class WebFooter extends Core {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
-        this.injectCSS('./dist/components.css');
+        this.injectCSS();
         this.shadowRoot.append(this.template.content);
     }
 }
