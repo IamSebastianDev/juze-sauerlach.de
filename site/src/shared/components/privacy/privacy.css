@@ -16,17 +16,17 @@
 #privacy-banner[visible='true'] {
     transform: translateY(0);
 }
-span,
-button {
+#privacy-banner span,
+#privacy-banner button {
     margin: 0 1em;
     padding: 0.8em;
 }
-p {
+#privacy-banner p {
     padding: 0 1em;
     max-width: 76.8em;
     font-size: 1.4em;
 }
-button {
+#privacy-banner button {
     background: none;
     border: none;
     display: grid;
@@ -34,13 +34,13 @@ button {
     transition: var(--ui-transition-fast);
     cursor: pointer;
 }
-button:hover {
+#privacy-banner button:hover {
     background: var(--ui-color-main);
 }
-a {
+#privacy-banner a {
     text-decoration: none;
 }
-a:hover {
+#privacy-banner a:hover {
     text-decoration: underline;
 }
 @media (max-width: 584px) {
