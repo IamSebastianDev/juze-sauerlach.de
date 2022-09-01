@@ -1,0 +1,52 @@
+/** @format */
+
+#privacy-banner {
+    background: var(--ui-color-accent);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%);
+    transition: var(--ui-transition-medium);
+}
+#privacy-banner[visible='true'] {
+    transform: translateY(0);
+}
+span,
+button {
+    margin: 0 1em;
+    padding: 0.8em;
+}
+p {
+    padding: 0 1em;
+    max-width: 76.8em;
+    font-size: 1.4em;
+}
+button {
+    background: none;
+    border: none;
+    display: grid;
+    place-items: center;
+    transition: var(--ui-transition-fast);
+    cursor: pointer;
+}
+button:hover {
+    background: var(--ui-color-main);
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 584px) {
+    #privacy-banner {
+        flex-direction: column;
+        padding: 0.8em 0;
+        text-align: center;
+    }
+}
