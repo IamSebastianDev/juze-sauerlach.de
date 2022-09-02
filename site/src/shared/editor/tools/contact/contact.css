@@ -63,9 +63,14 @@
     align-self: center;
 }
 
-.contact-field-add:hover,
-.contact-field-remove:hover {
+.contact-field-add:hover {
     background: #eff2f5;
+    border-radius: 7px;
+}
+
+.contact-field-remove:hover {
+    background: #e24a4a;
+    color: #eff2f5;
     border-radius: 7px;
 }
 

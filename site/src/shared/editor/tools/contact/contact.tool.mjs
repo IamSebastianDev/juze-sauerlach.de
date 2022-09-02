@@ -35,7 +35,7 @@ export class Contact {
         });
         const removeButton = document.createElement('button');
         removeButton.className = 'contact-field-remove';
-        removeButton.append(x.toSvg({ 'stroke-width': 2.5, width: 16, height: 16 }));
+        removeButton.append(x.toSvg({ 'stroke-width': 3, width: 16, height: 16 }));
         emptyFieldSet.append(nameSelector, typeSelector, removeButton);
         container.addEventListener('click', (ev) => {
             if (!ev.target.closest('.contact-field-remove')) return;
@@ -46,7 +46,7 @@ export class Contact {
 
         const addFieldButton = document.createElement('button');
         addFieldButton.className = 'contact-field-add';
-        addFieldButton.appendChild(plus.toSvg({ 'stroke-width': 2.5, width: 16, height: 16 }));
+        addFieldButton.appendChild(plus.toSvg({ 'stroke-width': 3, width: 16, height: 16 }));
 
         let fields = this.data?.fields
             ? [...this.data.fields.map((val) => this.deserialize(val, emptyFieldSet))]
