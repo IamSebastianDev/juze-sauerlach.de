@@ -1,13 +1,10 @@
 /** @format */
 
 import './spinner.css';
+import { receive } from 'straemjs';
 import { Core } from '../core/core.component.mjs';
 
-class WebSpinner extends Core {
-    static get observedAttributes() {
-        return ['state'];
-    }
-
+class JSpinner extends Core {
     constructor() {
         super();
 
@@ -20,11 +17,28 @@ class WebSpinner extends Core {
                 </div>
             </div>
         `;
+
+        this.listener = receive('page-complete').from(window);
+        this.disposeListener = this.listener.then((ev) => this.removeLoader());
     }
 
-    getLoader() {
+    get loader() {
         if (!this.shadowRoot) return;
         return this.shadowRoot.querySelector('.loader');
+    }
+
+    displayLoader() {
+        this.shadowRoot.setAttribute('state', 'true');
+        this.shadowRoot.querySelector('.loader').style.display = 'grid';
+    }
+    removeLoader() {
+        if (!this.loader) return;
+
+        // document.querySelector('j-spinner').setAttribute('state', 'false');
+        this.setAttribute('state', 'false');
+        window.setTimeout(() => {
+            this.shadowRoot.querySelector('.loader').style.display = 'none';
+        }, 500);
     }
 
     connectedCallback() {
@@ -36,20 +50,9 @@ class WebSpinner extends Core {
         }
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (!this.getLoader()) return;
-
-        switch (newValue) {
-            case 'false':
-                window.setTimeout(() => {
-                    this.shadowRoot.querySelector('.loader').style.display = 'none';
-                }, 500);
-                break;
-            case 'true':
-                this.shadowRoot.querySelector('.loader').style.display = 'grid';
-                break;
-        }
+    disconnectedCallback() {
+        this.disposeListener();
     }
 }
 
-customElements.define('web-spinner', WebSpinner);
+customElements.define('j-spinner', JSpinner);

@@ -30,12 +30,8 @@
         <!-- includes -->
     </head>
     <body>
-        <!-- <nav class="nav">
-            <ul class="nav-Container nav-Container-transformed"></ul>
-            <button class="nav-burger nav-burger-invisible">
-                <span></span>
-            </button>
-        </nav>
+        <j-navigation></j-navigation>
+        <!--
         <div style="display: none" class="modal dashboard-pageCreation">
             <div class="pageCreator-Container">
                 <form class="pageCreator-form">
@@ -242,10 +238,13 @@
                 <div id="editor"></div>
             </section>
         </main>
-        <button id="save">Save</button>
 
-        <web-spinner fullscreen state="false"></web-spinner>
-        <web-footer></web-footer>
-        <privacy-banner></privacy-banner>
+        <div style="position: fixed; top: 0; left: 0">
+            <button id="save">Save</button>
+        </div>
+
+        <j-spinner fullscreen state="true"></j-spinner>
+        <j-footer></j-footer>
+        <j-privacy></j-privacy>
     </body>
 </html>

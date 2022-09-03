@@ -28,6 +28,62 @@
         <link rel="stylesheet" href="./dist/components.frontend.css" />
 
         <!-- includes -->
+        <style>
+            form#login {
+                position: relative;
+                width: 90%;
+                max-width: 42em;
+
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+
+                padding: 2.4em;
+                margin: auto;
+                border-radius: var(--ui-border-radius-m);
+
+                background: var(--ui-color-main);
+            }
+
+            form#login label {
+                display: none;
+            }
+
+            form#login .form-group {
+                margin-bottom: 2.4em;
+            }
+
+            form#login .form-group input,
+            form#login button {
+                background: none;
+                border: none;
+                width: 100%;
+
+                padding: 0.4em 0.6em;
+
+                font-size: 1.6em;
+                background: var(--ui-color-shade);
+                border-radius: var(--ui-border-radius-s);
+                transition: var(--ui-transition-fast);
+            }
+
+            form#login button:hover {
+                cursor: pointer;
+                background: var(--ui-color-accent);
+            }
+
+            form#login a {
+                text-decoration: none;
+                color: var(--ui-color-text);
+                font-size: 1.2em;
+                padding-top: 1.2em;
+            }
+
+            form#login a:hover {
+                text-decoration: underline;
+                color: var(--ui-color-darker);
+            }
+        </style>
     </head>
     <body>
         <main>
@@ -62,7 +118,7 @@
                 <a href="/">Zurück zur Startseite.</a>
             </form>
         </main>
-        <web-footer></web-footer>
-        <privacy-banner></privacy-banner>
+        <j-footer></j-footer>
+        <j-privacy></j-privacy>
     </body>
 </html>

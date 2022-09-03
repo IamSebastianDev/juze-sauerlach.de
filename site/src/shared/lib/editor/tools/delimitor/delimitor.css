@@ -1,6 +1,7 @@
 /** @format */
 
-.editor-delimitor {
+.editor-delimitor,
+.block-delimitor {
     margin: 0.5rem 0;
     border: none;
     border-bottom: 1px solid var(--ui-color-text-50);

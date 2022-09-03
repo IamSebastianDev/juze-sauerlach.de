@@ -3,7 +3,7 @@
 import './footer.css';
 import { Core } from '../core/core.component.mjs';
 
-class WebFooter extends Core {
+class JFooter extends Core {
     constructor() {
         super();
         this.template = document.createElement('template');
@@ -51,4 +51,4 @@ class WebFooter extends Core {
     }
 }
 
-customElements.define('web-footer', WebFooter);
+customElements.define('j-footer', JFooter);

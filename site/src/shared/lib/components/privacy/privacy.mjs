@@ -4,7 +4,7 @@ import { cookie, x } from 'pangolicons';
 import { Core } from '../core/core.component.mjs';
 import './privacy.css';
 
-class PrivacyBanner extends Core {
+class JPrivacy extends Core {
     constructor() {
         super();
         this.template = document.createElement('template');
@@ -43,4 +43,4 @@ class PrivacyBanner extends Core {
     }
 }
 
-customElements.define('privacy-banner', PrivacyBanner);
+customElements.define('j-privacy', JPrivacy);
