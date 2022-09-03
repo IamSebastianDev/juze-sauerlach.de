@@ -23,14 +23,19 @@ class PageController {
         this.activePages.forEach(({ title, dest, content, headerImage }) => {
             routes[dest] = {
                 title: `JuZe Sauerlach | ${title}`,
-                callback: () => {
-                    routeCallback(content);
+                callback: (query, route) => {
+                    routeCallback(content, route, query);
                     const image = document.querySelector('#header-image');
                     if (image) image.src = headerImage;
                 },
             };
         });
         return routes;
+    }
+
+    getActiveRouteData({ dest }) {
+        const activeRoute = this.activePages.find((route) => route.dest === dest);
+        return activeRoute;
     }
 }
 
