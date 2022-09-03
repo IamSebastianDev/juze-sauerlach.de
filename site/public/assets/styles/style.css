@@ -22,6 +22,12 @@
     --ui-transition-slow: 500ms ease-in-out;
     --ui-transition-medium: 250ms ease-in-out;
     --ui-transition-fast: 100ms ease-out;
+
+    /* z-index hierarchy */
+    --ui-z-background: -1;
+    --ui-z-footer: 10;
+    --ui-z-sidebar: 20;
+    --ui-z-navigation: 30;
 }
 
 /* overwrites */
@@ -64,9 +70,24 @@ img.fullscreen-bg {
     top: 0;
     left: 0;
     object-fit: cover;
-    z-index: -200;
+    z-index: var(--ui-z-background);
 
     filter: saturate(0.75);
+}
+
+section#image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+
+    display: grid;
+    place-items: center;
+}
+
+section#image-container img {
+    padding: 4rem;
 }
 
 /* content section */
@@ -87,19 +108,43 @@ section#content {
     max-width: 768px;
 }
 
-section#image-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50vw;
-    height: 100vh;
+/* Backend editor styles. Frontend are styled through component css */
 
-    display: grid;
-    place-items: center;
+section#content h1,
+section#content h2,
+section#content h3,
+section#content h4,
+section#content h5,
+section#content h6 {
+    font-family: 'Bangers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.125rem;
 }
 
-section#image-container img {
-    padding: 4rem;
+section#content h1 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+section#content h2 {
+    font-size: 1.75rem;
+}
+
+section#content h3 {
+    font-size: 1.5rem;
+}
+
+section#content h4 {
+    font-size: 1.2rem;
+}
+section#content h5,
+section#content h6 {
+    font-size: 1rem;
+}
+
+section#content {
+    font-size: 1rem;
 }
 
 .container {
@@ -148,4 +193,139 @@ section#image-container img {
         padding: 1rem;
         margin: 1.5rem 0.4rem;
     }
+}
+
+/* backend styles */
+
+/* styles cat: @dashboard */
+
+aside#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 420px;
+    height: 100vh;
+
+    padding: 0.25rem 0.5rem;
+
+    background: var(--ui-color-bright);
+    box-shadow: var(--shadow-strong);
+
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+
+    transition: var(--ui-transition-slow);
+    z-index: var(--ui-z-sidebar);
+}
+
+aside#sidebar[state='false'] {
+    transform: translateX(-100%);
+}
+
+aside#sidebar[state='false'] .pangolicons-x {
+    display: none;
+}
+aside#sidebar[state='true'] .pangolicons-chevronRight {
+    display: none;
+}
+
+.dashboard-button {
+    display: grid;
+    place-items: center;
+
+    padding: 0.25rem 0.5rem;
+    margin: 0.3rem 0;
+    align-self: stretch;
+
+    border: 1px solid var(--ui-color-dark);
+    border-radius: var(--ui-border-radius-s);
+    outline: none;
+    background: var(--ui-color-bright);
+
+    color: var(--ui-color-text);
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.dashboard-button:last-of-type {
+    margin-bottom: 0;
+}
+
+.dashboard-button:hover {
+    background: var(--ui-color-shade);
+}
+
+.dashboard-display-button {
+    display: grid;
+    place-items: center;
+
+    padding: 0.5rem;
+    margin: 0.25rem;
+
+    border: none;
+    border-radius: var(--ui-border-radius-s);
+    outline: none;
+
+    cursor: pointer;
+
+    background: var(--ui-color-accent);
+}
+
+.dashboard-display-button:hover {
+    background: var(--ui-color-main);
+}
+
+.dashboard-display-heading {
+    display: grid;
+    place-items: center;
+
+    height: 2rem;
+    padding: 0.125rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+
+    border: none;
+    border-radius: var(--ui-border-radius-s);
+    background: var(--ui-color-accent);
+}
+
+#dashboard-cycle {
+    position: absolute;
+    top: 0;
+    right: -2.75rem;
+}
+
+.dashboard-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-section {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--ui-color-text-50);
+}
+
+.dashboard-section:first-of-type {
+    padding-top: 0;
+}
+
+.dashboard-input-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 0.3rem 0;
+    align-items: center;
+}
+
+.dashboard-input {
+    padding: 0.125rem 0.5rem;
+    border: 1px solid var(--ui-color-dark);
+    border-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-input-container label {
+    text-align: center;
 }
