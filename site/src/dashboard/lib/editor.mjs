@@ -7,16 +7,16 @@ import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import Marker from '@editorjs/marker';
 import AlignmentTool from 'editorjs-text-alignment-blocktune';
-import { Delimiter } from '../../shared/editor/tools/delimitor/delimitor.tool.mjs';
-import { Contact } from '../../shared/editor/tools/contact/contact.tool.mjs';
-import { Image } from '../../shared/editor/tools/image/image.tool.mjs';
+import { Delimiter } from '../../shared/lib/editor/tools/delimitor/delimitor.tool.mjs';
+import { Contact } from '../../shared/lib/editor/tools/contact/contact.tool.mjs';
+import { Image } from '../../shared/lib/editor/tools/image/image.tool.mjs';
 
 export const editor = new EditorJS({
     holder: 'editor',
     tools: {
         header: {
             class: Header,
-            tunes: ['textAlign', 'hyperlink'],
+            tunes: ['textAlign'],
         },
         paragraph: {
             class: Paragraph,
