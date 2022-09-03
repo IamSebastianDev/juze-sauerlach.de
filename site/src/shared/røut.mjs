@@ -241,7 +241,10 @@ export default class Røut {
                         this._routes[parsedURL.hash].callbackArgs
                     );
                 } else {
-                    this._routes[parsedURL.hash].callback(parsedURL.query, this._routes[parsedURL.hash].callbackArgs);
+                    this._routes[parsedURL.hash].callback(parsedURL.query, {
+                        dest: parsedURL.hash,
+                        ...this._routes[parsedURL.hash],
+                    });
                 }
 
                 // set the page title
