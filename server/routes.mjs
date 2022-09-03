@@ -36,7 +36,7 @@ router
     .get('/api/v1/page', async (req, res) => await contentService.getAllPages(req, res))
     .get('/api/v1/page/:id', async (req, res) => await contentService.getPage(req, res))
     .post('/api/v1/page', authService.isAuthenticated, async (req, res) => await contentService.postPage(req, res))
-    .put('/api/v1/page', authService.isAuthenticated, async (req, res) => await contentService.putPage(req, res))
+    .put('/api/v1/page/:id', authService.isAuthenticated, async (req, res) => await contentService.putPage(req, res))
     .delete(
         '/api/v1/page/:id',
         authService.isAuthenticated,
