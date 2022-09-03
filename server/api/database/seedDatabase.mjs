@@ -23,6 +23,26 @@ await userService.post(
     response()
 );
 
+const content = {
+    time: 0,
+    blocks: [
+        {
+            id: 'xMAQN3gfxw',
+            type: 'header',
+            data: {
+                text: 'This is a Heading',
+                level: 1,
+            },
+            tunes: {
+                textAlign: {
+                    alignment: 'left',
+                },
+            },
+        },
+    ],
+    version: '0.0.0',
+};
+
 for (const entry of [
     { title: 'home', dest: 'home', tooltip: 'Alles aktuelle', icon: 'megaphone' },
     { title: 'haus', dest: 'haus', tooltip: 'Wir uns das JuZe', icon: 'house' },
@@ -30,5 +50,5 @@ for (const entry of [
 ]) {
     console.log({ entry });
     const { dest, title, tooltip, icon } = entry;
-    await contentService.postPage(request({ dest, title, tooltip, icon }), response());
+    await contentService.postPage(request({ dest, title, tooltip, icon, content }), response());
 }
