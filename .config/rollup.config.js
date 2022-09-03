@@ -13,6 +13,7 @@ export default [
         output: {
             file: './site/public/dist/frontend.bundle.mjs',
             format: 'esm',
+            sourcemap: true,
         },
         plugins: [
             nodeResolve(),
@@ -27,6 +28,7 @@ export default [
         output: {
             file: './site/public/dist/dashboard.bundle.mjs',
             format: 'esm',
+            sourcemap: true,
         },
         plugins: [
             nodeResolve(),
