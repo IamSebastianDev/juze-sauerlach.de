@@ -9,7 +9,7 @@ const transporterConfig = {
     secure: true,
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_AUTH,
     },
 };
 
@@ -35,31 +35,30 @@ class MailService extends Service {
 
         // simple whitelist check
         if (process.env.NODE_ENV === 'production' && !origin.includes('juze-sauerlach')) {
-            res.send(401);
-            return;
+            return res.status(401);
         }
 
-        const { email, message } = req.body;
+        const { email, message, name } = req.body;
 
         // verify the necessary properties to be of the correct type and existing
         if (!this.verify([email, 'string'], [message, 'string'])) {
-            res.send(400).json({ error: 'Incorrect request parameters or properties.' });
-            return;
+            return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
         const body = {
             from: process.env.EMAIL_USER,
             replyTo: email,
             to: process.env.EMAIL_USER,
-            subject: `Neue Nachricht von ${email}`,
+            subject: `Neue Nachricht von ${name || email}`,
             text: message,
         };
 
         try {
             let result = await this.transporter.sendMail(body);
-            res.sendStatus(200).json({ result });
+            return res.status(200).json({ result });
         } catch (e) {
-            res.sendStatus(500).json({ error: e });
+            console.log({ e });
+            return res.status(500).json({ error: e });
         }
     }
 }
