@@ -112,7 +112,7 @@ class ContentService extends Service {
      */
 
     async postPage(req, res) {
-        const { dest, icon, tooltip, title } = req.body;
+        const { dest, icon, tooltip, title, content } = req.body;
 
         if (!this.verify([dest, 'string'], [icon, 'string'], [tooltip, 'string'], [title, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
@@ -127,7 +127,7 @@ class ContentService extends Service {
                 index: await this._getPageIndex(),
                 active: true,
                 headerImage: './assets/images/logo.png',
-                content: JSON.stringify({}),
+                content: content || { time: 0, blocks: [], version: '0.0.0' },
             };
 
             const result = await this.useCollection(async (collection) => {
@@ -148,11 +148,12 @@ class ContentService extends Service {
      */
 
     async putPage(req, res) {
+        const { id } = req.params;
         const { _id, ...page } = req.body;
 
         try {
             const result = await this.useCollection(async (collection) => {
-                return await collection.findOneAndUpdate({ _id: new ObjectId(_id) }, { $set: { ...page } });
+                return await collection.findOneAndUpdate({ _id: new ObjectId(id) }, { $set: { ...page } });
             });
             return res.status(200).json({ result, page: req.body });
         } catch (e) {
