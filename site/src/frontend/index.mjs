@@ -1,6 +1,6 @@
 /** @format */
 
-import './lib/components.loader.mjs';
+import './lib/components/components.loader.mjs';
 import { page } from '../shared/controllers/page.controller.mjs';
 import { dispatch } from 'straemjs';
 import Røut from '../shared/røut.mjs';
