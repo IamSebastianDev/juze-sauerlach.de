@@ -43,6 +43,10 @@ class JImage extends Content {
         if (caption) {
             captionElement.innerHTML = caption;
         }
+
+        if (!caption) {
+            captionElement.remove();
+        }
     }
 }
 
