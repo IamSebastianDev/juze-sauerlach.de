@@ -3,13 +3,11 @@
 nav {
     position: fixed;
     top: 0;
-    left: 0;
-
-    width: 100vw;
+    right: 0;
     display: flex;
     justify-content: flex-end;
 
-    z-index: 1000;
+    z-index: var(--ui-z-navigation);
 }
 
 .nav-container {
