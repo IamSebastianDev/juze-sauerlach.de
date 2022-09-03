@@ -23,7 +23,12 @@ await userService.post(
     response()
 );
 
-for (const entry of ['home', 'about', 'contact']) {
+for (const entry of [
+    { title: 'home', dest: 'home', tooltip: 'Alles aktuelle', icon: 'megaphone' },
+    { title: 'haus', dest: 'haus', tooltip: 'Wir uns das JuZe', icon: 'house' },
+    { title: 'kontakt', dest: 'kontakt', tooltip: 'Kontaktdaten', icon: 'send' },
+]) {
     console.log({ entry });
-    await contentService.postPage(request({ dest: entry, icon: entry, tooltip: entry, title: entry }), response());
+    const { dest, title, tooltip, icon } = entry;
+    await contentService.postPage(request({ dest, title, tooltip, icon }), response());
 }
