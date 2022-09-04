@@ -30,7 +30,7 @@ export const editor = new EditorJS({
                 defaultStyle: 'unordered',
             },
         },
-        quote: Quote,
+        // quote: Quote,
         delimiter: Delimiter,
         contact: Contact,
         image: {
