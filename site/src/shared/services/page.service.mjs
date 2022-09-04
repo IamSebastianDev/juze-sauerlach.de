@@ -23,8 +23,8 @@ export const getPages = async () => {
 
 export const createPage = async (page) => {
     const body = JSON.stringify(page);
-    const { error, result } = useService(async () => {
-        return await fetch(`/api/v1/page/${id}`, { ...POST, body });
+    const { error, result } = await useService(async () => {
+        return await fetch(`/api/v1/page/`, { ...POST, body });
     });
 
     if (error) throw error;
@@ -33,10 +33,9 @@ export const createPage = async (page) => {
 
 export const updatePage = async (id, page) => {
     const body = JSON.stringify(page);
-    const { error, result } = useService(async () => {
+    const { error, result } = await useService(async () => {
         return await fetch(`/api/v1/page/${id}`, { ...PUT, body });
     });
-
     if (error) throw error;
     return result;
 };
