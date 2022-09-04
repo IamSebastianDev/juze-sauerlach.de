@@ -11,18 +11,6 @@ export class Content extends Core {
         super();
     }
 
-    $(selector) {
-        return this.shadowRoot.querySelector(selector);
-    }
-
-    $$(selector) {
-        return this.shadowRoot.querySelectorAll(selector);
-    }
-
-    html(strings, ...args) {
-        return strings.raw;
-    }
-
     attributeChangedCallback(attr, oldProps, newProps) {
         if (!this.shadowRoot) return;
         this.updateComponent(JSON.parse(newProps));
