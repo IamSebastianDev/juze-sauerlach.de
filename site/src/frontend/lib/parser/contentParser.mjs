@@ -2,7 +2,7 @@
 
 export const contentParser = (dictionary, target) => (content) => {
     if (!target) return;
-    const { blocks } = content.data;
+    const { blocks } = content;
 
     const elements = blocks.map(({ id, type, data, tunes }) => {
         const element = document.createElement(dictionary[type]);
