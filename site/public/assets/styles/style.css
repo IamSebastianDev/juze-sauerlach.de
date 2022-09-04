@@ -9,11 +9,17 @@
     --ui-color-main: rgba(250, 250, 250, 1);
     --ui-color-shade: rgba(240, 240, 240, 1);
     --ui-color-dark: rgba(38, 38, 38, 1);
+    --ui-color-dark-30: rgba(38, 38, 38, 0.3);
+    --ui-color-dark-50: rgba(38, 38, 38, 0.5);
     --ui-color-darker: rgba(24, 24, 24, 1);
     --ui-color-gradient: linear-gradient(135deg, rgba(178, 222, 81, 1) 0%, rgba(216, 238, 168, 1) 100% /* */);
 
     --ui-color-text: rgba(38, 38, 38, 1);
     --ui-color-text-50: rgba(38, 38, 38, 0.5);
+
+    --ui-color-code-info: rgba(79, 195, 247, 1);
+    --ui-color-code-error: rgba(229, 115, 115, 1);
+    --ui-color-code-success: rgba(129, 199, 132, 1);
 
     --ui-border-radius-l: 16px;
     --ui-border-radius-m: 8px;
@@ -28,6 +34,8 @@
     --ui-z-footer: 10;
     --ui-z-sidebar: 20;
     --ui-z-navigation: 30;
+    --ui-z-modal: 40;
+    --ui-z-messages: 50;
 }
 
 /* overwrites */
@@ -328,4 +336,24 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
 
 .dashboard-input-container label {
     text-align: center;
+}
+
+div#flash-message-outlet {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 0.5rem;
+    z-index: var(--ui-z-messages);
+}
+
+div#modal-outlet {
+    position: fixed;
+
+    width: 0px;
+    height: 0px;
+
+    z-index: var(--ui-z-modal);
 }
