@@ -31,93 +31,6 @@
     </head>
     <body>
         <j-navigation></j-navigation>
-        <!--
-        <div style="display: none" class="modal dashboard-pageCreation">
-            <div class="pageCreator-Container">
-                <form class="pageCreator-form">
-                    <a class="modal-close"></a>
-                    <h1>Neue Seite erstellen:</h1>
-                    <div class="pageCreator-inputContainer">
-                        <label for="url">URL:</label>
-                        <input
-                            id="pageCreator-Url"
-                            name="url"
-                            type="text"
-                            placeholder="/#exampleUrl"
-                            class="pageCreator-input"
-                            required
-                        />
-                        <span class="pageCreator-inputDesc">Die Url unter der die Unterseite zu erreichen ist.</span>
-                    </div>
-                    <div class="pageCreator-inputContainer">
-                        <label for="title">Titel:</label>
-                        <input
-                            id="pageCreator-Title"
-                            name="title"
-                            type="text"
-                            placeholder="Aktuelles"
-                            class="pageCreator-input"
-                            required
-                        />
-                        <span class="pageCreator-inputDesc"
-                            >Der Titel der Seite der in der Tab leiste angezeigt wird. Wird auch im Menü als Seitentitel
-                            angezeigt.</span
-                        >
-                    </div>
-                    <div class="pageCreator-inputContainer">
-                        <label for="tooltip">Tooltip:</label>
-                        <input
-                            id="pageCreator-tooltip"
-                            name="tooltip"
-                            type="text"
-                            placeholder="Dies ist ein tooltip!"
-                            class="pageCreator-input"
-                            required
-                        />
-                        <span class="pageCreator-inputDesc">Der tooltip für die Navigationsicons.</span>
-                    </div>
-                    <div class="pageCreator-iconContainer">
-                        <label for="icon">Icon:</label>
-                        <span class="pageCreator-inputDesc">Das Icon das für die Seitennavigation benutzt wird.</span>
-                        <div class="pageCreator-iconSelect"></div>
-                    </div>
-                    <button type="submit">Seite erstellen.</button>
-                </form>
-            </div>
-        </div>
-        <div style="display: none" class="modal dashboard-pageOrganizer">
-            <div class="pageOrganizer-Container">
-                <a class="modal-close"></a>
-                <h1>Seiten anordnen und aktiv / inaktiv schalten:</h1>
-                <div class="organizer-Container"></div>
-
-                <button id="organizerSave" type="submit">Änderungen Speichern</button>
-            </div>
-        </div>
-        <div style="display: none" class="modal dashboard-fileModal">
-            <div class="fileModal">
-                <a class="modal-close"></a>
-                <div class="fileModal-content"></div>
-            </div>
-        </div>
-        <div style="display: none" class="modal dashboard-iconModal">
-            <div class="iconModal">
-                <a class="modal-close"></a>
-                <div class="iconModal-Container">
-                    <h1>Icon wählen / ändern</h1>
-                    <div class="iconModal-section">
-                        <p>Aktives Icon:</p>
-                        <span id="active-Icon"></span>
-                    </div>
-                    <hr />
-                    <div class="iconModal-section">
-                        <p>Icon auswählen:</p>
-                        <div class="iconModal-iconSelect"></div>
-                    </div>
-                    <button>Auswahl bestätigen.</button>
-                </div>
-            </div>
-        </div>-->
         <aside id="sidebar" state="true">
             <button id="dashboard-cycle" class="dashboard-display-button">
                 <i pangolicons="x" width="16" height="16" stroke-width="3"></i>
@@ -156,7 +69,7 @@
                             placeholder="{- Tooltip -}"
                         />
                     </div>
-                    <button id="set-icon" class="dashboard-button">Icon ändern / auswählen.</button>
+                    <button id="select-icon" class="dashboard-button">Icon ändern / auswählen.</button>
                     <button id="organize-page" class="dashboard-button">Seiten Organisieren.</button>
                     <button id="update-page" class="dashboard-button">Änderungen speichern.</button>
                     <button id="create-page" class="dashboard-button">Neue Seite.</button>
@@ -177,6 +90,8 @@
         <main id="content-box">
             <section id="content" class="container"></section>
         </main>
+        <div id="modal-outlet"></div>
+        <div id="flash-message-outlet"></div>
         <j-spinner fullscreen state="true"></j-spinner>
         <j-footer></j-footer>
         <j-privacy></j-privacy>
