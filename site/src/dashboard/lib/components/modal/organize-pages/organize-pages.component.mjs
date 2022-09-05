@@ -104,7 +104,7 @@ class JModalOrganizePages extends Core {
         const draggedIndex = this.data.pages.findIndex((page) => page._id === draggedId);
 
         this.data.pages.splice(droppedIndex, 0, this.data.pages.splice(draggedIndex, 1)[0]);
-        this.render();
+        this.$(`[list-id="${droppedId}"]`).after(this.$(`[list-id="${draggedId}"]`));
     }
 
     handleChange(ev) {
