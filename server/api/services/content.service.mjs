@@ -19,7 +19,7 @@ class ContentService extends Service {
     async getContent(req, res) {
         const { id: _id } = req.params;
 
-        if (!this.verify([_id, 'string'])) {
+        if (!this.validate([_id, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -45,7 +45,7 @@ class ContentService extends Service {
         const { id: _id } = req.params;
         const { content } = req.body;
 
-        if (!this.verify([_id, 'string'])) {
+        if (!this.validate([_id, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -89,7 +89,7 @@ class ContentService extends Service {
     async getPage(req, res) {
         const { id: _id } = req.params;
 
-        if (!this.verify([_id, 'string'])) {
+        if (!this.validate([_id, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -114,7 +114,7 @@ class ContentService extends Service {
     async postPage(req, res) {
         const { dest, icon, tooltip, title, content } = req.body;
 
-        if (!this.verify([dest, 'string'], [icon, 'string'], [tooltip, 'string'], [title, 'string'])) {
+        if (!this.validate([dest, 'string'], [icon, 'string'], [tooltip, 'string'], [title, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -172,7 +172,7 @@ class ContentService extends Service {
     async deletePage(req, res) {
         const { id: _id } = req.params;
 
-        if (!this.verify([_id, 'string'])) {
+        if (!this.validate([_id, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 

@@ -23,7 +23,7 @@ class UserService extends Service {
     async post(req, res) {
         const { email, password, key } = req.body;
 
-        if (!this.verify([email, 'string'], [password, 'string'], [key, 'string'])) {
+        if (!this.validate([email, 'string'], [password, 'string'], [key, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -65,7 +65,7 @@ class UserService extends Service {
     async get(req, res) {
         const { id } = req.params;
 
-        if (!this.verify([id, 'string'])) {
+        if (!this.validate([id, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -90,7 +90,7 @@ class UserService extends Service {
     async delete(req, res) {
         const { email, key } = req.body;
 
-        if (!this.verify([email, 'string'], [key, 'string'])) {
+        if (!this.validate([email, 'string'], [key, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
@@ -109,11 +109,11 @@ class UserService extends Service {
     }
 
     async getUserById({ id }) {
-        if (!this.verify([id, 'string'])) return;
+        if (!this.validate([id, 'string'])) return;
         return await this.useCollection(async (collection) => await collection.findOne({ _id: id }));
     }
     async getUserByEmail({ email }) {
-        if (!this.verify([email, 'string'])) return;
+        if (!this.validate([email, 'string'])) return;
         return await this.useCollection(async (collection) => await collection.findOne({ email: email }));
     }
 }

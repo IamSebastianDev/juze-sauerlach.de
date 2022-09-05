@@ -41,7 +41,7 @@ class MailService extends Service {
         const { email, message, name } = req.body;
 
         // verify the necessary properties to be of the correct type and existing
-        if (!this.verify([email, 'string'], [message, 'string'])) {
+        if (!this.validate([email, 'string'], [message, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 

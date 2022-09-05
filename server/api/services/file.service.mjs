@@ -86,7 +86,7 @@ class FileService extends Service {
     async delete(req, res) {
         const { path } = req.body;
 
-        if (!this.verify([path, 'string'])) {
+        if (!this.validate([path, 'string'])) {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 

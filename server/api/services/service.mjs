@@ -16,7 +16,7 @@ export class Service {
      * @returns { boolean }
      */
 
-    verify(...props) {
+    validate(...props) {
         return props.every(([value, type]) => {
             if (value === undefined && typeof value !== undefined) return false;
             if (value === null) return false;
