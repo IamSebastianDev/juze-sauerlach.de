@@ -31,10 +31,12 @@ export class Core extends HTMLElement {
             `<style>@import "./dist/components.${location}.css"</style>` + this.template.innerHTML;
     }
 
-    listen(eventType) {
+    listen(eventType, { stopPropagation, preventDefault } = {}) {
         this.shadowRoot.addEventListener(
             eventType,
             (ev) => {
+                preventDefault && ev.preventDefault();
+                stopPropagation && ev.stopPropagation();
                 this.checkEventTargets(ev, eventType);
             },
             true
