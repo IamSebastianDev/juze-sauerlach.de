@@ -102,3 +102,9 @@ button#modal-leave:hover {
     border-color: var(--ui-color-code-error);
     color: var(--ui-color-main);
 }
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}

@@ -18,7 +18,7 @@ class JModalCreatePage extends Core {
         super();
         this.template = document.createElement('template');
         this.template.innerHTML = this.html`
-            <div class="container">
+            <div class="modal-container">
                 <h3>Neue Seite erstellen:</h3>
                 <div class="modal-input-container">
                     <label for="input-titel">Titel</label>

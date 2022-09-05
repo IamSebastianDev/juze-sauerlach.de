@@ -14,7 +14,7 @@ class JModalSelectIcon extends Core {
 
         this.template = document.createElement('template');
         this.template.innerHTML = this.html`
-            <div class="container">
+            <div class="modal-container">
                 <h3>Icon auswählen / ändern</h3>
                 <div class="icon-active">
                     Aktives Icon: <span id="icon-active-holder"> </span>
