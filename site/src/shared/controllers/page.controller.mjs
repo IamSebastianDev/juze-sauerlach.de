@@ -51,6 +51,10 @@ class PageController {
         });
         this.setNavigation();
     }
+
+    getPages() {
+        return this.pages;
+    }
 }
 
 export const page = new PageController();

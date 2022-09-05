@@ -24,7 +24,7 @@ export class PageDetailsController extends Controller {
             type: 'click',
             selector: 'button#organize-page',
             action: (ev) => {
-                const modal = modalService.get('organize-pages');
+                const modal = modalService.get('organize-pages', { data: { pages: page.getPages() } });
                 modal.onConfirm(({ data }) => {
                     this.updatePages(data, modal.close);
                 });
@@ -124,7 +124,7 @@ export class PageDetailsController extends Controller {
     }
 
     async updatePages(data, complete) {
-        console.log({ modal });
+        console.log({ data });
     }
 
     async updateIcon({ selectedIcon }, complete) {
