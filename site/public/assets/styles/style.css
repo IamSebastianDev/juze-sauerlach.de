@@ -245,7 +245,6 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
     place-items: center;
 
     padding: 0.25rem 0.5rem;
-    margin: 0.3rem 0;
     align-self: stretch;
 
     border: 1px solid var(--ui-color-dark);
@@ -257,10 +256,6 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
     text-decoration: none;
 
     cursor: pointer;
-}
-
-.dashboard-button:last-of-type {
-    margin-bottom: 0;
 }
 
 .dashboard-button:hover {
@@ -310,6 +305,7 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
 .dashboard-flex {
     display: flex;
     flex-direction: column;
+    row-gap: 0.5rem;
 }
 
 .dashboard-section {
@@ -323,8 +319,8 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
 
 .dashboard-input-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    margin: 0.3rem 0;
+    grid-template-columns: 1fr 3fr auto auto;
+    column-gap: 0.5rem;
     align-items: center;
 }
 
