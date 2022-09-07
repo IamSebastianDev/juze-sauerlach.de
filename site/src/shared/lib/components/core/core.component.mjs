@@ -1,6 +1,7 @@
 /** @format */
 
 import { receive, dispatch } from 'straemjs';
+import './core.css';
 
 export class Core extends HTMLElement {
     constructor() {
