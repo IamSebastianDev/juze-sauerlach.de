@@ -14,7 +14,8 @@
 		"build": "rollup --config .config/rollup.config.js",
 		"build:prod": "NODE_ENV=production yarn build",
 		"serve": "yarn db:up && nodemon server/server.mjs --config ./config/nodemon.config.json",
-		"start": "yarn db:up && node server/server.mjs"
+		"start": "yarn db:up && node server/server.mjs",
+		"start:maintenance": "yarn db:up && NODE_ENV=maintenance node server/server.mjs"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.1.1",

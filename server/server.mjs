@@ -10,9 +10,11 @@ import { router } from './routes.mjs';
 import { fromRoot } from './utils/fromRoot.util.mjs';
 import { authService } from './api/services/auth.service.mjs';
 import { blacklist } from './middleware/blacklist.middleware.mjs';
+import { maintenance } from './middleware/maintenance.middleware.mjs';
 
 const app = express();
 [
+    maintenance({ blacklist: ['/'], target: './site/public/maintenance.html' }),
     express.json(),
     fileUpload(),
     express.urlencoded({ extended: true }),
