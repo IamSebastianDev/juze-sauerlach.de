@@ -9,9 +9,9 @@ import css from 'rollup-plugin-import-css';
 
 export default [
     {
-        input: './site/src/frontend/index.mjs',
+        input: './web/src/frontend/index.mjs',
         output: {
-            file: './site/public/dist/frontend.bundle.mjs',
+            file: './web/public/dist/frontend.bundle.mjs',
             format: 'esm',
             sourcemap: true,
         },
@@ -24,9 +24,9 @@ export default [
         ],
     },
     {
-        input: './site/src/dashboard/index.mjs',
+        input: './web/src/dashboard/index.mjs',
         output: {
-            file: './site/public/dist/dashboard.bundle.mjs',
+            file: './web/public/dist/dashboard.bundle.mjs',
             format: 'esm',
             sourcemap: true,
         },

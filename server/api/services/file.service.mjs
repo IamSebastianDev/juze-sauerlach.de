@@ -8,7 +8,7 @@ class FileService extends Service {
     constructor() {
         super();
 
-        this.directory = './site/public/uploads/';
+        this.directory = './web/public/uploads/';
     }
 
     /**

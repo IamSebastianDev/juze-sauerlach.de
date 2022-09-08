@@ -14,7 +14,7 @@ import { maintenance } from './middleware/maintenance.middleware.mjs';
 
 const app = express();
 [
-    maintenance({ blacklist: ['/'], target: './site/public/maintenance.html' }),
+    maintenance({ blacklist: ['/'], target: './web/public/maintenance.html' }),
     express.json(),
     fileUpload(),
     express.urlencoded({ extended: true }),
@@ -26,7 +26,7 @@ const app = express();
     authService.initialize(),
     authService.session(),
     router,
-    express.static(fromRoot('./site/public/'), { extensions: 'html' }),
+    express.static(fromRoot('./web/public/'), { extensions: 'html' }),
 ].forEach((w) => app.use(w));
 
 const PORT = process.env.PORT || 3000;
