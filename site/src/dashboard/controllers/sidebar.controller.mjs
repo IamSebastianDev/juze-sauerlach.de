@@ -7,7 +7,7 @@ export class SidebarController extends Controller {
         super(selector);
 
         this.sidebar = document.querySelector(selector);
-        this.set('click');
+        this.listen('click');
     }
 
     events = [
@@ -15,8 +15,8 @@ export class SidebarController extends Controller {
             type: 'click',
             selector: '#dashboard-cycle',
             action: (ev) => {
-                const sidebarState = this.sidebar.getAttribute('state');
-                this.sidebar.setAttribute('state', sidebarState === 'false' ? 'true' : 'false');
+                this.sidebarState = this.sidebar.getAttribute('state');
+                this.sidebar.setAttribute('state', this.sidebarState === 'false' ? 'true' : 'false');
             },
         },
     ];

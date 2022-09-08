@@ -8,7 +8,7 @@ class FileService extends Service {
     constructor() {
         super();
 
-        this.directory = './public/uploads/';
+        this.directory = './site/public/uploads/';
     }
 
     /**
@@ -30,11 +30,11 @@ class FileService extends Service {
                 const dirName = fromRoot(this.directory, dir);
                 if ((await stat(dirName)).isDirectory()) {
                     const fileNames = await readdir(dirName);
-                    if (!uploads[dirName]) uploads[dirName] = [];
+                    if (!uploads[dir]) uploads[dir] = [];
                     fileNames.forEach((file) =>
-                        uploads[dirName].push({
+                        uploads[dir].push({
                             name: file,
-                            path: `./uploads/${dirName}/${file}`,
+                            path: `./uploads/${dir}/${file}`,
                         })
                     );
                 }
@@ -61,14 +61,15 @@ class FileService extends Service {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
+        const filename = file.name.replace(' ', '_');
         const type = file.mimetype.includes('image') ? 'image' : 'file';
-        const uploadPath = fromRoot(this.directory, type + 's', file.name);
+        const uploadPath = fromRoot(this.directory, type + 's', filename);
 
         try {
             await file.mv(uploadPath);
             return res.status(200).json({
                 success: true,
-                path: `./uploads/${type}s/${file.name}`,
+                path: `./uploads/${type}s/${filename}`,
             });
         } catch (e) {
             return res.status(400).json({ error: e });
@@ -99,4 +100,4 @@ class FileService extends Service {
     }
 }
 
-export const fileService = new FileService();
+export const fileService = new FileService('section#file-control');

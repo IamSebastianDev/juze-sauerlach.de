@@ -1,10 +1,12 @@
 /** @format */
 
+import { Controller } from '../../dashboard/controllers/controller.mjs';
 import { getPages } from '../services/page.service.mjs';
 
-class PageController {
-    constructor() {
-        this.navigation = document.querySelector('j-navigation');
+class PageController extends Controller {
+    constructor(selector) {
+        super(selector);
+        this.navigation = document.querySelector(selector);
     }
 
     async init() {
@@ -57,4 +59,4 @@ class PageController {
     }
 }
 
-export const page = new PageController();
+export const page = new PageController('j-navigation');

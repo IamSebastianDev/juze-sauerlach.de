@@ -38,21 +38,17 @@ class JIconSelect extends Core {
         },
     ];
 
-    createIconCard(name) {
-        const icon = document.createElement('div');
-        icon.className = `icon-card ${name === this.data.selectedIcon ? 'selected' : ''}`;
-        icon.append(Pangolicons.icons[name].toSvg({ ...iconConfig, 'stroke-width': 2 }));
-        icon.setAttribute('name', name);
-        return icon;
-    }
-
     render() {
         [...this.$('#icon-outlet').childNodes].forEach((node) => node.remove());
-        this.$('#icon-outlet').append(
-            ...Object.keys(Pangolicons.icons).map((name) => {
-                return this.createIconCard(name);
+        this.$('#icon-outlet').innerHTML = Object.keys(Pangolicons.icons)
+            .map((name) => {
+                return this.html`
+                    <div class="icon-card ${name === this.data.selectedIcon ? 'selected' : ''}">
+                        ${Pangolicons.icons[name].toString({ ...iconConfig, 'stroke-width': 2, name })}
+                    </div>
+                `;
             })
-        );
+            .join('\n');
     }
 }
 

@@ -44,6 +44,17 @@
     box-shadow: var(--shadow-light);
 }
 
+.modal[fullscreen='true'] {
+    width: 100vh;
+    height: 100vh;
+
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    max-width: unset;
+    max-height: unset;
+}
+
 .modal-content-outlet {
     display: flex;
     height: 100%;
@@ -88,6 +99,11 @@ button#modal-close {
     border: none;
 }
 
+.modal[fullscreen='true'] button#modal-close {
+    top: 0;
+    right: 0;
+}
+
 button#modal-close:hover {
     background: var(--ui-color-accent);
 }
@@ -106,4 +122,8 @@ button#modal-leave:hover {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+}
+
+.modal-container.fullscreen {
+    height: 100%;
 }
