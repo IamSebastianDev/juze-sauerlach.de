@@ -9,17 +9,19 @@ class ModalService {
         'create-page': 'j-modal-create-page',
         'select-icon': 'j-modal-select-icon',
         'organize-pages': 'j-modal-organize-pages',
+        'file-modal': 'j-modal-files',
     };
 
-    get(modal, { data } = { data: {} }) {
+    get(modal, { data, actionItems } = {}) {
         const _modal = document.createElement('j-modal-shell');
         _modal.setAttribute('inject', this.modals[modal]);
-        _modal.data = data;
+        _modal.data = data || {};
+        _modal.customActionItems = actionItems || [];
         this.outlet.append(_modal);
 
         return {
-            open: () => {
-                _modal.open();
+            open: ({ isFullscreen } = {}) => {
+                _modal.open(isFullscreen);
             },
             close: () => {
                 _modal.close();
