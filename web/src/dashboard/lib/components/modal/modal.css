@@ -99,11 +99,6 @@ button#modal-close {
     border: none;
 }
 
-.modal[fullscreen='true'] button#modal-close {
-    top: 0;
-    right: 0;
-}
-
 button#modal-close:hover {
     background: var(--ui-color-accent);
 }
