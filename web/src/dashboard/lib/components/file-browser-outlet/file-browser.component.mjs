@@ -35,7 +35,7 @@ class JFileBrowserOutlet extends Core {
     attributeChangedCallback(attr, oldProps, newProps) {
         const { type, files } = JSON.parse(newProps);
         this.type = type;
-        this.files = files;
+        this.files = files || [];
 
         this.renderCards();
     }
