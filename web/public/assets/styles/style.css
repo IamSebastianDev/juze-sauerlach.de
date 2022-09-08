@@ -383,3 +383,9 @@ div#modal-outlet {
 
     z-index: var(--ui-z-modal);
 }
+
+[tooltip] {
+    display: grid;
+    place-items: center;
+    position: relative;
+}

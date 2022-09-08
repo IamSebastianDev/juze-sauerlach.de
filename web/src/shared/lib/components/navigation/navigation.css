@@ -16,11 +16,14 @@ ul.nav-outlet {
     list-style-type: none;
     margin: 1rem 3.05rem;
     padding: 0;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 a.nav-item {
     position: relative;
+    display: grid;
+    place-items: center;
+
     padding: 0.5rem;
 
     text-decoration: none;
