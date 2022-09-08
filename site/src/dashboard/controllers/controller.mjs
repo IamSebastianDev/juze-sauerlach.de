@@ -5,7 +5,7 @@ export class Controller {
         this.selector = selector;
         this._element = document.querySelector(selector);
 
-        if (!this._element) console.warning(`${selector} does not exist!`);
+        if (!this._element) console.warn(`${selector} does not exist!`);
     }
 
     $(selector) {
@@ -19,11 +19,16 @@ export class Controller {
         return this.$(selector)?.value;
     }
 
-    set(eventType) {
-        window.addEventListener(eventType, (ev) => {
-            if (!ev.target.closest(this.selector)) return;
-            this.checkEventTargets(ev, eventType);
-        });
+    listen(eventType, { stopPropagation, preventDefault } = {}) {
+        this._element.addEventListener(
+            eventType,
+            (ev) => {
+                preventDefault && ev.preventDefault();
+                stopPropagation && ev.stopPropagation();
+                this.checkEventTargets(ev, eventType);
+            },
+            true
+        );
     }
 
     checkEventTargets(ev, eventType) {
