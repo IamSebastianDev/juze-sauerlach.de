@@ -55,7 +55,7 @@ export class PageDetailsController extends Controller {
         super(selector);
 
         this.pageOrganizer = document.querySelector(selector);
-        this.set('click');
+        this.listen('click');
 
         this.title = this.$('input#page-title');
         this.dest = this.$('input#page-dest');
