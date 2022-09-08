@@ -14,3 +14,5 @@ import './modal/create-page/create-page.component.mjs';
 import './modal/select-icon/select-icon.component.mjs';
 import './modal/organize-pages/organize-pages.component.mjs';
 import './icons-select/icon-select.component.mjs';
+import './file-browser-outlet/file-browser.component.mjs';
+import './modal/file-modal/file-modal.component.mjs';

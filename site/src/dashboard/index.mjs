@@ -10,6 +10,7 @@ import { editor } from './lib/editor/editor.mjs';
 
 import { page } from '../shared/controllers/page.controller.mjs';
 import './controllers/sidebar.controller.mjs';
+import { files } from './controllers/file.controller.mjs';
 
 import { injector } from './lib/injectors/injector.mjs';
 import { injectEditorData } from './lib/injectors/injectEditorData.mjs';
@@ -17,6 +18,7 @@ import { injectRouteData } from './lib/injectors/injectRouteData.mjs';
 
 window.addEventListener('DOMContentLoaded', async () => {
     Pangolicons.replaceAll();
+    await files.getFiles();
 
     await editor.isReady;
     await page.init();

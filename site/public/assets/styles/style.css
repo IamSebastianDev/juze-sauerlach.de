@@ -334,11 +334,41 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
     text-align: center;
 }
 
+.dashboard-button-container {
+    display: flex;
+    border: 1px solid var(--ui-color-dark-50);
+    border-bottom-color: transparent;
+    border-top-left-radius: var(--ui-border-radius-s);
+    border-top-right-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-button-container button {
+    display: grid;
+    place-items: center;
+    border: none;
+    flex-grow: 1;
+    background: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.dashboard-button-container button.active {
+    background: var(--ui-color-shade);
+}
+
+.dashboard-button-container button:first-child {
+    border-top-left-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-button-container button:last-child {
+    flex-grow: 0;
+    border-top-right-radius: var(--ui-border-radius-s);
+}
+
 div#flash-message-outlet {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-
+    bottom: 1.5rem;
+    right: 3rem;
     display: flex;
     flex-direction: column-reverse;
     row-gap: 0.5rem;

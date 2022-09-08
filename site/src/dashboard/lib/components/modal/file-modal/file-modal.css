@@ -1,0 +1,30 @@
+/** @format */
+
+.modal-controls-container {
+    display: flex;
+    border: 1px solid var(--ui-color-dark-50);
+    border-radius: var(--ui-border-radius-s);
+}
+
+.modal-controls-container button {
+    display: grid;
+    place-items: center;
+    border: none;
+    flex-grow: 1;
+    background: none;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+}
+
+.modal-controls-container button.active {
+    background: var(--ui-color-shade);
+}
+
+.modal-controls-container button:first-child {
+    border-top-left-radius: var(--ui-border-radius-s);
+}
+
+.modal-controls-container button:last-child {
+    flex-grow: 0;
+    border-top-right-radius: var(--ui-border-radius-s);
+}
