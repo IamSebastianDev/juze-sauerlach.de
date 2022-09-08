@@ -1,6 +1,6 @@
 /** @format */
 
-nav {
+nav.nav {
     position: fixed;
     top: 0;
     right: 0;
@@ -10,85 +10,86 @@ nav {
     z-index: var(--ui-z-navigation);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: flex-end;
-    column-gap: 1.6rem;
-    margin: 0;
-    margin-left: auto;
-    padding: 1.5rem 3rem;
-    list-style-type: none;
-
-    transform: translateY(0);
-}
-
-.nav-item {
+ul.nav-outlet {
     display: flex;
     align-items: center;
+    list-style-type: none;
+    margin: 1rem 3.05rem;
+    padding: 0;
+    gap: 1.5rem;
 }
 
-.nav-link {
+a.nav-item {
+    position: relative;
+    padding: 0.5rem;
+
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--ui-color-text);
+}
+
+a.nav-item span {
+    padding: 0.5rem;
+
     display: grid;
     place-items: center;
-    padding: 0.6rem;
-    color: var(--ui-color-text);
-    background: var(--ui-color-gradient);
-    border-radius: var(--ui-border-radius-m);
+
     transform: rotate(45deg);
-}
-
-.nav-label {
-    display: none;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 2rem;
-    flex-grow: 1;
-    text-decoration: none;
+    background: var(--ui-color-gradient);
+    border-radius: var(--ui-border-radius-s);
     color: var(--ui-color-text);
 }
 
-.nav-link .pangolicons {
+a.nav-item span svg {
     transform: rotate(-45deg);
 }
 
 @media (max-width: 768px) {
-    nav {
-        justify-content: center;
-        align-items: center;
-        background: var(--ui-color-bright);
+    nav.nav {
+        background: var(--ui-color-main);
     }
 
-    .nav-container {
+    ul.nav-outlet {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: var(--ui-color-bright);
+        inset: 0;
+        margin: 0;
+
+        padding: 20%;
+
+        background: var(--ui-color-main);
+
+        display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        row-gap: 4rem;
-        margin: 0;
-        padding: 0;
+        align-items: flex-start;
+
         transition: var(--ui-transition-slow);
+        transform: unset;
     }
 
-    .nav-container[state='false'] {
+    ul.nav-outlet[state='false'] {
         transform: translateY(-100%);
     }
-    .nav-container[state='true'] {
-        transform: translateY(0%);
+
+    a.nav-item {
+        position: relative;
+        display: flex;
     }
 
-    .nav-label {
-        display: inline-block;
+    a.nav-item:after {
+        content: attr(title);
+        display: grid;
+        place-items: center;
+        margin-left: 2rem;
+
+        font-size: 1.25rem;
+        font-weight: 400;
     }
 }
 
-/** @nav-burger */
+/** @nav-switch */
 
-.nav-burger {
+.nav-switch {
     position: relative;
 
     width: 2.4rem;
@@ -107,17 +108,17 @@ nav {
     cursor: pointer;
 }
 
-.nav-burger.hidden {
+.nav-switch.hidden {
     display: none;
 }
 
-.nav-burger:hover {
+.nav-switch:hover {
     background: var(--ui-color-shade);
 }
 
-.nav-burger span,
-.nav-burger span:before,
-.nav-burger span:after {
+.nav-switch span,
+.nav-switch span:before,
+.nav-switch span:after {
     display: block;
     width: 1.6rem;
     height: 0.2rem;
@@ -127,40 +128,40 @@ nav {
     transition: var(--ui-transition-fast);
 }
 
-.nav-burger span:before,
-.nav-burger span:after {
+.nav-switch span:before,
+.nav-switch span:after {
     content: '';
     position: absolute;
 }
-.nav-burger span:before {
+.nav-switch span:before {
     top: 0.6rem;
 }
-.nav-burger span:after {
+.nav-switch span:after {
     bottom: 0.6rem;
 }
 
-.nav-burger[transform='true'] span,
-.nav-burger[transform='true'] span:before,
-.nav-burger[transform='true'] span:after {
+.nav-switch[transform='true'] span,
+.nav-switch[transform='true'] span:before,
+.nav-switch[transform='true'] span:after {
     top: unset;
     bottom: unset;
     transform-origin: center;
 }
 
-.nav-burger[transform='true'] span {
+.nav-switch[transform='true'] span {
     transform: rotate(45deg);
 }
 
-.nav-burger[transform='true'] span:before {
+.nav-switch[transform='true'] span:before {
     transform: rotate(-90deg);
 }
 
-.nav-burger[transform='true'] span:after {
+.nav-switch[transform='true'] span:after {
     visibility: hidden;
 }
 
 @media (max-width: 768px) {
-    .nav-burger.hidden {
+    .nav-switch.hidden {
         display: grid;
     }
 }
