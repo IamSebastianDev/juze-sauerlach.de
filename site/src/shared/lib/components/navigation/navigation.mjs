@@ -1,22 +1,36 @@
 /** @format */
 
 import './navigation.css';
-import Pangolicons from '../../../utils/icons.util.mjs';
-const { icons } = Pangolicons;
 import { Core } from '../core/core.component.mjs';
+import Icons from '../../../utils/icons.util.mjs';
+import { iconConfig } from '../../../configs/icons.config.mjs';
+const { icons } = Icons;
 
 class JNavigation extends Core {
     static get observedAttributes() {
-        return ['data-nav'];
+        return ['data'];
     }
+
+    events = [
+        {
+            type: 'click',
+            selector: 'a.nav-item',
+            action: (ev) => this.handleClick(ev, false),
+        },
+        {
+            type: 'click',
+            selector: 'button.nav-switch',
+            action: (ev) => this.handleClick(ev),
+        },
+    ];
 
     constructor() {
         super();
         this.template = document.createElement('template');
-        this.template.innerHTML = `
+        this.template.innerHTML = this.html`
         <nav class="nav">
-            <ul class="nav-container" state="false"></ul>
-            <button class="nav-burger hidden">
+            <ul class="nav-outlet" state="false"></ul>
+            <button class="nav-switch hidden">
                 <span></span>
             </button>
         </nav>
@@ -27,56 +41,38 @@ class JNavigation extends Core {
         this.attachShadow({ mode: 'open' });
         this.injectCSS();
         this.shadowRoot.append(this.template.content);
-        this.navAnchor = this.shadowRoot.querySelector('.nav-container');
 
-        if (this.getAttribute('data-nav')) {
-            this.navAnchor.append(...JSON.parse(newProps).map(this.createNavigationItem));
-        }
-
-        this.shadowRoot.addEventListener('click', (ev) => {
-            if (ev.target.closest('.nav-burger')) {
-                this.transform();
-            } else if (ev.target.closest('.nav-link') || ev.target.closest('.nav-label')) {
-                this.transform(false);
-                window.scrollTo({ top: 0 });
-            }
-        });
-    }
-
-    transform(state) {
-        const currentState = this.navAnchor.getAttribute('state');
-        this.navAnchor.setAttribute('state', state || (currentState === 'true' ? 'false' : 'true'));
-        this.shadowRoot
-            .querySelector('.nav-burger')
-            .setAttribute('transform', state || (currentState === 'true' ? 'false' : 'true'));
+        this.listen('click');
     }
 
     attributeChangedCallback(attr, oldProps, newProps) {
-        if (!this.shadowRoot) return;
+        this.data.navigationItems = JSON.parse(newProps);
 
-        [...this.navAnchor.childNodes].forEach((node) => node.remove());
-        this.navAnchor.append(...JSON.parse(newProps).map(this.createNavigationItem));
+        this.render();
     }
 
-    createNavigationItem({ title, tooltip, dest, icon }) {
-        const listItem = document.createElement('li');
-        listItem.className = 'nav-item';
+    render() {
+        [...this.$('.nav-outlet').childNodes].forEach((node) => node.remove());
 
-        const link = document.createElement('a');
-        link.alt = title;
-        link.className = 'nav-link';
-        link.setAttribute('title', title);
-        link.setAttribute('tooltip', tooltip);
-        link.href = `#${dest}`;
-        link.append(icons[icon]?.toSvg({}));
+        const items = this.data.navigationItems
+            .map(
+                ({ title, tooltip, dest, icon }) => this.html`
+            <li class="nav-list-item">
+                <a class="nav-item" href="#${dest}" tooltip="${tooltip}" title="${title}">
+                    <span>
+                        ${icons[icon].toString({ ...iconConfig, width: 24, height: 24, 'stroke-width': 2 })}
+                    </span>
+                </a>
+            </li>`
+            )
+            .join('');
+        this.$('.nav-outlet').innerHTML = items;
+    }
 
-        const label = document.createElement('a');
-        label.textContent = tooltip;
-        label.className = 'nav-label';
-        label.href = `#${dest}`;
-
-        listItem.append(link, label);
-        return listItem;
+    handleClick(ev, forceState) {
+        this.data.navigationState = forceState || !this.data.navigationState;
+        this.$('button.nav-switch').setAttribute('transform', this.data.navigationState);
+        this.$('.nav-outlet').setAttribute('state', this.data.navigationState);
     }
 }
 

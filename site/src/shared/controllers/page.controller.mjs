@@ -17,7 +17,7 @@ class PageController {
         const navigationData = this.activePages.map(({ title, tooltip, dest, icon }) => {
             return { title, tooltip, dest, icon };
         });
-        this.navigation?.setAttribute('data-nav', JSON.stringify(navigationData));
+        this.navigation?.setAttribute('data', JSON.stringify(navigationData));
     }
 
     getRoutes(routeCallback) {
