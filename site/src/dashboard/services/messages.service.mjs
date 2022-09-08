@@ -2,7 +2,7 @@
 
 class MessageService {
     constructor(selector) {
-        this.messages = document.querySelector(selector);
+        this.outlet = document.querySelector(selector);
     }
 
     dispatch({ text, type }) {
@@ -10,7 +10,7 @@ class MessageService {
         message.setAttribute('text', text);
         message.setAttribute('type', type);
 
-        this.messages.append(message);
+        this.outlet.append(message);
     }
 }
 
