@@ -3,6 +3,10 @@
 import { receive, dispatch } from 'straemjs';
 
 export class Core extends HTMLElement {
+    static get observedAttributes() {
+        return ['data'];
+    }
+
     constructor() {
         super();
         this.data = {};
