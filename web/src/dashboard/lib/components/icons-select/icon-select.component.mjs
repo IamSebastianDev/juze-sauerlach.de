@@ -43,7 +43,7 @@ class JIconSelect extends Core {
         this.$('#icon-outlet').innerHTML = Object.keys(Pangolicons.icons)
             .map((name) => {
                 return this.html`
-                    <div class="icon-card ${name === this.data.selectedIcon ? 'selected' : ''}">
+                    <div class="icon-card ${name === this.data.selectedIcon ? 'selected' : ''}" name="${name}">
                         ${Pangolicons.icons[name].toString({ ...iconConfig, 'stroke-width': 2, name })}
                     </div>
                 `;
