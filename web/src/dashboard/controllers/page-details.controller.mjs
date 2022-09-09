@@ -74,7 +74,6 @@ export class PageDetailsController extends Controller {
     }
 
     async saveCurrentPage(ev) {
-        console.log(this.icon);
         // gather dataset
         const pageData = {
             dest: this.dest.value,
@@ -87,8 +86,8 @@ export class PageDetailsController extends Controller {
         };
 
         try {
-            const { result, page: newPageData } = await updatePage(this.routeId, pageData);
-            page.updateRouteData(this.routeId, newPageData);
+            await updatePage(this.routeId, pageData);
+            await page.constructRoutingTable();
             messageService.dispatch({ type: 'success', text: 'Speichern erfolgreich' });
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim speichern der Seite: ${e}` });
@@ -97,7 +96,6 @@ export class PageDetailsController extends Controller {
 
     async createNewPage(data, complete) {
         const { title, tooltip, dest, selectedIcon: icon, validated } = data;
-        console.log({ title, tooltip, dest, icon, validated });
 
         if (!icon) {
             messageService.dispatch({ type: 'error', text: 'Bitte wähle ein icon aus.' });
@@ -114,8 +112,8 @@ export class PageDetailsController extends Controller {
         }
 
         try {
-            const { result } = await createPage({ title, dest, tooltip, icon });
-            console.log({ result });
+            await createPage({ title, tooltip, icon, dest });
+            await page.constructRoutingTable();
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim erstellen der Seite: ${e}` });
         } finally {
@@ -124,7 +122,24 @@ export class PageDetailsController extends Controller {
     }
 
     async updatePages(data, complete) {
-        console.log({ data });
+        try {
+            for (const [index, page] of data.pages.entries()) {
+                const { _id: id, delete: delPage } = page;
+
+                if (delPage) {
+                    await deletePage(id);
+                } else {
+                    await updatePage(id, { ...page, index });
+                }
+            }
+
+            await page.constructRoutingTable();
+            messageService.dispatch({ type: 'success', text: 'Seiten erfolgreich organisiert.' });
+        } catch (e) {
+            messageService.dispatch({ type: 'error', text: `Fehler beim organisieren der Seiten: ${e}` });
+        } finally {
+            complete();
+        }
     }
 
     async updateIcon({ selectedIcon }, complete) {
@@ -136,8 +151,8 @@ export class PageDetailsController extends Controller {
         this.icon = selectedIcon;
 
         try {
-            const { result, page: newPageData } = await updatePage(this.routeId, { icon: selectedIcon });
-            page.updateRouteData(this.routeId, newPageData);
+            await updatePage(this.routeId, { icon: selectedIcon });
+            await page.constructRoutingTable();
             messageService.dispatch({ type: 'success', text: 'Speichern erfolgreich' });
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim speichern der Seite: ${e}` });

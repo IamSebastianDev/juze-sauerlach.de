@@ -28,4 +28,8 @@ export class Validate {
     static IsOfType(type) {
         return (value) => typeof value === type;
     }
+
+    static HasLeadingHash(string) {
+        return string[0] === '#';
+    }
 }

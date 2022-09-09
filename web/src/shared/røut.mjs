@@ -47,12 +47,16 @@ export default class Røut {
         this._options = { ...this._internalDefaults, ...options };
 
         // set up load and hashchange ev listeners
-        window.addEventListener('hashchange', this._match.bind(this, window.location));
+        window.addEventListener('hashchange', (ev) => this._match(window.location));
 
-        window.addEventListener('load', this._match.bind(this, window.location));
+        window.addEventListener('load', (ev) => this._match(window.location));
 
         // return this for testing and logging purposes
         return this;
+    }
+
+    reset() {
+        this._routes = {};
     }
 
     /**
@@ -181,7 +185,6 @@ export default class Røut {
 
     _match(url) {
         // validate the passed url
-
         if (!typeof url == 'object' || !url.hash == undefined) {
             // if the passed url is not an object or does not contain a defined hash property, throw an error.
 

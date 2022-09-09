@@ -112,7 +112,6 @@ class JModalOrganizePages extends Core {
         const name = ev.target.getAttribute('name');
 
         this.data.pages[index][name] = ev.target.checked;
-        console.log(this.data.pages);
     }
 
     render() {

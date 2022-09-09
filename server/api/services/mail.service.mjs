@@ -57,7 +57,6 @@ class MailService extends Service {
             let result = await this.transporter.sendMail(body);
             return res.status(200).json({ result });
         } catch (e) {
-            console.log({ e });
             return res.status(500).json({ error: e });
         }
     }

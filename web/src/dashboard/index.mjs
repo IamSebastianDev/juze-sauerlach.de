@@ -21,10 +21,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     await files.getFiles();
 
     await editor.isReady;
-    await page.init();
-    const routes = page.getRoutes(injector(injectEditorData(editor), injectRouteData()));
-    const router = new Røut(routes, routerConfig);
-    router.goTo('#home');
+    const router = new Røut({}, routerConfig);
+    await page.init(router, injector(injectEditorData(editor), injectRouteData()));
+    await page.constructRoutingTable();
 
     dispatch('page-complete').from(window).with({});
 });

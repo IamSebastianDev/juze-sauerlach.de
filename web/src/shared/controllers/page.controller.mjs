@@ -1,7 +1,7 @@
 /** @format */
 
 import { Controller } from '../../dashboard/controllers/controller.mjs';
-import { getPages } from '../services/page.service.mjs';
+import { getPage, getPages } from '../services/page.service.mjs';
 
 class PageController extends Controller {
     constructor(selector) {
@@ -9,32 +9,42 @@ class PageController extends Controller {
         this.navigation = document.querySelector(selector);
     }
 
-    async init() {
+    async init(router, injector) {
+        this.router = router;
+        this.injector = injector;
+    }
+
+    async constructRoutingTable() {
+        // retrieve page data from the backend
         this.pages = await getPages();
-        this.setNavigation();
-    }
 
-    setNavigation() {
+        this.router.reset();
         this.activePages = this.pages.filter((elem) => elem.active).sort((a, b) => a.index - b.index);
-        const navigationData = this.activePages.map(({ title, tooltip, dest, icon }) => {
-            return { title, tooltip, dest, icon };
-        });
-        this.navigation?.setAttribute('data', JSON.stringify(navigationData));
-    }
-
-    getRoutes(routeCallback) {
-        let routes = {};
         this.activePages.forEach(({ title, dest, content, headerImage }) => {
-            routes[dest] = {
+            this.router.create(dest, {
+                dest,
                 title: `JuZe Sauerlach | ${title}`,
                 callback: (query, route) => {
-                    routeCallback(content, route, query);
+                    this.injector(content, route, query);
                     const image = document.querySelector('#header-image');
                     if (image) image.src = headerImage;
                 },
-            };
+            });
         });
-        return routes;
+
+        this.setNavigation();
+        this.router.goTo('#home');
+    }
+
+    setNavigation() {
+        this.navigation?.setAttribute(
+            'data',
+            JSON.stringify(
+                this.activePages.map(({ title, tooltip, dest, icon }) => {
+                    return { title, tooltip, dest, icon };
+                })
+            )
+        );
     }
 
     getActiveRouteData({ dest }) {
@@ -43,15 +53,7 @@ class PageController extends Controller {
     }
 
     getSelectedRouteData({ dest }) {
-        const selectedRoute = this.pages.find((route) => route.dest === dest);
-        return selectedRoute;
-    }
-
-    updateRouteData(id, pageData) {
-        this.pages = this.pages.map((page) => {
-            return page._id !== id ? page : { ...page, ...pageData };
-        });
-        this.setNavigation();
+        return this.pages.find((route) => route.dest === dest);
     }
 
     getPages() {

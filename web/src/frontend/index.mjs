@@ -12,10 +12,9 @@ import Pangolicons from '../shared/utils/icons.util.mjs';
 window.addEventListener('DOMContentLoaded', async () => {
     Pangolicons.replaceAll();
 
-    await page.init();
-    const routes = page.getRoutes(contentParser(elementDictionary, document.querySelector('#content')));
-    const router = new Røut(routes, routerConfig);
-    router.goTo('#home');
+    const router = new Røut({}, routerConfig);
+    await page.init(router, contentParser(elementDictionary, document.querySelector('#content')));
+    await page.constructRoutingTable();
 
     dispatch('page-complete').from(window).with({});
 });

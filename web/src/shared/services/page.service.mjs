@@ -42,7 +42,7 @@ export const updatePage = async (id, page) => {
 
 export const deletePage = async (id) => {
     const { error, result } = await useService(async () => {
-        await fetch(`/api/v1/page/${id}`, DELETE);
+        return await fetch(`/api/v1/page/${id}`, DELETE);
     });
 
     if (error) throw error;

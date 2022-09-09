@@ -56,20 +56,6 @@ class JModalShell extends Core {
                 this.close();
             },
         },
-        {
-            type: 'click',
-            selector: 'button#modal-leave',
-            action: (ev) => {
-                this.close();
-            },
-        },
-        {
-            type: 'click',
-            selector: 'button#modal-confirm',
-            action: (ev) => {
-                this.onConfirm({ data: this.injectable.data });
-            },
-        },
     ];
 
     injectModalComponent() {
