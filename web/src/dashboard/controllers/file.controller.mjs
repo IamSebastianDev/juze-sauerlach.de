@@ -34,6 +34,10 @@ class FileController extends Controller {
         this.listen('click');
     }
 
+    async init() {
+        await this.getFiles();
+    }
+
     async handleCardClick(data) {
         let result = await copyToClipboard(data.path);
         if (result === false) {
