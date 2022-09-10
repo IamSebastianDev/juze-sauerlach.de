@@ -1,0 +1,126 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JuZe Sauerlach</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="./assets/styles/reset.css" />
+        <link rel="stylesheet" href="./assets/styles/fonts.css" />
+        <link rel="stylesheet" href="./assets/styles/style.css" />
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicons/site.webmanifest" />
+        <meta name="apple-mobile-web-app-title" content="JuZe Sauerlach" />
+        <meta name="application-name" content="JuZe Sauerlach" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-TileImage" content="./assets/favicons/mstile-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- bundles -->
+        <script type="module" src="./dist/dashboard.bundle.mjs" defer></script>
+        <link rel="stylesheet" href="./dist/components.dashboard.css" />
+
+        <!-- includes -->
+    </head>
+    <body>
+        <j-navigation></j-navigation>
+        <aside id="sidebar" state="true">
+            <button id="dashboard-cycle" class="dashboard-display-button">
+                <i pangolicons="x" width="16" height="16" stroke-width="3"></i>
+                <i pangolicons="chevronRight" width="16" height="16" stroke-width="3"></i>
+            </button>
+            <div class="dashboard-scroll">
+                <div class="dashboard-flex">
+                    <section class="dashboard-section dashboard-flex" id="page-details">
+                        <h1 class="dashboard-display-heading">Seitendetails</h1>
+                        <div class="dashboard-input-container">
+                            <label for="page-title">Titel:</label>
+                            <input
+                                type="text"
+                                name="page-title"
+                                id="page-title"
+                                class="dashboard-input"
+                                placeholder="{- Titel -}"
+                            />
+                            <i pangolicons="edit" width="16" height="16" stroke-width="2"></i>
+                            <span tooltip="Der Titel der Seite.">
+                                <i pangolicons="infoCircle" width="16" height="16" stroke-width="2"></i>
+                            </span>
+                        </div>
+                        <div class="dashboard-input-container">
+                            <label for="page-dest">Url:</label>
+                            <input
+                                type="text"
+                                name="page-dest"
+                                id="page-dest"
+                                class="dashboard-input"
+                                placeholder="{- Url -}"
+                            />
+                            <i pangolicons="edit" width="16" height="16" stroke-width="2"></i>
+                            <span tooltip="Die URL der Seite.">
+                                <i pangolicons="infoCircle" width="16" height="16" stroke-width="2"></i>
+                            </span>
+                        </div>
+                        <div class="dashboard-input-container">
+                            <label for="page-tooltip">Tooltip:</label>
+                            <input
+                                type="text"
+                                name="page-tooltip"
+                                id="page-tooltip"
+                                class="dashboard-input"
+                                placeholder="{- Tooltip -}"
+                            />
+                            <i pangolicons="edit" width="16" height="16" stroke-width="2"></i>
+                            <span tooltip="Der Navigations-tooltip der Seite.">
+                                <i pangolicons="infoCircle" width="16" height="16" stroke-width="2"></i>
+                            </span>
+                        </div>
+                        <button id="select-icon" class="dashboard-button">Icon ändern / auswählen</button>
+                        <button id="organize-page" class="dashboard-button">Seiten Organisieren</button>
+                        <button id="update-page" class="dashboard-button">Änderungen speichern</button>
+                        <button id="create-page" class="dashboard-button">Neue Seite</button>
+                    </section>
+                    <section class="dashboard-section dashboard-flex" id="file-control">
+                        <h1 class="dashboard-display-heading">Dateien & Bilder</h1>
+                        <div class="" id="file-browser">
+                            <div class="dashboard-button-container">
+                                <button target="images">Bilder</button>
+                                <button target="files">Dateien</button>
+                                <button id="set-fullscreen"><i pangolicons="fullscreenEnter"></i></button>
+                            </div>
+                            <div id="file-browser-outlet"></div>
+                        </div>
+                        <j-file-upload></j-file-upload>
+                    </section>
+                    <a
+                        href="https://privateemail.com"
+                        target="_blank"
+                        class="dashboard-button"
+                        rel="noopener noreferrer"
+                        >Webmail</a
+                    >
+                    <a href="/logout" class="dashboard-button">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <section id="image-container">
+            <img id="header-image" />
+        </section>
+        <main id="content-box">
+            <section id="content" class="container"></section>
+        </main>
+        <div id="modal-outlet"></div>
+        <div id="flash-message-outlet"></div>
+        <j-spinner fullscreen state="true"></j-spinner>
+        <j-footer></j-footer>
+        <j-privacy></j-privacy>
+    </body>
+</html>

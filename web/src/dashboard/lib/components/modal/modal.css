@@ -1,0 +1,124 @@
+/** @format */
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: var(--ui-color-dark-30);
+
+    display: grid;
+    place-items: center;
+    backdrop-filter: blur(0.25rem);
+}
+
+.modal {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 90%;
+    max-width: 768px;
+    max-height: 80vh;
+    min-height: 4rem;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 2rem;
+
+    background: var(--ui-color-main);
+
+    border: 1px solid var(--ui-color-shade);
+    border-radius: var(--ui-border-radius-m);
+
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    color: var(--ui-color-text);
+
+    box-shadow: var(--shadow-light);
+}
+
+.modal[fullscreen='true'] {
+    width: 100vh;
+    height: 100vh;
+
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    max-width: unset;
+    max-height: unset;
+}
+
+.modal-content-outlet {
+    display: flex;
+    height: 100%;
+}
+
+.modal-content-outlet > * {
+    flex-grow: 1;
+}
+
+.modal-controls {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--ui-color-dark-50);
+}
+
+.modal-button {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--ui-border-radius-s);
+    border: 1px solid var(--ui-color-dark-50);
+    background: var(--ui-color-bright);
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    transition: var(--ui-transition-fast);
+}
+
+button#modal-close {
+    position: absolute;
+    padding: 0.3rem;
+    top: -1px;
+    right: -2.25rem;
+
+    border: none;
+}
+
+button#modal-close:hover {
+    background: var(--ui-color-accent);
+}
+
+button#modal-confirm:hover {
+    background: var(--ui-color-code-success);
+    border-color: var(--ui-color-code-success);
+}
+button#modal-leave:hover {
+    background: var(--ui-color-code-error);
+    border-color: var(--ui-color-code-error);
+    color: var(--ui-color-main);
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.modal-container.fullscreen {
+    height: 100%;
+}

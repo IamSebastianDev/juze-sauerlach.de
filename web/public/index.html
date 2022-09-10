@@ -1,0 +1,45 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JuZe Sauerlach</title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="./assets/styles/reset.css" />
+        <link rel="stylesheet" href="./assets/styles/fonts.css" />
+        <link rel="stylesheet" href="./assets/styles/style.css" />
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicons/site.webmanifest" />
+        <meta name="apple-mobile-web-app-title" content="JuZe Sauerlach" />
+        <meta name="application-name" content="JuZe Sauerlach" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-TileImage" content="./assets/favicons/mstile-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- bundle -->
+        <script type="module" src="./dist/frontend.bundle.mjs" defer></script>
+        <link rel="stylesheet" href="./dist/components.frontend.css" />
+
+        <!-- includes -->
+    </head>
+    <body>
+        <j-navigation></j-navigation>
+        <section id="image-container">
+            <img id="header-image" />
+        </section>
+        <main id="content-box">
+            <section id="content" class="container"></section>
+        </main>
+        <j-spinner fullscreen state="true"></j-spinner>
+        <j-footer></j-footer>
+        <j-privacy></j-privacy>
+    </body>
+</html>

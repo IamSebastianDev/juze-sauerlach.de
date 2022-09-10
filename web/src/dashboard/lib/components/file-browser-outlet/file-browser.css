@@ -1,0 +1,81 @@
+/** @format */
+
+:host([fullscreen]) .file-container {
+    height: unset;
+    max-height: 80vh;
+    border-radius: var(--ui-border-radius-s);
+}
+
+.file-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: min-content;
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+    height: 10.5rem;
+    overflow-y: auto;
+
+    border: 1px solid var(--ui-color-dark-50);
+    border-bottom-right-radius: var(--ui-border-radius-s);
+    border-bottom-left-radius: var(--ui-border-radius-s);
+
+    overflow-x: hidden;
+}
+
+.file-card {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid var(--ui-color-dark-30);
+    border-radius: var(--ui-border-radius-s);
+    background: var(--ui-color-main);
+
+    overflow: hidden;
+}
+
+.file-card > img,
+.file-card > svg {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+.file-name {
+    position: absolute;
+    bottom: 0;
+    background: var(--ui-color-main);
+    display: block;
+    width: 100%;
+    padding: 0.25rem 0.25rem;
+    border-top: 1px solid var(--ui-color-dark-30);
+    text-align: center;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.file-copy-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ui-color-dark-50);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    opacity: 0;
+    transition: var(--ui-transition-fast);
+    color: var(--ui-color-main);
+}
+
+.file-copy-overlay:hover {
+    opacity: 1;
+    cursor: pointer;
+}

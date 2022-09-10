@@ -1,0 +1,38 @@
+/** @format */
+
+@media (hover: hover) {
+    /* tooltip on hover */
+
+    [tooltip]:hover:after {
+        content: attr(tooltip);
+
+        position: absolute;
+        top: 100%;
+        margin-top: 0.75rem;
+        width: max-content;
+        max-width: 8rem;
+
+        background: var(--ui-color-dark);
+        color: var(--ui-color-main);
+
+        font-size: 0.75rem;
+
+        padding: 0.125rem 0.25rem;
+        border-radius: var(--ui-border-radius-s);
+
+        box-shadow: var(--shadow-light);
+        z-index: 100000;
+    }
+
+    [tooltip]:hover:before {
+        content: '▲';
+
+        position: absolute;
+        top: 100%;
+        margin-top: 0.125rem;
+
+        font-size: 0.875rem;
+
+        text-shadow: var(--shadow-light);
+    }
+}

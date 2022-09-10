@@ -1,0 +1,4 @@
+*.json
+.prettierignore
+.prettierrc
+license.md

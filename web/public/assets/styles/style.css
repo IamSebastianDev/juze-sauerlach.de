@@ -1,0 +1,401 @@
+/** @format */
+
+:root {
+    --shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-strong: 0px 4px 8px rgba(0, 0, 0, 0.35);
+
+    --ui-color-accent: rgba(255, 211, 59, 1);
+    --ui-color-bright: rgba(255, 255, 255, 1);
+    --ui-color-main: rgba(250, 250, 250, 1);
+    --ui-color-shade: rgba(240, 240, 240, 1);
+    --ui-color-dark: rgba(38, 38, 38, 1);
+    --ui-color-dark-30: rgba(38, 38, 38, 0.3);
+    --ui-color-dark-50: rgba(38, 38, 38, 0.5);
+    --ui-color-darker: rgba(24, 24, 24, 1);
+    --ui-color-gradient: linear-gradient(135deg, rgba(178, 222, 81, 1) 0%, rgba(216, 238, 168, 1) 100% /* */);
+
+    --ui-color-text: rgba(38, 38, 38, 1);
+    --ui-color-text-50: rgba(38, 38, 38, 0.5);
+
+    --ui-color-code-info: rgba(79, 195, 247, 1);
+    --ui-color-code-error: rgba(229, 115, 115, 1);
+    --ui-color-code-success: rgba(129, 199, 132, 1);
+
+    --ui-border-radius-l: 16px;
+    --ui-border-radius-m: 8px;
+    --ui-border-radius-s: 4px;
+
+    --ui-transition-slow: 500ms ease-in-out;
+    --ui-transition-medium: 250ms ease-in-out;
+    --ui-transition-fast: 100ms ease-out;
+
+    /* z-index hierarchy */
+    --ui-z-background: -1;
+    --ui-z-footer: 10;
+    --ui-z-sidebar: 20;
+    --ui-z-navigation: 30;
+    --ui-z-modal: 40;
+    --ui-z-messages: 50;
+}
+
+/* overwrites */
+.pangolicons {
+    fill: transparent !important;
+}
+
+/* resets and setups */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 10px;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+    font-weight: 300;
+
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 768px;
+    margin: auto;
+}
+
+img.fullscreen-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: var(--ui-z-background);
+
+    filter: saturate(0.75);
+}
+
+section#image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+
+    display: grid;
+    place-items: center;
+}
+
+section#image-container img {
+    padding: 4rem;
+}
+
+/* content section */
+main#content-box {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 768px;
+}
+
+section#content {
+    background: var(--ui-color-accent);
+    border-radius: var(--ui-border-radius-l);
+
+    grid-column: 2;
+    margin: 8rem 2.65rem;
+    padding: 1.2rem 2.5rem;
+    max-width: 768px;
+}
+
+/* Backend editor styles. Frontend are styled through component css */
+
+section#content h1,
+section#content h2,
+section#content h3,
+section#content h4,
+section#content h5,
+section#content h6 {
+    font-family: 'Bangers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.125rem;
+}
+
+section#content h1 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+section#content h2 {
+    font-size: 1.75rem;
+}
+
+section#content h3 {
+    font-size: 1.5rem;
+}
+
+section#content h4 {
+    font-size: 1.2rem;
+}
+section#content h5,
+section#content h6 {
+    font-size: 1rem;
+}
+
+section#content {
+    font-size: 1rem;
+}
+
+.container {
+    padding: 1rem;
+}
+
+@media (max-width: 1280px) {
+    section#image-container {
+        width: 35vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    section#image-container {
+        display: none;
+    }
+
+    main#content-box {
+        display: block;
+        padding-bottom: 8rem;
+    }
+
+    section#content {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    section#image-container {
+        display: block;
+        position: relative;
+        height: auto;
+        margin: auto;
+        width: 100%;
+        margin: 6.5rem 0 -1.25rem 0;
+    }
+
+    section#image-container img {
+        padding: 0;
+        max-width: 12rem;
+        margin: auto;
+    }
+
+    section#content {
+        padding: 1rem;
+        margin: 1.5rem 0.4rem;
+    }
+}
+
+/* backend styles */
+
+/* styles cat: @dashboard */
+
+aside#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 420px;
+    height: 100vh;
+
+    padding: 0.25rem 0.5rem;
+
+    background: var(--ui-color-bright);
+    box-shadow: var(--shadow-strong);
+
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+
+    transition: var(--ui-transition-slow);
+    z-index: var(--ui-z-sidebar);
+}
+
+aside#sidebar[state='false'] {
+    transform: translateX(-100%);
+}
+
+aside#sidebar[state='false'] .pangolicons-x {
+    display: none;
+}
+aside#sidebar[state='true'] .pangolicons-chevronRight {
+    display: none;
+}
+
+.dashboard-scroll {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+}
+
+.dashboard-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.dashboard-button {
+    display: grid;
+    place-items: center;
+    padding: 0.25rem 0.5rem;
+
+    border: 1px solid var(--ui-color-dark);
+    border-radius: var(--ui-border-radius-s);
+    outline: none;
+    background: var(--ui-color-bright);
+
+    color: var(--ui-color-text);
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.dashboard-button:hover {
+    background: var(--ui-color-shade);
+}
+
+.dashboard-display-button {
+    display: grid;
+    place-items: center;
+
+    padding: 0.5rem;
+    margin: 0.25rem;
+
+    border: none;
+    border-radius: var(--ui-border-radius-s);
+    outline: none;
+
+    cursor: pointer;
+
+    background: var(--ui-color-accent);
+}
+
+.dashboard-display-button:hover {
+    background: var(--ui-color-main);
+}
+
+.dashboard-display-heading {
+    display: grid;
+    place-items: center;
+
+    height: 2rem;
+    padding: 0.125rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+
+    border: none;
+    border-radius: var(--ui-border-radius-s);
+    background: var(--ui-color-accent);
+}
+
+#dashboard-cycle {
+    position: absolute;
+    top: 0;
+    right: -2.75rem;
+}
+
+.dashboard-flex {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.dashboard-section {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--ui-color-text-50);
+}
+
+.dashboard-section:first-of-type {
+    padding-top: 0;
+}
+
+.dashboard-input-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr auto auto;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
+.dashboard-input {
+    padding: 0.125rem 0.5rem;
+    border: 1px solid var(--ui-color-dark);
+    border-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-input-container label {
+    text-align: center;
+}
+
+.dashboard-button-container {
+    display: flex;
+    border: 1px solid var(--ui-color-dark-50);
+    border-bottom-color: transparent;
+    border-top-left-radius: var(--ui-border-radius-s);
+    border-top-right-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-button-container button {
+    display: grid;
+    place-items: center;
+    border: none;
+    flex-grow: 1;
+    background: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.dashboard-button-container button.active {
+    background: var(--ui-color-shade);
+}
+
+.dashboard-button-container button:first-child {
+    border-top-left-radius: var(--ui-border-radius-s);
+}
+
+.dashboard-button-container button:last-child {
+    flex-grow: 0;
+    border-top-right-radius: var(--ui-border-radius-s);
+}
+
+div#flash-message-outlet {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 0.5rem;
+    z-index: var(--ui-z-messages);
+}
+
+div#modal-outlet {
+    position: fixed;
+
+    width: 0px;
+    height: 0px;
+
+    z-index: var(--ui-z-modal);
+}
+
+[tooltip] {
+    display: grid;
+    place-items: center;
+    position: relative;
+}

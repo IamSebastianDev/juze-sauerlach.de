@@ -1,0 +1,37 @@
+/** @format */
+
+#icon-outlet {
+    overflow: auto;
+    max-height: 40vh;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, auto));
+    gap: 0.25rem;
+
+    padding: 0.75rem;
+    border: 1px solid var(--ui-color-dark-50);
+    border-radius: var(--ui-border-radius-m);
+    margin: 0.5rem 0;
+}
+
+.icon-card {
+    display: grid;
+    place-items: center;
+
+    flex-grow: 1;
+    padding: 0.5rem;
+
+    border: 1px solid var(--ui-color-dark-50);
+    border-radius: var(--ui-border-radius-s);
+
+    cursor: pointer;
+}
+
+.icon-card:hover:not(.selected) {
+    color: var(--ui-color-accent);
+    border-color: var(--ui-color-accent);
+}
+
+.icon-card.selected {
+    background: var(--ui-color-accent);
+}

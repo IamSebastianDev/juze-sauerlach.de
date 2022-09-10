@@ -1,0 +1,52 @@
+/** @format */
+
+.modal-input-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr auto;
+    column-gap: 1.5rem;
+    row-gap: 0.25rem;
+}
+
+.modal-input-container label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-input-container input {
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+
+    border: 1px solid var(--ui-color-dark-50);
+    border-radius: var(--ui-border-radius-s);
+}
+
+.modal-input-tooltip {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.modal-input-container input[error] {
+    border-color: var(--ui-color-code-error);
+    outline: 1px solid var(--ui-color-code-error);
+}
+
+.modal-input-error {
+    display: none;
+    position: relative;
+    grid-column: 2 / -1;
+}
+
+.modal-input-error[error] {
+    display: flex;
+    align-items: center;
+}
+
+.modal-input-error[error]:after {
+    content: attr(error);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ui-color-code-error);
+    margin-right: 3.5rem;
+}
