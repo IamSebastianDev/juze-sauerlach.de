@@ -24,7 +24,7 @@ jobs:
         needs: ci
         runs-on: ubuntu-latest
         steps:
-            - name: testing ssh connection to server
+            - name: Deploying to server
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.SSH_HOST }}
