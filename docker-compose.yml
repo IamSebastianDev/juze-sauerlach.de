@@ -7,8 +7,8 @@ services:
         image: mongo:latest
         restart: always
         environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_AUTH}
         ports:
             - 27017:27017
         volumes:
