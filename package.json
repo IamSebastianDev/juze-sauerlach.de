@@ -7,14 +7,15 @@
 		"preci": "rm -rf node_modules",
 		"ci": "yarn install --frozen-lockfile",
 		"postinstall": "npx husky install",
-		"db:up": "docker-compose up -d",
-		"db:down": "docker-compose down -d",
+		"db:up": "docker compose up -d",
+		"db:down": "docker compose down -d",
 		"db:reset": "yarn db:up && node ./server/api/database/seedDatabase.mjs",
 		"dev": "rollup --config .config/rollup.config.js --watch",
 		"build": "rollup --config .config/rollup.config.js",
 		"build:prod": "NODE_ENV=production yarn build",
 		"serve": "yarn db:up && nodemon server/server.mjs --config ./config/nodemon.config.json",
 		"start": "yarn db:up && node server/server.mjs",
+		"start:prod": "yarn ci && yarn build:prod && yarn db:up && NODE_ENV=production node server/server.mjs",
 		"start:maintenance": "yarn db:up && NODE_ENV=maintenance node server/server.mjs"
 	},
 	"devDependencies": {
