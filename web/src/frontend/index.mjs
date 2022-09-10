@@ -3,7 +3,7 @@
 import './lib/components/components.loader.mjs';
 import { page } from '../shared/controllers/page.controller.mjs';
 import { dispatch } from 'straemjs';
-import Røut from '../shared/røut.mjs';
+import Røut from '../shared/lib/røut.mjs';
 import { routerConfig } from '../shared/configs/router.config.mjs';
 import { contentParser } from './lib/parser/contentParser.mjs';
 import { elementDictionary } from './lib/parser/elementDictionary.mjs';

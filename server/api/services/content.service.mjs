@@ -2,7 +2,7 @@
 
 import { Service } from './service.mjs';
 import { ObjectId } from 'mongodb';
-import { sanitizeURlString } from '../../utils/sanitizeURLString.util.mjs';
+import { sanitizeString } from '../../utils/sanitizeString.util.mjs';
 
 class ContentService extends Service {
     constructor() {
@@ -121,7 +121,7 @@ class ContentService extends Service {
 
         try {
             const page = {
-                dest: sanitizeURlString(dest),
+                dest: sanitizeString(dest),
                 icon,
                 tooltip,
                 title,

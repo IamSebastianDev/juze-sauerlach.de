@@ -3,6 +3,7 @@
 import { Service } from './service.mjs';
 import { fromRoot } from '../../utils/fromRoot.util.mjs';
 import { readdir, unlink, stat } from 'node:fs/promises';
+import { sanitizeString } from '../../utils/sanitizeString.util.mjs';
 
 class FileService extends Service {
     constructor() {
@@ -31,12 +32,13 @@ class FileService extends Service {
                 if ((await stat(dirName)).isDirectory()) {
                     const fileNames = await readdir(dirName);
                     if (!uploads[dir]) uploads[dir] = [];
-                    fileNames.forEach((file) =>
+                    for (const file of fileNames) {
                         uploads[dir].push({
                             name: file,
                             path: `./uploads/${dir}/${file}`,
-                        })
-                    );
+                            modified: (await stat(fromRoot(dirName, file))).mtime,
+                        });
+                    }
                 }
             }
 
@@ -61,7 +63,7 @@ class FileService extends Service {
             return res.status(400).json({ error: 'Incorrect request parameters or properties.' });
         }
 
-        const filename = file.name.replace(' ', '_');
+        const filename = sanitizeString(file.name);
         const type = file.mimetype.includes('image') ? 'image' : 'file';
         const uploadPath = fromRoot(this.directory, type + 's', filename);
 

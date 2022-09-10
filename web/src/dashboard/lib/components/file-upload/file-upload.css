@@ -1,1 +1,75 @@
 /** @format */
+
+.upload-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#file-target {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 3 / 1;
+
+    background: transparent;
+    border: 2px solid var(--ui-color-accent);
+    border-radius: var(--ui-border-radius-s);
+
+    transition: var(--ui-transition-time-slow);
+}
+
+#file-target.drag-over {
+    background: var(--ui-color-dark-30);
+}
+
+#file-target.drag-over .icon-outlet {
+    transform: scale(1.1);
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.text-outlet {
+    position: absolute;
+    bottom: 0;
+    margin: 0.75rem 0;
+    font-size: 0.75rem;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+button.upload-button {
+    display: grid;
+    place-items: center;
+    padding: 0.25rem 0.5rem;
+
+    border: 1px solid var(--ui-color-dark);
+    border-radius: var(--ui-border-radius-s);
+    outline: none;
+    background: var(--ui-color-bright);
+
+    color: var(--ui-color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+button.upload-button[disabled] {
+    background: var(--ui-color-shade);
+    color: var(--ui-color-dark-30);
+    cursor: auto;
+}
+
+button.upload-button:hover {
+    background: var(--ui-color-shade);
+}

@@ -20,6 +20,11 @@ class FileController extends Controller {
                 modal.open({ isFullscreen: true });
             },
         },
+        {
+            type: 'upload-file',
+            selector: 'j-file-upload',
+            action: ({ detail }) => this.upload(detail),
+        },
     ];
 
     constructor(selector) {
@@ -28,10 +33,11 @@ class FileController extends Controller {
 
         this.renderTarget = document.createElement('j-file-browser-outlet');
         this.renderTarget.output('onClick', ({ data }) => this.handleCardClick(data));
-        this.browserOutlet.append(this.renderTarget);
+        this.$('#file-browser-outlet').append(this.renderTarget);
         this.getFiles();
 
         this.listen('click');
+        this.listen('upload-file');
     }
 
     async init() {
@@ -64,7 +70,15 @@ class FileController extends Controller {
         this.renderTarget.setAttribute('data', JSON.stringify({ files, type }));
     }
 
-    async upload(file) {}
+    async upload({ file }) {
+        try {
+            await postFile(file);
+            await this.getFiles();
+            messageService.dispatch({ type: 'success', text: 'Datei erfolgreich hochgeladen.' });
+        } catch (e) {
+            messageService.dispatch({ type: 'error', text: `Fehler beim hochladen der Datei: ${e}` });
+        }
+    }
 }
 
 export const files = new FileController('#file-control');

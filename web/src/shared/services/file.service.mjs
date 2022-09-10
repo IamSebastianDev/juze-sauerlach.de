@@ -5,7 +5,7 @@ import { useService } from './useService.mjs';
 
 export const getFiles = async () => {
     const { error, result } = await useService(async () => {
-        return fetch(`/api/v1/files`, GET);
+        return await fetch(`/api/v1/files`, GET);
     });
 
     if (error) throw error;
@@ -13,12 +13,12 @@ export const getFiles = async () => {
 };
 
 export const postFile = async (file) => {
+    console.log({ file });
     const { error, result } = await useService(async () => {
-        return fetch(`/api/v1/files`, {
-            ...POST,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
+        return await fetch(`/api/v1/files`, {
+            // @note - this workaround is necessary. Further investigation as to why set headers do not work when
+            // uploading the file is needed
+            method: 'POST',
             body: file,
         });
     });
