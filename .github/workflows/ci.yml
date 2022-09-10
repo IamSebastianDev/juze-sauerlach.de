@@ -21,6 +21,7 @@ jobs:
                   NODE_ENV: production
     deploy:
         name: Deploy
+        needs: ci
         runs-on: ubuntu-latest
         steps:
             - name: testing ssh connection to server
