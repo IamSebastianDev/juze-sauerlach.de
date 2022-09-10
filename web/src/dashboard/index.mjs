@@ -2,7 +2,7 @@
 
 import { dispatch } from 'straemjs';
 import './lib/components/components.loader.mjs';
-import Røut from '../shared/røut.mjs';
+import Røut from '../shared/lib/røut.mjs';
 import { routerConfig } from '../shared/configs/router.config.mjs';
 import Pangolicons from '../shared/utils/icons.util.mjs';
 

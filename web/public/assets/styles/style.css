@@ -240,12 +240,21 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
     display: none;
 }
 
+.dashboard-scroll {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+}
+
+.dashboard-scroll::-webkit-scrollbar {
+    display: none;
+}
+
 .dashboard-button {
     display: grid;
     place-items: center;
-
     padding: 0.25rem 0.5rem;
-    align-self: stretch;
 
     border: 1px solid var(--ui-color-dark);
     border-radius: var(--ui-border-radius-s);
@@ -254,6 +263,7 @@ aside#sidebar[state='true'] .pangolicons-chevronRight {
 
     color: var(--ui-color-text);
     text-decoration: none;
+    text-align: center;
 
     cursor: pointer;
 }
