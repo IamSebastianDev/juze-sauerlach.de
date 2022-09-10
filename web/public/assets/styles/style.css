@@ -32,6 +32,7 @@
     /* z-index hierarchy */
     --ui-z-background: -1;
     --ui-z-footer: 10;
+    --ui-z-privacy: 15;
     --ui-z-sidebar: 20;
     --ui-z-navigation: 30;
     --ui-z-modal: 40;
