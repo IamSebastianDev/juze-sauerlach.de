@@ -12,6 +12,7 @@
     justify-content: center;
     transform: translateY(100%);
     transition: var(--ui-transition-medium);
+    z-index: var(--ui-z-privacy);
 }
 #privacy-banner[visible='true'] {
     transform: translateY(0);
