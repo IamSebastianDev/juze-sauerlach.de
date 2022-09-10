@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(100%);
+    transform: translateY(300%);
     transition: var(--ui-transition-medium);
     z-index: var(--ui-z-privacy);
 }
