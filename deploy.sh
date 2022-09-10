@@ -17,6 +17,6 @@ echo "Build complete."
 
 # Reload the process
 echo "Restarting service..."
-pm2 reload application
+/root/.nvm/versions/node/v18.9.0/bin/pm2 reload all
 echo "Service started. Deployment complete."
 
