@@ -50,7 +50,6 @@ for (const entry of [
     { title: 'haus', dest: 'haus', tooltip: 'Wir uns das JuZe', icon: 'house' },
     { title: 'kontakt', dest: 'kontakt', tooltip: 'Kontaktdaten', icon: 'send' },
 ]) {
-    console.log({ entry });
     const { dest, title, tooltip, icon } = entry;
     await contentService.postPage(request({ dest, title, tooltip, icon, content }), response());
 }

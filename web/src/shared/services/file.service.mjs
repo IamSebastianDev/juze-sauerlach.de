@@ -13,7 +13,6 @@ export const getFiles = async () => {
 };
 
 export const postFile = async (file) => {
-    console.log({ file });
     const { error, result } = await useService(async () => {
         return await fetch(`/api/v1/files`, {
             // @note - this workaround is necessary. Further investigation as to why set headers do not work when
