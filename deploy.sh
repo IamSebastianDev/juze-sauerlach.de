@@ -1,6 +1,8 @@
 #! usr/bin/bash
 echo "Starting automaic deploy"
+echo "$PWD"
 
+cd /srv/juzesauerlach
 # Checkout the main branch and pull all changes
 git checkout main
 git status
