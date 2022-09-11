@@ -89,7 +89,7 @@ export class Image {
 
         const caption = document.createElement('div');
         caption.contentEditable = true;
-        caption.innerHTML = captionText || 'Write a caption';
+        caption.innerHTML = captionText;
 
         this._acceptTuneView();
 
