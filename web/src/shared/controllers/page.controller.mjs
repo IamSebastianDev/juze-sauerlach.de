@@ -32,7 +32,6 @@ class PageController extends Controller {
             });
         });
 
-        console.log({ target });
         this.setNavigation();
         this.router.goTo(target || '/');
     }
