@@ -100,6 +100,8 @@
 
 .block-input-container {
     display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .block-input,
@@ -145,10 +147,52 @@
     background: var(--ui-color-bright);
 }
 
+.block-submit input[error] {
+    background: red;
+}
+
 .block-submit button {
     font-weight: 400;
 }
 
+.block-submit button[disabled] {
+    background: var(--ui-color-shade);
+    color: var(--ui-color-dark-30);
+}
+
+.block-submit button[disabled][error] {
+    background: var(--ui-color-code-error);
+    border-color: var(--ui-color-code-error);
+}
+.block-submit button[disabled][success] {
+    background: var(--ui-color-code-success);
+    border-color: var(--ui-color-code-success);
+}
+
 .block-submit button:hover {
     cursor: pointer;
+}
+
+.block-submit span {
+    font-size: 0.625rem;
+}
+
+.block-input-error {
+    display: none;
+    position: relative;
+    margin-left: 0.25rem;
+}
+
+.block-input-error[error] {
+    display: flex;
+    align-items: center;
+}
+
+.block-input-error[error]:after {
+    content: attr(error);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ui-color-code-error);
+    margin-right: 3.5rem;
 }

@@ -32,4 +32,8 @@ export class Validate {
     static HasLeadingHash(string) {
         return string[0] === '#';
     }
+
+    static IsEmail(string) {
+        return string.trim() !== '' && string.includes('@') && string.includes('.');
+    }
 }

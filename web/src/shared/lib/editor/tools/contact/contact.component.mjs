@@ -3,6 +3,15 @@
 import './contact.css';
 import { Content } from '../content.mjs';
 import { postMail } from '../../../../services/mail.service.mjs';
+import { Validate } from '../../../../utils/validation.util.mjs';
+
+// Validation strategies
+const validateNotEmpty = Validate.createStrategy(Validate.StringNotEmpty, 'Dieses Feld wird benötigt.');
+const validateEmail = Validate.createStrategy(Validate.IsEmail, 'Bitte trage eine korrekte Email Adresse ein.');
+const validateMessageLength = Validate.createStrategy(
+    Validate.StringHasLength(20),
+    'Deine Nachricht sollte länger sein.'
+);
 
 class JContact extends Content {
     constructor() {
@@ -15,7 +24,7 @@ class JContact extends Content {
 
                 </div>
                 <div class="block-submit">
-                    <input type="checkbox" name="consent" />
+                    <input type="checkbox" name="consent" required/>
                     <span class="consent-note">Ich bin damit einverstanden, dass die abgesendeten Daten zum Zwecke der Übertragung gespeichert und verarbeitet werden. Mehr hierzu in unserer <a href="/impressum.html#Datenschutz">Datenschutzerklärung</a></span>
                     <button type="submit">Abschicken</button>
                 </div>
@@ -23,85 +32,116 @@ class JContact extends Content {
         </div>`;
     }
 
-    validateForm({ email, message, name, consent }) {
-        const validations = {
-            email: [],
-            message: [],
-            name: [],
-            consent: [],
-        };
-
-        if (!consent) {
-            validations.consent = [
-                ...validations.consent,
-                'Bitte bestätige, dass du den Datenschutzbestimmungen zustimmst.',
-            ];
-        }
-
-        if (!email || email.trim() === '') {
-            validations.email = [...validations.email, 'Bitte teile uns deine Mailadresse mit.'];
-        }
-
-        if (email.trim() !== '' && !email.includes('@') && !email.includes('.')) {
-            validations.email = [...validations.email, 'Bitte trage eine korrekte Mailadresse ein.'];
-        }
-
-        if (!message || message.trim() === '') {
-            validations.message = [...validations.message, 'Bitte trage hier deine Nachricht ein.'];
-        }
-
-        if (message.trim().length > 1 && message.trim().length < 30) {
-            validations.message = [...validations.message, 'Deine Nachricht sollte länger sein.'];
-        }
-
-        return validations;
-    }
-
-    setValidationMessages(messages) {
-        console.log({ messages });
-    }
-
-    submit(ev) {
-        ev.preventDefault();
-
-        const email = this.$('[name=email]').value;
-        const message = this.$('[name=text]').value;
-        const name = this.$('[name=name]').value;
-        const consent = this.$('[name=consent]').checked;
-
-        const validationMessages = this.validateForm({ email, message, name, consent });
-
-        if (Object.values(validationMessages).every((validation) => validation.length === 0)) {
-            this.sendMail({ email, message, name });
-        } else {
-            this.setValidationMessages(validationMessages);
-        }
-    }
-
-    async sendMail({ email, message, name }) {
-        const result = await postMail(email, name, message);
-        if (!result.error) {
-            this.$('.block-submit button').textContent = 'Abgeschickt!';
-        }
-    }
-
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         this.injectCSS();
         this.shadowRoot.append(this.template.content);
 
+        this.data.validated = {};
         this.completedCallback();
-        this.$('form').addEventListener('submit', (ev) => this.submit(ev));
+        this.listen('blur');
+        this.listen('focus');
+        this.listen('change');
+        this.listen('submit');
+    }
+
+    events = [
+        {
+            type: 'blur',
+            selector: 'input[type=email]',
+            action: (ev) => this.validateInput(ev.target, validateNotEmpty, validateEmail),
+        },
+        {
+            type: 'blur',
+            selector: 'input[type=name]',
+            action: (ev) => this.validateInput(ev.target, validateNotEmpty),
+        },
+        {
+            type: 'blur',
+            selector: 'textarea',
+            action: (ev) => this.validateInput(ev.target, validateNotEmpty, validateMessageLength),
+        },
+        {
+            type: 'focus',
+            selector: 'input:not([type=checkbox]), textarea',
+            action: (ev) => this.resetValidation(ev.target),
+        },
+        {
+            type: 'change',
+            selector: 'input[type=checkbox]',
+            action: (ev) => {
+                this.data.validated['consent'] = ev.target.checked;
+            },
+        },
+        {
+            type: 'submit',
+            selector: 'form',
+            action: (ev) => this.submit(ev),
+        },
+    ];
+
+    validateInput(input, ...validationStrategies) {
+        const { name, value } = input;
+        const validations = validationStrategies.map((strategy) => strategy(value));
+        const failed = validations.filter((val) => !val.validated);
+
+        if (failed.length === 0) {
+            this.data.validated[name] = true;
+            this.data[name] = value;
+            return;
+        }
+
+        this.data.validated[name] = false;
+        input.setAttribute('error', true);
+        input.parentElement.querySelector('.block-input-error').setAttribute('error', failed[0].message);
+    }
+
+    resetValidation(input) {
+        this.data.validated[input.getAttribute('name')] = true;
+        input.removeAttribute('error');
+        input.parentElement.querySelector('.block-input-error').removeAttribute('error');
+    }
+
+    submit(ev) {
+        ev.preventDefault();
+        [...this.$$('input, textarea')].forEach((node) => {
+            node.focus();
+            node.blur();
+        });
+
+        const validated = Object.values(this.data.validated).every((val) => val === true);
+        if (!validated) return;
+
+        this.$('.block-submit button').disabled = true;
+        this.sendMail(this.data);
+    }
+
+    async sendMail({ email, name, text: message }) {
+        const { result, error } = await postMail(email, name, message);
+
+        if (!error) {
+            this.$('.block-submit button').setAttribute('success', true);
+            this.$('.block-submit button').textContent = 'Abgeschickt!';
+            return;
+        }
+
+        this.$('.block-submit button').setAttribute('error', true);
+        this.$('.block-submit button').textContent = 'Fehler! Versuche es später erneut!';
     }
 
     updateComponent({ fields }) {
         const elements = fields.map(({ type, name }) => {
+            this.data.validated[type] = false;
+
             const container = document.createElement('div');
             container.className = 'block-input-container';
 
             const label = document.createElement('label');
             label.className = 'block-label hidden';
             label.textContent = name;
+
+            const error = document.createElement('span');
+            error.className = 'block-input-error';
 
             let inputElement;
 
@@ -114,13 +154,14 @@ class JContact extends Content {
                 case 'name':
                     inputElement = document.createElement('input');
                     inputElement.className = 'block-input';
+                    inputElement.type = type;
                     break;
             }
 
-            inputElement.placeholder = 'Deine ' + name;
+            inputElement.placeholder = (type === 'name' ? 'Dein' : 'Deine ') + name;
             inputElement.name = type;
 
-            container.append(label, inputElement);
+            container.append(label, inputElement, error);
             return container;
         });
 
