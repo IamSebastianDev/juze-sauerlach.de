@@ -15,7 +15,7 @@
 		"build:prod": "NODE_ENV=production yarn build",
 		"serve": "yarn db:up && nodemon server/server.mjs --config ./config/nodemon.config.json",
 		"start": "yarn db:up && node server/server.mjs",
-		"start:prod": "yarn ci && yarn build:prod && yarn db:up && NODE_ENV=production node server/server.mjs",
+		"start:prod": "yarn db:up && NODE_ENV=production node server/server.mjs",
 		"start:maintenance": "yarn db:up && NODE_ENV=maintenance node server/server.mjs"
 	},
 	"devDependencies": {
