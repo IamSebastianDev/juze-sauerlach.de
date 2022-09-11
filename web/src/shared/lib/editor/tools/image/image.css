@@ -25,6 +25,7 @@
 
 .image-plugin-container input,
 .image-plugin-container [contenteditable] {
+    position: relative;
     flex-grow: 1;
     border: none;
     padding: 0.25rem 0.5rem;
@@ -36,6 +37,11 @@
     background: var(--ui-color-bright);
 
     outline: none;
+}
+
+.image-plugin-container [contenteditable]:empty:before {
+    content: 'Write a caption.';
+    position: absolute;
 }
 
 .image-field-remove {
