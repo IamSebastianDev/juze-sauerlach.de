@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const router = new Røut({}, routerConfig);
     await page.init(router, contentParser(elementDictionary, document.querySelector('#content')));
-    await page.constructRoutingTable();
+    await page.constructRoutingTable(window.location.hash);
 
     dispatch('page-complete').from(window).with({});
 });
