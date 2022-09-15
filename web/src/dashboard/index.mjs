@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     await editor.isReady;
     const router = new Røut({}, routerConfig);
     await page.init(router, injector(injectEditorData(editor), injectRouteData()));
-    await page.constructRoutingTable();
+    await page.constructRoutingTable(window.location.hash);
 
     dispatch('page-complete').from(window).with({});
 });

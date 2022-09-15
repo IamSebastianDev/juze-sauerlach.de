@@ -87,7 +87,7 @@ export class PageDetailsController extends Controller {
 
         try {
             await updatePage(this.routeId, pageData);
-            await page.constructRoutingTable();
+            await page.constructRoutingTable(`#${this.dest.value}`);
             messageService.dispatch({ type: 'success', text: 'Speichern erfolgreich' });
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim speichern der Seite: ${e}` });
@@ -113,7 +113,7 @@ export class PageDetailsController extends Controller {
 
         try {
             await createPage({ title, tooltip, icon, dest });
-            await page.constructRoutingTable();
+            await page.constructRoutingTable(`#${dest}`);
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim erstellen der Seite: ${e}` });
         } finally {
@@ -133,7 +133,7 @@ export class PageDetailsController extends Controller {
                 }
             }
 
-            await page.constructRoutingTable();
+            await page.constructRoutingTable(`#${page.dest}`);
             messageService.dispatch({ type: 'success', text: 'Seiten erfolgreich organisiert.' });
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim organisieren der Seiten: ${e}` });
@@ -152,7 +152,7 @@ export class PageDetailsController extends Controller {
 
         try {
             await updatePage(this.routeId, { icon: selectedIcon });
-            await page.constructRoutingTable();
+            await page.constructRoutingTable(`#${this.dest.value}`);
             messageService.dispatch({ type: 'success', text: 'Speichern erfolgreich' });
         } catch (e) {
             messageService.dispatch({ type: 'error', text: `Fehler beim speichern der Seite: ${e}` });
