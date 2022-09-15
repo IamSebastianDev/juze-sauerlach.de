@@ -14,7 +14,7 @@ class PageController extends Controller {
         this.injector = injector;
     }
 
-    async constructRoutingTable() {
+    async constructRoutingTable(target) {
         // retrieve page data from the backend
         this.pages = await getPages();
 
@@ -33,7 +33,7 @@ class PageController extends Controller {
         });
 
         this.setNavigation();
-        this.router.goTo('#home');
+        this.router.goTo(target || '/');
     }
 
     setNavigation() {
