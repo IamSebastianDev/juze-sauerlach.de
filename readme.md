@@ -69,4 +69,8 @@ The project uses prettier to format the code to conform to a certain style. Form
 
 The server encompasses a simple CMS. It is available under [http://localhost:3000/dashboard](http://localhost:3000/dashboard). If you have seeded the database beforehand, a default used is created with the following credentials:
 
--   [admin@juzesauerlach.de](admin@juzesauerlach.de) : admin
+-   [admin@test.de](admin@test.de) : secret
+
+## Deployment via Github Actions
+
+The repository contains a `deploy.sh` script that can be used to automatically fetch the repo from Github. The script is triggered by a successful merge into the `main` branch through a Github action.

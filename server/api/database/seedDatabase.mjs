@@ -20,10 +20,7 @@ const contentCollection = collections('content');
 await contentCollection(async (collection) => await collection.insertOne({}));
 await contentCollection(async (collection) => await collection.drop());
 
-await userService.post(
-    request({ email: 'admin@juzesauerlach.de', password: 'admin', key: process.env.USER_KEY }),
-    response()
-);
+await userService.post(request({ email: 'admin@test.de', password: 'secret', key: process.env.USER_KEY }), response());
 
 const content = {
     time: 0,
