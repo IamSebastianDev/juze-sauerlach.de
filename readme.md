@@ -69,4 +69,4 @@ The project uses prettier to format the code to conform to a certain style. Form
 
 The server encompasses a simple CMS. It is available under [http://localhost:3000/dashboard](http://localhost:3000/dashboard). If you have seeded the database beforehand, a default used is created with the following credentials:
 
--   [admin@juzesauerlach.de](admin@juzesauerlach.de) : admin
+-   [admin@test.de](admin@test.de) : secret
