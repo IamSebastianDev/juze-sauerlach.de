@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@codexteam/icons@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@codexteam/icons/-/icons-0.0.4.tgz#8b72dcd3f3a1b0d880bdceb2abebd74b46d3ae13"
+  integrity sha512-V8N/TY2TGyas4wLrPIFq7bcow68b3gu8DfDt1+rrHPtXxcexadKauRJL6eQgfG7Z0LCrN4boLRawR4S9gjIh/Q==
+
 "@commitlint/cli@^17.1.1":
   version "17.1.2"
   resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.1.2.tgz#38240f84936df5216f749f06f838dc50cc85a43d"
@@ -199,10 +204,12 @@
   resolved "https://registry.yarnpkg.com/@editorjs/header/-/header-2.6.2.tgz#523b6dda72ff882e53f64325840ee7bfc68ee6b7"
   integrity sha512-U1dnT+KGjwFmpWneEEyR2Nqp42hn9iKwQDgRHWQM+y6qx82pg+eAyuIf0QWt2Mluu9uPD2CzNfvJ+pxIuwX8Lw==
 
-"@editorjs/list@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@editorjs/list/-/list-1.7.0.tgz#986c55026bdeee2ec7ef74fe09bd4b285e12bd1e"
-  integrity sha512-0k0RKbQqfV32u24UYHHz5mrmSu4wr246qqXBT7xQiS533Bfd4hzki6UGzvy4f275ULzi+egbjI3BXLkpoTh9iQ==
+"@editorjs/list@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@editorjs/list/-/list-1.8.0.tgz#c64b88679f23c0129ffac589004300832c345d3b"
+  integrity sha512-Vq6cjyTXBzgegYv/MtTfuDdiz59yGhDEc/yAVXr6lmvoWAFs9cJ4TLuh4/9SbrbhIptcQLDvUjMDKmRrV6v2NQ==
+  dependencies:
+    "@codexteam/icons" "^0.0.4"
 
 "@editorjs/marker@^1.2.2":
   version "1.2.2"
