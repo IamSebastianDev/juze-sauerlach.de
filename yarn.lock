@@ -218,10 +218,12 @@
   dependencies:
     "@codexteam/icons" "^0.0.4"
 
-"@editorjs/marker@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@editorjs/marker/-/marker-1.2.2.tgz#d9261a257436bf70179c0fa1e766ab85c823c96b"
-  integrity sha512-BN/IHbVKKahGnMAiBOV5U7XUjfF6JkIkTZ6qNLxtTr7PUPM8UsJV8G8pyll9CX+XRUYYZyokA2kEBHTS4vUyyw==
+"@editorjs/marker@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@editorjs/marker/-/marker-1.3.0.tgz#425358a52aa6ff0133bdf0f063c958a02f00e1e3"
+  integrity sha512-RYWYDnFPjNBJgR7KIGjB9gPnUwGvn2aIoRevAm422Wx1mg5eT4gcvwc0T5V76pYPSoD2Z0T2GPkzl9d1hl398w==
+  dependencies:
+    "@codexteam/icons" "^0.0.5"
 
 "@editorjs/paragraph@^2.8.0":
   version "2.8.0"
