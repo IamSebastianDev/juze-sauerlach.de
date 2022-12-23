@@ -11,6 +11,7 @@ import { fromRoot } from './utils/fromRoot.util.mjs';
 import { authService } from './api/services/auth.service.mjs';
 import { blacklist } from './middleware/blacklist.middleware.mjs';
 import { maintenance } from './middleware/maintenance.middleware.mjs';
+import { loq } from './middleware/log.middleware.mjs';
 
 const app = express();
 [
@@ -21,6 +22,7 @@ const app = express();
     // CSP must be disabled because 'editor.js' uses eval.
     helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }),
     blacklist({ blacklist: ['/src/'], matchFull: false }),
+    loq(),
     compression(),
     session(),
     authService.initialize(),
