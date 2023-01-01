@@ -230,10 +230,12 @@
   resolved "https://registry.yarnpkg.com/@editorjs/paragraph/-/paragraph-2.8.0.tgz#11cc381fcafaf8b9160517ce65d59eee93fc4af9"
   integrity sha512-z6w5ZR0ru3p/IjxJW/tb7OcSnVttkZukQMIsnBMX1FIKc1BNdr7NwM1YoCyTl4OnC90YfL0xgES6/20/W267pw==
 
-"@editorjs/quote@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@editorjs/quote/-/quote-2.4.0.tgz#effe570f9055831a230e0417fafa6091a6169a47"
-  integrity sha512-IWOBWjL2ngPP63GcIAltyD9kc7OVZFma4kS+T5JRHvKKDspYsnmrxsbRmCPc+coZQzqPxXHkiOZuNMdmGX/Y3w==
+"@editorjs/quote@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@editorjs/quote/-/quote-2.5.0.tgz#a4a4e7513b8194db405825bb9b3ea02757a12a5a"
+  integrity sha512-24Mu8cESaj34a0kg1Enj7qiZ3yiCOsZI59+8xpfXLO/NkO7hBYWNForVcBy5yIWs/VLlEZK11FP37f/mHrKugQ==
+  dependencies:
+    "@codexteam/icons" "^0.0.5"
 
 "@editorjs/simple-image@^1.4.1":
   version "1.4.1"
