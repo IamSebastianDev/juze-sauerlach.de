@@ -37,7 +37,12 @@ class JImage extends Content {
         }
 
         if (url) {
-            image.src = url;
+            // handle internal url CORS issue
+            if (url.includes(window.location.host)) {
+                image.src = '.' + url.split(window.location.host).at(-1);
+            } else {
+                image.src = url;
+            }
         }
 
         if (caption) {
