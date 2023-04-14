@@ -13,15 +13,6 @@ class JFooter extends Core {
                     <div class="footer-social-container">
                         <a
                             class="footer-social-link"
-                            href="https://www.facebook.com/jugendzentrumsauerlach/"
-                            title="Link zur Facebook Seite"
-                            rel="noreferrer noopener"
-                            target="_blank"
-                        >
-                            <img src="/assets/images/icons/facebook_wabe.svg" alt="facebook icon" />
-                        </a>
-                        <a
-                            class="footer-social-link"
                             href="https://www.instagram.com/juzesauerlach/"
                             title="Link zur Instagram Seite"
                             rel="noreferrer noopener"
