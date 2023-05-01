@@ -3368,10 +3368,10 @@ statuses@2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.1.tgz#55cb000ccf1d48728bd23c685a063998cf1a1b63"
   integrity sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==
 
-straemjs@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/straemjs/-/straemjs-1.0.3.tgz#6a4ed43c87abf7121b76a68446ca7204554886ae"
-  integrity sha512-Jlg+BfNnUvYJi9wNL36IQxjcEerom0E76AIY4hIyk/DF8/ZjY1ZUyrR+0VAN0FCE72az6VrNcD2M29Vls5kOrQ==
+straemjs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/straemjs/-/straemjs-2.0.0.tgz#6528b507374d243b2b924ba2efd472e1ebfc22b4"
+  integrity sha512-IWGWedk/+BZO02w0zPHnEPZwuR1Bl1NhoPV8jplsOc8zTtDpYkPkWAA9clf8dC7GLtJNPMKPeup5ORTZDwqcfw==
 
 streamsearch@^1.1.0:
   version "1.1.0"
